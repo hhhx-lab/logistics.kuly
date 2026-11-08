@@ -1,0 +1,41 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        page: "var(--c-page)",
+        card: "var(--c-card)",
+        nav: "var(--c-nav)",
+        canvas: "var(--c-canvas)",
+        ink: { DEFAULT: "var(--c-ink)", 2: "var(--c-ink-2)", 3: "var(--c-ink-3)", 4: "var(--c-ink-4)" },
+        line: { DEFAULT: "var(--c-line)", strong: "var(--c-line-strong)" },
+        fill: { DEFAULT: "var(--c-fill)", strong: "var(--c-fill-strong)" },
+        focus: "var(--c-focus)",
+        brand: {
+          DEFAULT: "var(--c-brand)",
+          hover: "var(--c-brand-hover)",
+          press: "var(--c-brand-press)",
+          ink: "var(--c-brand-ink)",
+          vivid: "var(--c-brand-vivid)",
+          soft: "var(--c-brand-soft)",
+          line: "var(--c-brand-line)",
+        },
+        sel: { DEFAULT: "var(--c-sel)", soft: "var(--c-sel-soft)", line: "var(--c-sel-line)" },
+        risk: { DEFAULT: "var(--c-risk)", bg: "var(--c-risk-bg)", line: "var(--c-risk-line)", strong: "var(--c-risk-line)" },
+        warn: { DEFAULT: "var(--c-warn)", bg: "var(--c-warn-bg)", line: "var(--c-warn-line)" },
+        ok: { DEFAULT: "var(--c-ok)", bg: "var(--c-ok-bg)", strong: "var(--c-ok)" },
+        hist: { DEFAULT: "var(--c-hist)", bg: "var(--c-hist-bg)" },
+        dis: { DEFAULT: "var(--c-dis)", bg: "var(--c-dis-bg)" },
+      },
+      borderRadius: { card: "12px", ctl: "8px", control: "8px" },
+      boxShadow: { panel: "0 12px 32px rgba(17,20,24,.12), 0 0 0 1px rgba(17,20,24,.04)" },
+      fontSize: { body: ["14px", "1.55"], table: ["13px", "1.5"], title: ["24px", "1.3"], cardt: ["16px", "1.4"] },
+      height: { ctl: "36px", tag: "28px", main: "40px", bar: "56px" },
+      width: { nav: "232px", navc: "64px" },
+      maxWidth: { read: "760px", manage: "1440px", bubble: "620px" },
+      zIndex: { bar: "10", pop: "30", popover: "30", panel: "40", modal: "50", toast: "60" },
+    },
+  },
+  plugins: [],
+};

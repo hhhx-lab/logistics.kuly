@@ -1,0 +1,612 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0"><title>单证智能体视觉方案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* 布局：单栏提案文档，每个方向一块「产品截面」样例 + 规格清单，样例自身固定为浅色产品配色 */
+:root {
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --fg: #15191e;
+  --fg-2: #56606b;
+  --fg-3: #858d97;
+  --line: #e2e5e9;
+  --accent: #1f5f99;
+  --accent-soft: #e8f0f8;
+  --sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1215; --surface: #171b20; --fg: #e8ebee; --fg-2: #a3acb6; --fg-3: #6f7882;
+    --line: #2a3038; --accent: #86b7e6; --accent-soft: #1c2a38; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1215; --surface: #171b20; --fg: #e8ebee; --fg-2: #a3acb6; --fg-3: #6f7882;
+  --line: #2a3038; --accent: #86b7e6; --accent-soft: #1c2a38; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.65; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 48px 80px; display: flex; flex-direction: column; gap: 56px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2 { text-wrap: balance; letter-spacing: -0.01em; }
+.mono { font-family: var(--mono); }
+.num { font-variant-numeric: tabular-nums; }
+
+.intro { display: flex; flex-direction: column; gap: 14px; max-width: 68ch; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; color: var(--fg-3); }
+h1 { font-size: clamp(28px, 4vw, 38px); line-height: 1.2; font-weight: 600; }
+.lead { color: var(--fg-2); }
+
+.jump { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; display: flex; flex-wrap: wrap; gap: 6px; padding-block: 10px; background: var(--bg); margin-block: -40px -40px; }
+.jump a { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg-2); text-decoration: none; font-size: 13px; }
+.jump a:hover { color: var(--fg); border-color: var(--fg-3); }
+.jump a b { font-family: var(--mono); font-weight: 500; color: var(--fg); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.sec-head { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; max-width: 68ch; }
+.sec-head h2 { font-size: 22px; font-weight: 600; line-height: 1.3; }
+.sec-head p { color: var(--fg-2); }
+
+/* 共用改动 */
+.shared { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.shared > div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.shared h3 { font-size: 15px; font-weight: 600; }
+.shared p { font-size: 14px; color: var(--fg-2); }
+
+.panels { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 12px; margin-top: 12px; }
+@media (max-width: 820px) { .panels { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.panel h3 { font-size: 14px; font-weight: 600; }
+.panel .cap { font-size: 13px; color: var(--fg-3); }
+
+.icon-table-wrap { overflow-x: auto; }
+.icon-table { border-collapse: collapse; width: 100%; min-width: 560px; }
+.icon-table th, .icon-table td { padding: 10px 6px; text-align: center; border-bottom: 1px solid var(--line); }
+.icon-table thead th { font-size: 12px; font-weight: 400; color: var(--fg-3); }
+.icon-table tbody th { text-align: left; font-size: 12px; font-weight: 500; color: var(--fg-2); white-space: nowrap; padding-right: 12px; }
+.icon-table tr:last-child td, .icon-table tr:last-child th { border-bottom: 0; }
+.icon-table td { color: var(--fg); }
+.icon-table svg { display: block; margin: 0 auto; }
+
+.ladder { display: flex; gap: 24px; align-items: flex-end; flex-wrap: wrap; }
+.ladder figure { margin: 0; display: flex; flex-direction: column; gap: 8px; align-items: center; color: var(--fg); }
+.ladder figcaption { font-size: 12px; color: var(--fg-3); text-align: center; line-height: 1.4; }
+
+.logos { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.logo-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.logo-item span.t { font-size: 12px; color: var(--fg-3); }
+.lt { display: grid; place-items: center; }
+.arrow { color: var(--fg-3); font-size: 18px; }
+
+/* 方向区块 */
+.dir { display: flex; flex-direction: column; gap: 18px; scroll-margin-top: 64px; }
+.dir-head { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
+.letter { font-family: var(--mono); font-size: 13px; font-weight: 500; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--fg); color: var(--bg); flex-shrink: 0; }
+.dir-title { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 320px; }
+.dir-title h2 { font-size: 22px; font-weight: 600; line-height: 1.3; }
+.dir-title p { color: var(--fg-2); }
+.meta { display: flex; gap: 6px; flex-wrap: wrap; }
+.pill { font-size: 12px; height: 26px; display: inline-flex; align-items: center; padding: 0 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--fg-2); background: var(--surface); white-space: nowrap; }
+.pill.cost-s { color: #1f7a4d; border-color: color-mix(in srgb, #1f7a4d 35%, var(--line)); }
+.pill.cost-m { color: #a36200; border-color: color-mix(in srgb, #a36200 35%, var(--line)); }
+.pill.cost-l { color: #b8322b; border-color: color-mix(in srgb, #b8322b 35%, var(--line)); }
+:root[data-theme="dark"] .pill.cost-s { color: #6fcf9a; }
+:root[data-theme="dark"] .pill.cost-m { color: #e6b45e; }
+:root[data-theme="dark"] .pill.cost-l { color: #f08a83; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .pill.cost-s { color: #6fcf9a; }
+  :root:not([data-theme="light"]) .pill.cost-m { color: #e6b45e; }
+  :root:not([data-theme="light"]) .pill.cost-l { color: #f08a83; }
+}
+
+.spec { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); overflow: hidden; }
+.spec > div { padding: 14px 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 -1px -1px 0; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.spec dt { font-size: 12px; color: var(--fg-3); letter-spacing: .04em; }
+.spec dd { margin: 0; font-size: 14px; color: var(--fg); }
+.verdict { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.verdict p { font-size: 14px; color: var(--fg-2); }
+.verdict b { color: var(--fg); font-weight: 600; margin-right: 6px; }
+
+.issues { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.issues p { font-size: 14px; color: var(--fg-2); }
+.issues b { color: var(--fg); font-weight: 600; display: block; margin-bottom: 2px; }
+
+.choose { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.choose h2 { font-size: 20px; font-weight: 600; }
+.choose p, .choose li { color: var(--fg-2); font-size: 14px; }
+.choose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+.choose code { font-family: var(--mono); font-size: 12.5px; background: var(--accent-soft); color: var(--fg); padding: 1px 6px; border-radius: 5px; }
+
+/* ───── 产品样例：每个方向用自己的 token，产品本身只有浅色 ───── */
+.mock-wrap { container-type: inline-size; border-radius: 14px; box-shadow: 0 0 0 1px var(--line); overflow: hidden; }
+.mock {
+  display: grid; grid-template-columns: 216px minmax(0, 1fr); min-height: 470px;
+  background: var(--s-page); color: var(--s-ink);
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px; line-height: 1.5;
+}
+.mock .i { flex-shrink: 0; }
+.mock .duo { fill: currentColor; fill-opacity: var(--s-duo, 0); }
+.m-nav { background: var(--s-nav); border-right: 1px solid var(--s-nav-line); display: flex; flex-direction: column; gap: 2px; padding: 12px 10px; color: var(--s-nav-ink); min-width: 0; }
+.m-brand { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 4px; margin-bottom: 10px; }
+.m-logo { width: 30px; height: 30px; border-radius: var(--s-logo-r); background: var(--s-logo-bg); color: var(--s-logo-ink); display: grid; place-items: center; box-shadow: var(--s-logo-shadow, none); flex-shrink: 0; }
+.m-name { flex: 1; min-width: 0; font-weight: 600; font-size: 13.5px; color: var(--s-nav-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-collapse { color: var(--s-nav-icon); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 6px; }
+.m-item { display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 8px; border-radius: var(--s-r-ctl); color: var(--s-nav-ink); text-decoration: none; transition: background-color 150ms, color 150ms; cursor: default; }
+.m-item:hover { background: var(--s-nav-hover); color: var(--s-nav-strong); }
+.m-item .m-ico { width: var(--s-tile, 20px); height: var(--s-tile, 20px); display: grid; place-items: center; border-radius: 7px; color: var(--s-nav-icon); background: var(--s-tile-bg, transparent); flex-shrink: 0; transition: color 150ms; }
+.m-item:hover .m-ico { color: var(--s-nav-strong); }
+.m-item.on { background: var(--s-active-bg); color: var(--s-active-ink); box-shadow: var(--s-active-shadow, none); font-weight: 500; }
+.m-item.on .m-ico { color: var(--s-active-icon); background: var(--s-tile-on, transparent); box-shadow: var(--s-tile-on-shadow, none); }
+.m-item .l { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-foot { margin-top: auto; border-top: 1px solid var(--s-nav-line-in, var(--s-nav-line)); padding-top: 10px; display: flex; align-items: center; gap: 10px; padding-inline: 6px; }
+.m-avatar { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--s-avatar-bg); color: var(--s-avatar-ink); font-size: 12px; font-weight: 500; flex-shrink: 0; }
+.m-foot .l { font-size: 12.5px; color: var(--s-nav-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.m-main { padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.m-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.m-head h3 { font-size: 18px; font-weight: 600; line-height: 1.3; color: var(--s-ink); }
+.m-head p { font-size: 12px; color: var(--s-ink3); margin-top: 2px; }
+.m-actions { display: flex; gap: 8px; }
+.m-btn { height: 32px; padding: 0 12px; display: inline-flex; align-items: center; gap: 6px; border-radius: var(--s-r-ctl); font: inherit; font-weight: 500; border: 1px solid transparent; cursor: default; white-space: nowrap; }
+.m-btn.sec { background: var(--s-card); border-color: var(--s-line); color: var(--s-ink); box-shadow: var(--s-btn-shadow, none); }
+.m-btn.sec .i { color: var(--s-ink2); }
+.m-btn.pri { background: var(--s-pri-bg); color: var(--s-pri-ink); box-shadow: var(--s-pri-shadow, none); }
+
+.m-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.m-search { flex: 1 1 200px; min-width: 0; height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 1px solid var(--s-line); border-radius: var(--s-r-ctl); background: var(--s-card); color: var(--s-ink3); }
+.m-search span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.st { display: inline-flex; align-items: center; gap: 5px; height: 24px; padding: 0 8px; border-radius: var(--s-r-chip); font-size: 12px; white-space: nowrap;
+  border: 1px solid var(--st-line); background: var(--st-bg); color: var(--st-ink); }
+.st .i { color: var(--c); }
+.st b { font-weight: 500; font-variant-numeric: tabular-nums; }
+.st-risk { --c: var(--s-risk); } .st-warn { --c: var(--s-warn); } .st-ok { --c: var(--s-ok); } .st-hist { --c: var(--s-hist); }
+
+.m-list { background: var(--s-card); border: 1px solid var(--s-line); border-radius: var(--s-r-card); box-shadow: var(--s-card-shadow, none); overflow: hidden; }
+.m-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto auto; align-items: center; gap: 12px; padding: 10px 14px; border-top: 1px solid var(--s-line-soft); transition: background-color 150ms; }
+.m-row:first-child { border-top: 0; }
+.m-row:hover { background: var(--s-row-hover); }
+.m-file { width: 32px; height: 32px; display: grid; place-items: center; border-radius: var(--s-r-ctl); background: var(--s-file-bg); color: var(--s-file-ink); border: 1px solid var(--s-file-line); }
+.m-row-main { min-width: 0; }
+.m-row-main b, .m-row-main span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-row-main b { font-weight: 500; color: var(--s-ink); font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; letter-spacing: -0.01em; }
+.m-row-main span { font-size: 12px; color: var(--s-ink3); }
+.m-route { font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; color: var(--s-ink2); white-space: nowrap; }
+.m-more { color: var(--s-ink3); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 6px; }
+
+.m-composer { margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 7px 7px 7px 12px; border: 1px solid var(--s-line); border-radius: var(--s-r-composer); background: var(--s-card); box-shadow: var(--s-composer-shadow, none); color: var(--s-ink3); }
+.m-composer .hint { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-send { width: 30px; height: 30px; border-radius: var(--s-r-send); display: grid; place-items: center; background: var(--s-pri-bg); color: var(--s-pri-ink); flex-shrink: 0; }
+
+@container (max-width: 700px) {
+  .mock { grid-template-columns: 60px minmax(0, 1fr); }
+  .m-name, .m-collapse, .m-item .l, .m-foot .l { display: none; }
+  .m-brand, .m-item, .m-foot { justify-content: center; padding-inline: 0; }
+  .m-route { display: none; }
+  .m-row { grid-template-columns: auto minmax(0, 1fr) auto auto; }
+}
+@container (max-width: 470px) {
+  .m-main { padding: 16px 14px; }
+  .m-actions .sec, .m-more { display: none; }
+  .m-row { grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; padding-inline: 12px; }
+}
+
+/* 现状：按当前代码 token 还原 */
+.dir-now {
+  --s-page: #f6f8fa; --s-nav: #f1f4f7; --s-nav-line: #dfe5ea; --s-card: #fff;
+  --s-ink: #17212b; --s-ink2: #526170; --s-ink3: #65717d; --s-line: #dfe5ea; --s-line-soft: #dfe5ea;
+  --s-nav-ink: #526170; --s-nav-strong: #17212b; --s-nav-icon: currentColor; --s-nav-hover: #e9eef2;
+  --s-active-bg: #eaf3fb; --s-active-ink: #1769aa; --s-active-icon: #1769aa;
+  --s-logo-bg: #1769aa; --s-logo-ink: #fff; --s-logo-r: 8px; --s-avatar-bg: #1769aa; --s-avatar-ink: #fff;
+  --s-pri-bg: #1769aa; --s-pri-ink: #fff; --s-r-ctl: 8px; --s-r-card: 12px; --s-r-chip: 8px; --s-r-composer: 12px; --s-r-send: 8px;
+  --s-card-shadow: 0 1px 2px rgba(23,33,43,.04); --s-row-hover: #f6f8fa;
+  --s-risk: #a52727; --s-warn: #8a5700; --s-ok: #176c45; --s-hist: #5e627c;
+  --s-file-bg: #f6f8fa; --s-file-ink: #526170; --s-file-line: #dfe5ea;
+}
+.dir-now .st { --st-bg: color-mix(in srgb, var(--c) 8%, #fff); --st-line: color-mix(in srgb, var(--c) 35%, #fff); --st-ink: var(--c); }
+
+/* A 墨线 */
+.dir-a {
+  --s-page: #fafafa; --s-nav: #fafafa; --s-nav-line: #ececee; --s-card: #fff;
+  --s-ink: #141619; --s-ink2: #5c6168; --s-ink3: #8b9097; --s-line: #e6e7ea; --s-line-soft: #f0f1f3;
+  --s-nav-ink: #5c6168; --s-nav-strong: #141619; --s-nav-icon: #8b9097; --s-nav-hover: #f0f1f3;
+  --s-active-bg: #fff; --s-active-ink: #141619; --s-active-icon: #141619;
+  --s-active-shadow: 0 0 0 1px #e6e7ea, 0 1px 2px rgba(20,22,25,.06);
+  --s-logo-bg: #141619; --s-logo-ink: #fff; --s-logo-r: 8px; --s-avatar-bg: #ececee; --s-avatar-ink: #141619;
+  --s-pri-bg: #141619; --s-pri-ink: #fff; --s-r-ctl: 7px; --s-r-card: 10px; --s-r-chip: 6px; --s-r-composer: 12px; --s-r-send: 8px;
+  --s-card-shadow: 0 1px 2px rgba(20,22,25,.04); --s-btn-shadow: 0 1px 1px rgba(20,22,25,.04); --s-row-hover: #fafafa;
+  --s-risk: #c2362f; --s-warn: #b26b00; --s-ok: #1f7a4d; --s-hist: #6b6f80;
+  --s-file-bg: #fff; --s-file-ink: #5c6168; --s-file-line: #e6e7ea;
+}
+.dir-a .st { --st-bg: #f3f3f5; --st-line: transparent; --st-ink: #5c6168; }
+
+/* B 雾蓝 */
+.dir-b {
+  --s-page: #f5f7f9; --s-nav: #eef2f5; --s-nav-line: #e1e6eb; --s-card: #fff;
+  --s-ink: #18222c; --s-ink2: #536170; --s-ink3: #7d8894; --s-line: #e1e6eb; --s-line-soft: #edf0f3;
+  --s-nav-ink: #536170; --s-nav-strong: #18222c; --s-nav-icon: #7d8894; --s-nav-hover: #e5eaef;
+  --s-active-bg: #fff; --s-active-ink: #18222c; --s-active-icon: #2a6496;
+  --s-active-shadow: 0 0 0 1px #e1e6eb, 0 1px 2px rgba(24,34,44,.06);
+  --s-logo-bg: #2a6496; --s-logo-ink: #fff; --s-logo-r: 8px; --s-avatar-bg: #dfe8f1; --s-avatar-ink: #2a6496;
+  --s-pri-bg: #2a6496; --s-pri-ink: #fff; --s-r-ctl: 8px; --s-r-card: 12px; --s-r-chip: 6px; --s-r-composer: 14px; --s-r-send: 9px;
+  --s-card-shadow: 0 1px 2px rgba(24,34,44,.04); --s-row-hover: #f8fafb;
+  --s-risk: #b4372f; --s-warn: #9a6400; --s-ok: #1d7a4f; --s-hist: #5f6680; --s-duo: .16;
+  --s-file-bg: #eef3f8; --s-file-ink: #2a6496; --s-file-line: transparent;
+}
+.dir-b .st { --st-bg: color-mix(in srgb, var(--c) 9%, #fff); --st-line: transparent; --st-ink: var(--c); }
+
+/* C 夜航 */
+.dir-c {
+  --s-page: #f3f5f6; --s-nav: #12181e; --s-nav-line: #12181e; --s-nav-line-in: rgba(255,255,255,.08); --s-card: #fff;
+  --s-ink: #121a21; --s-ink2: #4f5c68; --s-ink3: #7f8a95; --s-line: #e2e6e9; --s-line-soft: #eef0f2;
+  --s-nav-ink: #9aa5b1; --s-nav-strong: #f1f4f7; --s-nav-icon: #7b8794; --s-nav-hover: rgba(255,255,255,.05);
+  --s-active-bg: rgba(255,255,255,.08); --s-active-ink: #fff; --s-active-icon: #5fd0c2;
+  --s-active-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+  --s-logo-bg: #1c252d; --s-logo-ink: #5fd0c2; --s-logo-r: 8px; --s-logo-shadow: inset 0 0 0 1px rgba(255,255,255,.1);
+  --s-avatar-bg: #24303a; --s-avatar-ink: #e6ebef;
+  --s-pri-bg: #0f766e; --s-pri-ink: #fff; --s-r-ctl: 8px; --s-r-card: 12px; --s-r-chip: 6px; --s-r-composer: 12px; --s-r-send: 8px;
+  --s-card-shadow: 0 1px 2px rgba(18,26,33,.05); --s-row-hover: #f8f9fa;
+  --s-risk: #b8322b; --s-warn: #9a6100; --s-ok: #0f766e; --s-hist: #5f6680;
+  --s-file-bg: #f3f5f6; --s-file-ink: #4f5c68; --s-file-line: #e2e6e9;
+}
+.dir-c .st { --st-bg: transparent; --st-line: color-mix(in srgb, var(--c) 38%, #fff); --st-ink: var(--c); }
+
+/* D 柔光 */
+.dir-d {
+  --s-page: #f6f7f9; --s-nav: #f6f7f9; --s-nav-line: transparent; --s-nav-line-in: #e7e9ed; --s-card: #fff;
+  --s-ink: #1a1f26; --s-ink2: #565f6b; --s-ink3: #8a929c; --s-line: #e7e9ed; --s-line-soft: #f0f2f4;
+  --s-nav-ink: #565f6b; --s-nav-strong: #1a1f26; --s-nav-icon: #565f6b; --s-nav-hover: #eceef2;
+  --s-active-bg: #fff; --s-active-ink: #1a1f26; --s-active-icon: #fff;
+  --s-active-shadow: 0 1px 2px rgba(26,31,38,.05), 0 4px 12px rgba(26,31,38,.06);
+  --s-tile: 26px; --s-tile-bg: #e9ecf1; --s-tile-on: linear-gradient(180deg, #3d7fe3, #2858b8);
+  --s-tile-on-shadow: inset 0 1px 0 rgba(255,255,255,.22);
+  --s-logo-bg: linear-gradient(180deg, #3d7fe3, #2858b8); --s-logo-ink: #fff; --s-logo-r: 9px;
+  --s-logo-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 2px 6px rgba(40,88,184,.28);
+  --s-avatar-bg: #e3e9f5; --s-avatar-ink: #2858b8;
+  --s-pri-bg: #2c64c6; --s-pri-ink: #fff; --s-pri-shadow: 0 1px 2px rgba(40,88,184,.25);
+  --s-r-ctl: 10px; --s-r-card: 16px; --s-r-chip: 999px; --s-r-composer: 18px; --s-r-send: 999px;
+  --s-card-shadow: 0 1px 2px rgba(26,31,38,.04), 0 8px 24px rgba(26,31,38,.05); --s-btn-shadow: 0 1px 2px rgba(26,31,38,.06);
+  --s-composer-shadow: 0 2px 4px rgba(26,31,38,.04), 0 10px 28px rgba(26,31,38,.07); --s-row-hover: #fafbfc;
+  --s-risk: #c23b33; --s-warn: #a86a00; --s-ok: #1f8a55; --s-hist: #646b85; --s-duo: .14;
+  --s-file-line: transparent;
+}
+.dir-d .st { --st-bg: color-mix(in srgb, var(--c) 10%, #fff); --st-line: transparent; --st-ink: var(--c); }
+.dir-d .m-file { background: color-mix(in srgb, var(--ft) 11%, #fff); color: var(--ft); border-radius: 10px; }
+.dir-d .m-file.pdf { --ft: #d0453c; } .dir-d .m-file.word { --ft: #2c64c6; } .dir-d .m-file.image { --ft: #1f8a55; }
+.dir-d .m-list { border-color: #eef0f3; }
+
+@media (prefers-reduced-motion: reduce) { .m-item, .m-row, .m-item .m-ico { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <span class="eyebrow">物流单证智能体 · 前端视觉改版提案</span>
+    <h1>四个视觉方向，选一个再动代码</h1>
+    <p class="lead">下面每个样例都是同一块产品截面：左侧导航、单据管理台的整票列表、状态标签和对话输入框。它们用的是同一份内容，只换了图标、配色、圆角和选中态，方便直接对比。所有方向都只改视觉，现有功能入口和「图标 + 文字」成对出现的规则都保留。</p>
+  </header>
+
+  <nav class="jump" aria-label="跳转到方向">
+    <a href="#now">现状</a>
+    <a href="#a"><b>A</b>墨线</a>
+    <a href="#b"><b>B</b>雾蓝</a>
+    <a href="#c"><b>C</b>夜航</a>
+    <a href="#d"><b>D</b>柔光</a>
+  </nav>
+
+  <section>
+    <div class="sec-head">
+      <h2>不管选哪个方向，都会做的基础改动</h2>
+      <p>这四项是质感提升的主要来源，和配色方向无关。</p>
+    </div>
+    <div class="shared">
+      <div><h3>统一图标集</h3><p>把手绘路径换成 Lucide 的路径数据（ISC 协议），线条端点、圆角和视觉重量一致。保留现有 <span class="mono">&lt;Icon name&gt;</span> 接口，不新增依赖。</p></div>
+      <div><h3>尺寸收敛到三档</h3><p>现在混用 15、16、17、18、22px，改成 14 / 16 / 20px。描边随尺寸补偿，小图标不发虚，大图标不显粗。</p></div>
+      <div><h3>图标默认灰色</h3><p>未选中的图标用三级文字色，悬停变深，只有状态图标（风险、待复核、通过）带颜色。</p></div>
+      <div><h3>重画 Logo</h3><p>从通用文档图标换成「两张单据叠放 + 校验勾」，直接表达单证校验。favicon 和对话头像同步替换。</p></div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <h3>图标对照</h3>
+        <div class="icon-table-wrap"><table class="icon-table" id="icon-table"></table></div>
+        <p class="cap">上排是现在 <span class="mono">Icon.tsx</span> 里的路径，下排是换成 Lucide 后的样子，都按 20px 显示。</p>
+      </div>
+      <div class="panel">
+        <h3>尺寸与描边补偿</h3>
+        <div class="ladder" id="ladder"></div>
+        <h3>Logo</h3>
+        <div class="logos" id="logos"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dir" id="now">
+    <div class="dir-head">
+      <span class="letter">0</span>
+      <div class="dir-title">
+        <h2>现状</h2>
+        <p>按当前代码的颜色、圆角和图标路径还原，作为对比基线。</p>
+      </div>
+    </div>
+    <div class="mock-wrap"><div class="mock dir-now" data-set="old"></div></div>
+    <div class="issues">
+      <p><b>Logo 是通用图标</b>蓝色方块加文档图形，出现在导航、登录页和对话头像等 5 处，最拉低质感。</p>
+      <p><b>蓝色铺得太满</b>Logo、头像、选中态、主按钮都是同一种饱和蓝，强调失去层次。</p>
+      <p><b>图标粗细不一</b>齿轮、拼图、大脑等手绘形状偏粗糙，小数坐标在小尺寸下边缘发虚。</p>
+      <p><b>状态标签偏重</b>每个标签都有底色加描边，列表里一多就显得杂。</p>
+    </div>
+  </section>
+
+  <section class="dir" id="a">
+    <div class="dir-head">
+      <span class="letter">A</span>
+      <div class="dir-title">
+        <h2>墨线</h2>
+        <p>几乎全中性色，墨色做主按钮和 Logo，靠留白、细线和字重分层次。</p>
+      </div>
+      <div class="meta"><span class="pill">参考 Linear、Vercel</span><span class="pill cost-m">改动量：中</span></div>
+    </div>
+    <div class="mock-wrap"><div class="mock dir-a" data-set="new" data-sw="1.5"></div></div>
+    <dl class="spec">
+      <div><dt>图标</dt><dd>Lucide 线性，默认中灰，选中变墨色</dd></div>
+      <div><dt>主色</dt><dd>墨色 <span class="mono">#141619</span> 做主按钮和 Logo；品牌蓝只留给链接、焦点框和勾选</dd></div>
+      <div><dt>导航选中态</dt><dd>白底、1px 细边、极浅阴影</dd></div>
+      <div><dt>状态标签</dt><dd>统一浅灰底，只有图标带颜色</dd></div>
+      <div><dt>圆角</dt><dd>控件 7px，卡片 10px</dd></div>
+      <div><dt>文件图标</dt><dd>白底细边小方块，不区分颜色</dd></div>
+    </dl>
+    <div class="verdict">
+      <p><b>适合</b>想要最克制、工具感最强的界面。演示时显得专业、冷静。</p>
+      <p><b>代价</b>主按钮从蓝变黑，品牌蓝明显弱化；设计文档里的颜色语义要改一轮。</p>
+    </div>
+  </section>
+
+  <section class="dir" id="b">
+    <div class="dir-head">
+      <span class="letter">B</span>
+      <div class="dir-title">
+        <h2>雾蓝</h2>
+        <p>保留现在的蓝色识别，降低饱和度，状态图标改成双色调。</p>
+      </div>
+      <div class="meta"><span class="pill">现有体系精修</span><span class="pill cost-s">改动量：小</span></div>
+    </div>
+    <div class="mock-wrap"><div class="mock dir-b" data-set="new" data-sw="1.6"></div></div>
+    <dl class="spec">
+      <div><dt>图标</dt><dd>Lucide 线性；状态图标双色调（浅填充 + 描边）</dd></div>
+      <div><dt>主色</dt><dd>从 <span class="mono">#1769aa</span> 降饱和到 <span class="mono">#2a6496</span>，更沉稳</dd></div>
+      <div><dt>导航选中态</dt><dd>白底卡片，只把图标染成品牌色，文字保持墨色</dd></div>
+      <div><dt>状态标签</dt><dd>同色系浅底，去掉描边</dd></div>
+      <div><dt>圆角</dt><dd>沿用 8 / 12px，输入框放大到 14px</dd></div>
+      <div><dt>文件图标</dt><dd>浅蓝底方块，品牌色图形</dd></div>
+    </dl>
+    <div class="verdict">
+      <p><b>适合</b>想稳妥提升、不改品牌色。改完和设计文档的 token 体系一一对应，风险最低。</p>
+      <p><b>代价</b>辨识度提升有限，高级感主要来自细节而不是整体气质。</p>
+    </div>
+  </section>
+
+  <section class="dir" id="c">
+    <div class="dir-head">
+      <span class="letter">C</span>
+      <div class="dir-title">
+        <h2>夜航</h2>
+        <p>深色侧栏配浅色工作区，强调色换成港口青，层次一眼分明。</p>
+      </div>
+      <div class="meta"><span class="pill">参考港口夜间作业屏</span><span class="pill cost-l">改动量：大</span></div>
+    </div>
+    <div class="mock-wrap"><div class="mock dir-c" data-set="new" data-sw="1.6"></div></div>
+    <dl class="spec">
+      <div><dt>图标</dt><dd>侧栏里为浅灰，选中为青色；内容区同 A</dd></div>
+      <div><dt>主色</dt><dd>港口青 <span class="mono">#0f766e</span>，替换现有蓝色</dd></div>
+      <div><dt>导航选中态</dt><dd>半透明白底，文字转白</dd></div>
+      <div><dt>状态标签</dt><dd>透明底加同色细边</dd></div>
+      <div><dt>圆角</dt><dd>沿用 8 / 12px</dd></div>
+      <div><dt>Logo</dt><dd>深色底块上的青色图形，不再用实心色块</dd></div>
+    </dl>
+    <div class="verdict">
+      <p><b>适合</b>答辩和演示时第一眼最有分量，侧栏与工作区的区分最清楚。</p>
+      <p><b>代价</b>品牌色从蓝换成青，深色侧栏偏离原先「浅色 Codex 风格」的规划；对话工作台自带的会话侧栏也要跟着做深色。</p>
+    </div>
+  </section>
+
+  <section class="dir" id="d">
+    <div class="dir-head">
+      <span class="letter">D</span>
+      <div class="dir-title">
+        <h2>柔光</h2>
+        <p>大圆角、柔和阴影，导航图标放进小底块，文件按类型着色。</p>
+      </div>
+      <div class="meta"><span class="pill">参考 macOS 系统设置、WorkBuddy</span><span class="pill cost-m">改动量：中</span></div>
+    </div>
+    <div class="mock-wrap"><div class="mock dir-d" data-set="new" data-sw="1.75"></div></div>
+    <dl class="spec">
+      <div><dt>图标</dt><dd>描边稍粗更圆润；导航图标放在 26px 圆角底块里，选中时底块填品牌色</dd></div>
+      <div><dt>主色</dt><dd>明亮一些的蓝 <span class="mono">#2c64c6</span>，Logo 和选中底块带轻微渐变</dd></div>
+      <div><dt>导航选中态</dt><dd>白底浮起，带柔和阴影</dd></div>
+      <div><dt>状态标签</dt><dd>胶囊形浅底</dd></div>
+      <div><dt>圆角</dt><dd>控件 10px，卡片 16px，输入框 18px</dd></div>
+      <div><dt>文件图标</dt><dd>按类型着色：PDF 红、Word 蓝、图片绿</dd></div>
+    </dl>
+    <div class="verdict">
+      <p><b>适合</b>更亲和、产品感更强，接近消费级应用的精致度。</p>
+      <p><b>代价</b>圆角和阴影要逐个组件调；单据管理台这类表格密集的页面会略显松散。</p>
+    </div>
+  </section>
+
+  <section class="choose">
+    <h2>怎么选</h2>
+    <p>直接回复字母即可，也可以混搭，比如「B 的配色 + D 的文件图标」或「A，但主按钮保留蓝色」。定下来之后按这个顺序改：</p>
+    <ol>
+      <li>改 <code>styles.css</code> 的颜色 token 和 <code>tailwind.config.js</code> 的圆角、阴影</li>
+      <li>替换 <code>Icon.tsx</code> 的路径数据，调用处不动</li>
+      <li>重画 Logo 和 <code>favicon.svg</code></li>
+      <li>同步更新 <code>docs/</code> 里的页面设计文档和索引</li>
+      <li>五个页面逐一实际跑一遍，再交给子代理对照设计文档检验</li>
+    </ol>
+  </section>
+</div>
+
+<script>
+// 现有 Icon.tsx 的路径（20×20 画布）
+const OLD = {
+  logo: "M3 5.5A2.5 2.5 0 0 1 5.5 3h6.2a2.5 2.5 0 0 1 1.77.73l3.8 3.8A2.5 2.5 0 0 1 18 9.3v5.2a2.5 2.5 0 0 1-2.5 2.5h-10A2.5 2.5 0 0 1 3 14.5v-9Zm8.5-.5v3a1 1 0 0 0 1 1h3M6.5 11h7M6.5 13.5h4.5",
+  collapse: "M12.5 5 7.5 10l5 5M4 4v12",
+  plus: "M10 4.5v11M4.5 10h11",
+  search: "M8.8 3.5a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6Zm3.9 9.2 3.8 3.8",
+  more: "M5 10h.01M10 10h.01M15 10h.01",
+  check: "M4.5 10.5 8 14l7.5-7.5",
+  alert: "M10 3.2 2.8 16h14.4L10 3.2Zm0 4.6v4m0 2.2h.01",
+  clock: "M10 2.8a7.2 7.2 0 1 0 0 14.4 7.2 7.2 0 0 0 0-14.4ZM10 6v4.3l2.8 1.7",
+  docs: "M7 2.5h5.3l3.2 3.2v8.8H7V2.5Zm-2.5 3v11h8M12.3 2.5v3.4h3.2",
+  "file-pdf": "M5 3h6l4 4v10H5V3Zm6 0v4h4M7.6 11h1.2a1 1 0 0 1 0 2H7.6v-2Zm0 2v2m3-4h1.5m-1.5 0v4m0-2h1.2",
+  "file-image": "M5 3h6l4 4v10H5V3Zm6 0v4h4M7.4 14.6l2.2-2.6 1.6 1.8 1.2-1.3 1.4 1.7M8.4 10.2h.01",
+  "file-word": "M5 3h6l4 4v10H5V3Zm6 0v4h4M7.4 10.8l1 4 1.3-3 1.3 3 1-4",
+  paperclip: "M13.6 8.3 8.9 13a2.6 2.6 0 0 1-3.7-3.7l5.4-5.4a1.8 1.8 0 0 1 2.5 2.5l-5.4 5.4a.9.9 0 0 1-1.3-1.3l4.7-4.7",
+  send: "M3.6 10.2 16.4 4 11 16.6l-1.8-5-5.6-1.4Z",
+  download: "M10 3.6v8.2m0 0L6.8 8.6M10 11.8l3.2-3.2M4 15h12",
+  puzzle: "M8 3.4h1.4a1.3 1.3 0 1 1 1.3 1.3V6h2.9v2.6h1.2a1.3 1.3 0 1 1 0 2.6h-1.2V16H4.6v-2.9H3.4a1.3 1.3 0 1 1 0-2.6h1.2V6H8V3.4Z",
+  settings: "M10 7.4a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2Zm6.2 2.6c0-.5-.05-.9-.14-1.4l1.3-1-1.5-2.6-1.6.6a6 6 0 0 0-1.2-.7l-.2-1.7H9.1l-.2 1.7c-.4.2-.8.4-1.2.7l-1.6-.6-1.5 2.6 1.3 1c-.1.5-.14.9-.14 1.4s.05.9.14 1.4l-1.3 1 1.5 2.6 1.6-.6c.4.3.8.5 1.2.7l.2 1.7h2.9l.2-1.7c.4-.2.8-.4 1.2-.7l1.6.6 1.5-2.6-1.3-1c.1-.5.14-.9.14-1.4Z",
+  memory: "M10 3.2c-2 0-3.4 1.3-3.4 2.6-1 .3-1.8 1.2-1.8 2.3 0 .6.2 1.1.6 1.5-.4.4-.6.9-.6 1.5 0 1.3 1.2 2.4 2.6 2.4h.4v1.4a1 1 0 0 0 1 1h2.4a1 1 0 0 0 1-1v-1.4h.4c1.4 0 2.6-1.1 2.6-2.4 0-.6-.2-1.1-.6-1.5.4-.4.6-.9.6-1.5 0-1.1-.8-2-1.8-2.3 0-1.3-1.4-2.6-3.4-2.6Zm0 0v11.7",
+  history: "M4.4 10a5.6 5.6 0 1 0 1.7-4M4 4.4V8h3.6M10 7.2v3.2l2.4 1.4",
+  copy: "M7 7V4.4h8.6V13H13M4.4 7H13v8.6H4.4V7Z",
+};
+
+// Lucide 路径（24×24 画布，ISC 协议）；class="duo" 的形状在双色调方向里会带浅填充
+const NEW = {
+  chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  docs: '<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+  blocks: '<rect x="14" y="3" width="7" height="7" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/>',
+  panel: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/>',
+  search: '<circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4.2-4.2"/>',
+  plus: '<path d="M5 12h14"/><path d="M12 5v14"/>',
+  more: '<circle cx="5" cy="12" r=".9"/><circle cx="12" cy="12" r=".9"/><circle cx="19" cy="12" r=".9"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  paperclip: '<path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/>',
+  arrowUp: '<path d="m5 12 7-7 7 7"/><path d="M12 19V5"/>',
+  send: '<path d="M14.54 21.69a.5.5 0 0 0 .94-.03l6.5-19a.5.5 0 0 0-.64-.64l-19 6.5a.5.5 0 0 0-.03.94l7.93 3.18a2 2 0 0 1 1.11 1.11z"/><path d="m21.85 2.15-10.94 10.94"/>',
+  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/>',
+  settings: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
+  memory: '<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
+  history: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/>',
+  copy: '<rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+  file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/>',
+  alert: '<path class="duo" d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  clock: '<circle class="duo" cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+  okCircle: '<circle class="duo" cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+  archive: '<rect class="duo" x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/>',
+};
+
+// 新 Logo：两张单据叠放 + 校验勾
+const MARK = '<path d="M15 3H7a2 2 0 0 0-2 2v11" opacity=".5"/><rect x="9" y="7" width="10" height="14" rx="2"/><path d="m11.6 14.2 1.9 1.9 3.4-3.6"/>';
+
+function svg(set, name, size, sw) {
+  if (set === "old") {
+    return `<svg class="i" viewBox="0 0 20 20" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="${sw ?? 1.5}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${OLD[name]}"/></svg>`;
+  }
+  const body = name === "mark" ? MARK : NEW[name];
+  return `<svg class="i" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="${sw ?? 1.75}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+}
+
+// 同一个语义在两套图标里的名字
+const MAP = {
+  logo: ["logo", "mark"], conv: ["logo", "chat"], docs: ["docs", "docs"], ext: ["puzzle", "blocks"],
+  panel: ["collapse", "panel"], search: ["search", "search"], plus: ["plus", "plus"], more: ["more", "more"],
+  clip: ["paperclip", "paperclip"], send: ["send", "arrowUp"], download: ["download", "download"],
+  pdf: ["file-pdf", "file"], word: ["file-word", "file"], image: ["file-image", "image"],
+  risk: ["alert", "alert"], warn: ["clock", "clock"], ok: ["check", "okCircle"], hist: ["download", "archive"],
+};
+
+const NAV = [
+  { k: "conv", l: "对话工作台" },
+  { k: "docs", l: "单据管理台", on: true },
+  { k: "ext", l: "Skill / MCP" },
+];
+const FILTERS = [
+  { s: "risk", l: "有风险", n: 2 }, { s: "warn", l: "待复核", n: 5 },
+  { s: "ok", l: "可导出", n: 14 }, { s: "hist", l: "已导出", n: 107 },
+];
+const ROWS = [
+  { f: "pdf", no: "EGLV142400387", sub: "提单 · 商业发票 · 装箱单 · 3 份", route: "SHA → HAM", s: "risk", l: "有风险" },
+  { f: "word", no: "COSU6318842150", sub: "报关单草稿 · 原产地证 · 2 份", route: "NGB → RTM", s: "warn", l: "待复核" },
+  { f: "image", no: "MSKU7741203", sub: "集装箱照片 · 铅封照片 · 4 张", route: "SZX → LAX", s: "ok", l: "可导出" },
+  { f: "pdf", no: "OOLU2049917730", sub: "提单 · 保险单 · 2 份", route: "TAO → SIN", s: "hist", l: "已导出" },
+];
+
+function renderMock(el) {
+  const set = el.dataset.set;
+  const sw = set === "old" ? 1.5 : Number(el.dataset.sw || 1.75);
+  const tiled = el.classList.contains("dir-d");
+  // 新图标按尺寸补偿描边：越小越粗一点，避免发虚
+  const comp = size => Math.min(2.2, sw * (size <= 14 ? 1.3 : size <= 16 ? 1.15 : 1));
+  const ic = (k, size) => svg(set, MAP[k][set === "old" ? 0 : 1], size, set === "old" ? 1.5 : comp(size));
+  const st = (s, label, n) => `<span class="st st-${s}">${ic(s, 14)}${label}${n != null ? ` <b>${n}</b>` : ""}</span>`;
+  el.innerHTML = `
+    <aside class="m-nav">
+      <div class="m-brand">
+        <span class="m-logo">${ic("logo", 18)}</span>
+        <span class="m-name">物流单证智能体</span>
+        <span class="m-collapse">${ic("panel", 16)}</span>
+      </div>
+      ${NAV.map(n => `<a class="m-item${n.on ? " on" : ""}" title="${n.l}"><span class="m-ico">${ic(n.k, tiled ? 15 : set === "old" ? 17 : 18)}</span><span class="l">${n.l}</span></a>`).join("")}
+      <div class="m-foot"><span class="m-avatar">林</span><span class="l">林晓 · 单证组</span></div>
+    </aside>
+    <div class="m-main">
+      <div class="m-head">
+        <div><h3>单据管理台</h3><p>共 128 票 · 本周新增 23 票</p></div>
+        <div class="m-actions">
+          <span class="m-btn sec">${ic("download", 16)}导出</span>
+          <span class="m-btn pri">${ic("plus", 16)}新建整票</span>
+        </div>
+      </div>
+      <div class="m-toolbar">
+        <div class="m-search">${ic("search", 16)}<span>搜索提单号、柜号、发票号</span></div>
+        <div class="m-filters">${FILTERS.map(f => st(f.s, f.l, f.n)).join("")}</div>
+      </div>
+      <div class="m-list">
+        ${ROWS.map(r => `<div class="m-row">
+          <span class="m-file ${r.f}">${ic(r.f, 16)}</span>
+          <div class="m-row-main"><b>${r.no}</b><span>${r.sub}</span></div>
+          <span class="m-route">${r.route}</span>
+          ${st(r.s, r.l)}
+          <span class="m-more">${ic("more", 16)}</span>
+        </div>`).join("")}
+      </div>
+      <div class="m-composer">${ic("clip", 16)}<span class="hint">问智能体：EGLV142400387 的提单和发票收货人为什么不一致？</span><span class="m-send">${ic("send", 16)}</span></div>
+    </div>`;
+}
+document.querySelectorAll(".mock").forEach(renderMock);
+
+// 图标对照表
+const COMPARE = [
+  ["搜索", "search", "search"], ["新建", "plus", "plus"], ["更多", "more", "more"], ["附件", "paperclip", "paperclip"],
+  ["发送", "send", "send"], ["设置", "settings", "settings"], ["记忆", "memory", "memory"], ["扩展", "puzzle", "blocks"],
+  ["单据", "docs", "file"], ["风险", "alert", "alert"], ["历史", "history", "history"], ["复制", "copy", "copy"],
+];
+document.getElementById("icon-table").innerHTML = `
+  <thead><tr><th></th>${COMPARE.map(c => `<th scope="col">${c[0]}</th>`).join("")}</tr></thead>
+  <tbody>
+    <tr><th scope="row">现状</th>${COMPARE.map(c => `<td>${svg("old", c[1], 20, 1.5)}</td>`).join("")}</tr>
+    <tr><th scope="row">新</th>${COMPARE.map(c => `<td>${svg("new", c[2], 20, 1.75)}</td>`).join("")}</tr>
+  </tbody>`;
+
+// 尺寸阶梯：24 画布下按尺寸换算描边，让实际线宽都落在约 1.3px
+document.getElementById("ladder").innerHTML = [[14, 2.2], [16, 2], [20, 1.6]].map(([s, w]) =>
+  `<figure>${svg("new", "file", s, w)}<figcaption><span class="mono">${s}px</span><br>描边 ${w}</figcaption></figure>`).join("");
+
+// Logo 对照
+const tile = (bg, fg, inner, r = 8, extra = "") => `<span class="lt" style="width:44px;height:44px;border-radius:${r + 2}px;background:${bg};color:${fg};${extra}">${inner}</span>`;
+document.getElementById("logos").innerHTML = `
+  <div class="logo-item">${tile("#1769aa", "#fff", svg("old", "logo", 24, 1.5))}<span class="t">现状</span></div>
+  <span class="arrow" aria-hidden="true">→</span>
+  <div class="logo-item">${tile("#141619", "#fff", svg("new", "mark", 26, 1.6))}<span class="t">A</span></div>
+  <div class="logo-item">${tile("#2a6496", "#fff", svg("new", "mark", 26, 1.6))}<span class="t">B</span></div>
+  <div class="logo-item">${tile("#1c252d", "#5fd0c2", svg("new", "mark", 26, 1.6), 8, "box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)")}<span class="t">C</span></div>
+  <div class="logo-item">${tile("linear-gradient(180deg,#3d7fe3,#2858b8)", "#fff", svg("new", "mark", 26, 1.6), 9, "box-shadow:inset 0 1px 0 rgba(255,255,255,.25)")}<span class="t">D</span></div>`;
+</script>
+</body></html>

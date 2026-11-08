@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>单证智能体配色探索</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* 布局：顶部色卡总览 → 每套配色一块完整产品截面；样例用各自的固定配色，外层页面跟随系统明暗 */
+:root {
+  --bg: #f3f4f6; --surface: #ffffff; --fg: #15191e; --fg-2: #56606b; --fg-3: #858d97; --line: #e2e5e9; --accent: #1f5f99;
+  --sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #0f1215; --surface: #171b20; --fg: #e8ebee; --fg-2: #a3acb6; --fg-3: #6f7882; --line: #2a3038; --accent: #86b7e6; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #0f1215; --surface: #171b20; --fg: #e8ebee; --fg-2: #a3acb6; --fg-3: #6f7882; --line: #2a3038; --accent: #86b7e6; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.65; }
+h1, h2, h3, p { margin: 0; }
+h1, h2 { text-wrap: balance; letter-spacing: -0.01em; }
+.mono { font-family: var(--mono); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 48px 80px; display: flex; flex-direction: column; gap: 56px; }
+
+.intro { display: flex; flex-direction: column; gap: 14px; max-width: 68ch; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; color: var(--fg-3); }
+h1 { font-size: clamp(28px, 4vw, 38px); line-height: 1.2; font-weight: 600; }
+.lead { color: var(--fg-2); }
+
+/* 色卡总览 */
+.deck { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.swatch-card { display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); color: inherit; text-decoration: none; transition: transform 160ms, border-color 160ms; }
+.swatch-card:hover { transform: translateY(-2px); border-color: var(--fg-3); }
+.strip { display: grid; grid-template-columns: 1.4fr 1fr 1fr .6fr; height: 72px; }
+.strip i { display: block; }
+.swatch-card .txt { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 2px; }
+.swatch-card b { font-size: 15px; font-weight: 600; }
+.swatch-card b span { font-family: var(--mono); font-weight: 500; color: var(--fg-3); margin-right: 6px; font-size: 13px; }
+.swatch-card small { font-size: 13px; color: var(--fg-2); }
+@media (prefers-reduced-motion: reduce) { .swatch-card { transition: none; } .swatch-card:hover { transform: none; } }
+
+.pal { display: flex; flex-direction: column; gap: 16px; scroll-margin-top: 24px; }
+.pal-head { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
+.no { font-family: var(--mono); font-size: 13px; font-weight: 500; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--fg); color: var(--bg); flex-shrink: 0; }
+.pal-title { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.pal-title h2 { font-size: 22px; font-weight: 600; line-height: 1.3; }
+.pal-title p { color: var(--fg-2); }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { font-size: 12px; height: 26px; display: inline-flex; align-items: center; padding: 0 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--fg-2); background: var(--surface); white-space: nowrap; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--fg-2); padding: 4px 10px 4px 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.chip i { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(127,127,127,.25); }
+.chip .mono { color: var(--fg); }
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.notes p { font-size: 14px; color: var(--fg-2); }
+.notes b { color: var(--fg); font-weight: 600; margin-right: 6px; }
+
+.choose { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.choose h2 { font-size: 20px; font-weight: 600; }
+.choose p { color: var(--fg-2); font-size: 14px; }
+
+/* ───── 产品样例 ───── */
+.mock-wrap { container-type: inline-size; border-radius: 14px; box-shadow: 0 0 0 1px var(--line); overflow: hidden; }
+.mock {
+  display: grid; grid-template-columns: 216px minmax(0, 1fr); min-height: 480px;
+  background: var(--s-page-bg, var(--s-page)); color: var(--s-ink);
+  font-family: var(--sans); font-size: 13px; line-height: 1.5;
+}
+.mock .i { flex-shrink: 0; }
+.mock .duo { fill: currentColor; fill-opacity: var(--s-duo, .12); }
+.m-nav { background: var(--s-nav); border-right: 1px solid var(--s-nav-line); display: flex; flex-direction: column; gap: 2px; padding: 12px 10px; color: var(--s-nav-ink); min-width: 0; -webkit-backdrop-filter: var(--s-blur, none); backdrop-filter: var(--s-blur, none); }
+.m-brand { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 4px; margin-bottom: 10px; }
+.m-logo { width: 30px; height: 30px; border-radius: var(--s-logo-r, 8px); background: var(--s-logo-bg); color: var(--s-logo-ink); display: grid; place-items: center; box-shadow: var(--s-logo-shadow, none); flex-shrink: 0; }
+.m-name { flex: 1; min-width: 0; font-weight: 600; font-size: 13.5px; color: var(--s-nav-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-collapse { color: var(--s-nav-icon); display: grid; place-items: center; width: 26px; height: 26px; }
+.m-item { display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 8px; border-radius: var(--s-r-ctl); color: var(--s-nav-ink); transition: background-color 150ms, color 150ms; }
+.m-item:hover { background: var(--s-nav-hover); color: var(--s-nav-strong); }
+.m-item .m-ico { width: 20px; height: 20px; display: grid; place-items: center; color: var(--s-nav-icon); flex-shrink: 0; transition: color 150ms; }
+.m-item:hover .m-ico { color: var(--s-nav-strong); }
+.m-item.on { background: var(--s-active-bg); color: var(--s-active-ink); box-shadow: var(--s-active-shadow, none); font-weight: 500; }
+.m-item.on .m-ico { color: var(--s-active-icon); }
+.m-item .l { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-foot { margin-top: auto; border-top: 1px solid var(--s-nav-line-in, var(--s-nav-line)); padding: 10px 6px 0; display: flex; align-items: center; gap: 10px; }
+.m-avatar { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--s-avatar-bg); color: var(--s-avatar-ink); font-size: 12px; font-weight: 500; flex-shrink: 0; }
+.m-foot .l { font-size: 12.5px; color: var(--s-nav-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.m-main { padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.m-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.m-head h3 { font-size: 18px; font-weight: 600; line-height: 1.3; color: var(--s-ink); }
+.m-head p { font-size: 12px; color: var(--s-ink3); margin-top: 2px; }
+.m-actions { display: flex; gap: 8px; }
+.m-btn { height: 32px; padding: 0 12px; display: inline-flex; align-items: center; gap: 6px; border-radius: var(--s-r-ctl); font-weight: 500; border: 1px solid transparent; white-space: nowrap; }
+.m-btn.sec { background: var(--s-card); border-color: var(--s-line); color: var(--s-ink); box-shadow: var(--s-btn-shadow, none); }
+.m-btn.sec .i { color: var(--s-ink2); }
+.m-btn.pri { background: var(--s-pri-bg); color: var(--s-pri-ink); box-shadow: var(--s-pri-shadow, none); }
+
+.m-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.m-kpi { background: var(--s-card); border: 1px solid var(--s-line); border-radius: var(--s-r-card); padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; box-shadow: var(--s-card-shadow, none); -webkit-backdrop-filter: var(--s-blur, none); backdrop-filter: var(--s-blur, none); }
+.m-kpi span { font-size: 12px; color: var(--s-ink3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-kpi b { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--s-ink); line-height: 1.25; }
+.m-kpi b small { font-size: 12px; font-weight: 400; color: var(--s-ink3); margin-left: 2px; }
+.m-kpi.hl { background: var(--s-hl-bg, var(--s-card)); border-color: var(--s-hl-line, var(--s-line)); }
+.m-kpi.hl span { color: var(--s-hl-sub, var(--s-ink3)); }
+.m-kpi.hl b { color: var(--s-hl-ink, var(--s-ink)); }
+.m-bar { height: 4px; border-radius: 4px; background: var(--s-bar-track, var(--s-line-soft)); margin-top: 6px; overflow: hidden; }
+.m-bar i { display: block; height: 100%; width: 62%; border-radius: inherit; background: var(--s-bar, var(--s-pri-bg)); }
+
+.m-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.m-search { flex: 1 1 200px; min-width: 0; height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 1px solid var(--s-line); border-radius: var(--s-r-ctl); background: var(--s-card); color: var(--s-ink3); }
+.m-search span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.st { display: inline-flex; align-items: center; gap: 5px; height: 24px; padding: 0 8px; border-radius: var(--s-r-chip); font-size: 12px; white-space: nowrap;
+  background: color-mix(in srgb, var(--c) var(--st-mix, 10%), var(--s-chip-base, var(--s-card)));
+  border: 1px solid color-mix(in srgb, var(--c) var(--st-line-mix, 0%), transparent);
+  color: var(--c); }
+.st b { font-weight: 500; font-variant-numeric: tabular-nums; }
+.st-risk { --c: var(--s-risk); } .st-warn { --c: var(--s-warn); } .st-ok { --c: var(--s-ok); } .st-hist { --c: var(--s-hist); }
+
+.m-list { background: var(--s-card); border: 1px solid var(--s-line); border-radius: var(--s-r-card); box-shadow: var(--s-card-shadow, none); overflow: hidden; -webkit-backdrop-filter: var(--s-blur, none); backdrop-filter: var(--s-blur, none); }
+.m-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto auto; align-items: center; gap: 12px; padding: 10px 14px; border-top: 1px solid var(--s-line-soft); transition: background-color 150ms; }
+.m-row:first-child { border-top: 0; }
+.m-row:hover { background: var(--s-row-hover); }
+.m-row.sel { background: var(--s-sel); }
+.m-file { width: 32px; height: 32px; display: grid; place-items: center; border-radius: var(--s-r-ctl); background: var(--s-file-bg); color: var(--s-file-ink); border: 1px solid var(--s-file-line, transparent); }
+.typed .m-file { background: color-mix(in srgb, var(--ft) 12%, var(--s-chip-base, var(--s-card))); color: var(--ft); border-color: transparent; }
+.typed .m-file.pdf { --ft: var(--s-risk); } .typed .m-file.word { --ft: var(--s-pri-bg); } .typed .m-file.image { --ft: var(--s-ok); }
+.m-row-main { min-width: 0; }
+.m-row-main b, .m-row-main span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-row-main b { font-weight: 500; color: var(--s-ink); font-family: var(--mono); font-size: 12.5px; letter-spacing: -0.01em; }
+.m-row-main span { font-size: 12px; color: var(--s-ink3); }
+.m-route { font-family: var(--mono); font-size: 12px; color: var(--s-ink2); white-space: nowrap; }
+.m-more { color: var(--s-ink3); display: grid; place-items: center; width: 26px; height: 26px; }
+
+.m-composer { margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 7px 7px 7px 12px; border: 1px solid var(--s-line); border-radius: var(--s-r-composer); background: var(--s-card); box-shadow: var(--s-composer-shadow, none); color: var(--s-ink3); -webkit-backdrop-filter: var(--s-blur, none); backdrop-filter: var(--s-blur, none); }
+.m-composer .hint { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-send { width: 30px; height: 30px; border-radius: var(--s-r-send); display: grid; place-items: center; background: var(--s-send-bg, var(--s-pri-bg)); color: var(--s-send-ink, var(--s-pri-ink)); flex-shrink: 0; }
+
+@container (max-width: 700px) {
+  .mock { grid-template-columns: 60px minmax(0, 1fr); }
+  .m-name, .m-collapse, .m-item .l, .m-foot .l { display: none; }
+  .m-brand, .m-item, .m-foot { justify-content: center; padding-inline: 0; }
+  .m-route { display: none; }
+  .m-row { grid-template-columns: auto minmax(0, 1fr) auto auto; }
+}
+@container (max-width: 470px) {
+  .m-main { padding: 16px 14px; }
+  .m-actions .sec, .m-more { display: none; }
+  .m-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .m-kpis .m-kpi:last-child { display: none; }
+  .m-row { grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; padding-inline: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .m-item, .m-row, .m-item .m-ico { transition: none; } }
+
+/* 共用默认值 */
+.mock { --s-r-ctl: 8px; --s-r-card: 12px; --s-r-chip: 6px; --s-r-composer: 14px; --s-r-send: 8px; }
+
+/* 1 集装箱橙 */
+.p1 {
+  --s-page: #f2f3f5; --s-nav: #ffffff; --s-nav-line: #e4e6ea; --s-card: #fff;
+  --s-ink: #111418; --s-ink2: #4d5560; --s-ink3: #8a919b; --s-line: #e4e6ea; --s-line-soft: #eff1f3;
+  --s-nav-ink: #4d5560; --s-nav-strong: #111418; --s-nav-icon: #8a919b; --s-nav-hover: #f2f3f5;
+  --s-active-bg: #fff1ea; --s-active-ink: #111418; --s-active-icon: #ff5a1f;
+  --s-logo-bg: #ff5a1f; --s-logo-ink: #fff; --s-avatar-bg: #111418; --s-avatar-ink: #fff;
+  --s-pri-bg: #ff5a1f; --s-pri-ink: #fff; --s-pri-shadow: 0 1px 2px rgba(255,90,31,.35), inset 0 1px 0 rgba(255,255,255,.18);
+  --s-hl-bg: #111418; --s-hl-line: #111418; --s-hl-ink: #fff; --s-hl-sub: #9aa1ab; --s-bar: #ff5a1f; --s-bar-track: #2a2f36;
+  --s-card-shadow: 0 1px 2px rgba(17,20,24,.04); --s-row-hover: #fafafb; --s-sel: #fff6f1;
+  --s-risk: #d92d20; --s-warn: #a15c07; --s-ok: #067647; --s-hist: #475467;
+  --s-file-bg: #f2f3f5; --s-file-ink: #4d5560;
+}
+/* 2 账簿绿金 */
+.p2 {
+  --s-page: #f4f5f2; --s-nav: #0f2a22; --s-nav-line: #0f2a22; --s-nav-line-in: rgba(255,255,255,.08); --s-card: #fff;
+  --s-ink: #13201b; --s-ink2: #4a5a53; --s-ink3: #85928c; --s-line: #e3e7e3; --s-line-soft: #eef1ee;
+  --s-nav-ink: #a7bfb5; --s-nav-strong: #f3efe2; --s-nav-icon: #7f9a8f; --s-nav-hover: rgba(255,255,255,.05);
+  --s-active-bg: rgba(212,175,95,.14); --s-active-ink: #f3e6c4; --s-active-icon: #d4af5f;
+  --s-logo-bg: linear-gradient(160deg, #e6c983, #b88a3b); --s-logo-ink: #0f2a22; --s-logo-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+  --s-avatar-bg: #1d3d33; --s-avatar-ink: #f3e6c4;
+  --s-pri-bg: #0f2a22; --s-pri-ink: #f3e6c4; --s-send-bg: #0f2a22; --s-send-ink: #d4af5f;
+  --s-hl-bg: #0f2a22; --s-hl-line: #0f2a22; --s-hl-ink: #f3e6c4; --s-hl-sub: #8fb0a3; --s-bar: #d4af5f; --s-bar-track: #24453a;
+  --s-card-shadow: 0 1px 2px rgba(19,32,27,.04); --s-row-hover: #fafbf9; --s-sel: #f8f4e8;
+  --s-risk: #b42318; --s-warn: #a15c07; --s-ok: #2e7d4f; --s-hist: #5b6670;
+  --s-file-bg: #f3efe2; --s-file-ink: #8a6a2a;
+}
+/* 3 信号旗 */
+.p3 {
+  --s-page: #f3f5f8; --s-nav: #0b1b33; --s-nav-line: #0b1b33; --s-nav-line-in: rgba(255,255,255,.08); --s-card: #fff;
+  --s-ink: #0b1b33; --s-ink2: #45556c; --s-ink3: #8391a5; --s-line: #e1e6ee; --s-line-soft: #edf1f6;
+  --s-nav-ink: #9fb0c8; --s-nav-strong: #fff; --s-nav-icon: #6f83a0; --s-nav-hover: rgba(255,255,255,.06);
+  --s-active-bg: #ffc53d; --s-active-ink: #0b1b33; --s-active-icon: #0b1b33;
+  --s-logo-bg: #ffc53d; --s-logo-ink: #0b1b33; --s-avatar-bg: #1b2d4a; --s-avatar-ink: #fff;
+  --s-pri-bg: #0b1b33; --s-pri-ink: #fff; --s-send-bg: #ffc53d; --s-send-ink: #0b1b33;
+  --s-hl-bg: #ffc53d; --s-hl-line: #ffc53d; --s-hl-ink: #0b1b33; --s-hl-sub: #6b5414; --s-bar: #0b1b33; --s-bar-track: rgba(11,27,51,.15);
+  --s-card-shadow: 0 1px 2px rgba(11,27,51,.05); --s-row-hover: #f8fafc; --s-sel: #fffaeb;
+  --s-risk: #d92d20; --s-warn: #b54708; --s-ok: #027a48; --s-hist: #4b5a73;
+  --s-file-bg: #eef2f8; --s-file-ink: #0b1b33;
+}
+/* 4 朱印 */
+.p4 {
+  --s-page: #ffffff; --s-nav: #ffffff; --s-nav-line: #ebebeb; --s-card: #fff;
+  --s-ink: #111111; --s-ink2: #555555; --s-ink3: #8f8f8f; --s-line: #e6e6e6; --s-line-soft: #f1f1f1;
+  --s-nav-ink: #555; --s-nav-strong: #111; --s-nav-icon: #9a9a9a; --s-nav-hover: #f5f5f5;
+  --s-active-bg: #f3f3f3; --s-active-ink: #111; --s-active-icon: #c8302a;
+  --s-logo-bg: #c8302a; --s-logo-ink: #fff; --s-logo-r: 4px; --s-logo-shadow: inset 0 0 0 2px rgba(255,255,255,.85), inset 0 0 0 3px #c8302a;
+  --s-avatar-bg: #111; --s-avatar-ink: #fff;
+  --s-pri-bg: #111111; --s-pri-ink: #fff; --s-send-bg: #c8302a;
+  --s-hl-bg: #fff; --s-hl-line: #c8302a; --s-hl-ink: #c8302a; --s-hl-sub: #8f8f8f; --s-bar: #c8302a;
+  --s-r-ctl: 6px; --s-r-card: 8px; --s-r-chip: 4px; --s-r-composer: 8px; --s-r-send: 6px;
+  --s-row-hover: #fafafa; --s-sel: #fdf4f3; --st-mix: 0%; --st-line-mix: 40%;
+  --s-risk: #b42318; --s-warn: #a15c07; --s-ok: #15803d; --s-hist: #525252;
+  --s-file-bg: #fff; --s-file-ink: #555; --s-file-line: #e6e6e6;
+}
+/* 5 冰川玻璃 */
+.p5 {
+  --s-page: #eef3f8;
+  --s-page-bg: radial-gradient(70% 60% at 0% 0%, #d6e9ff 0%, rgba(214,233,255,0) 70%), radial-gradient(60% 55% at 100% 100%, #dcf5ec 0%, rgba(220,245,236,0) 70%), radial-gradient(40% 40% at 85% 10%, #ece6ff 0%, rgba(236,230,255,0) 70%), #eef3f8;
+  --s-nav: rgba(255,255,255,.5); --s-nav-line: rgba(255,255,255,.8); --s-nav-line-in: rgba(13,27,42,.06); --s-card: rgba(255,255,255,.7); --s-chip-base: #fff;
+  --s-blur: blur(18px) saturate(1.4);
+  --s-ink: #0d1b2a; --s-ink2: #46586b; --s-ink3: #7d8ea0; --s-line: rgba(13,27,42,.08); --s-line-soft: rgba(13,27,42,.05);
+  --s-nav-ink: #46586b; --s-nav-strong: #0d1b2a; --s-nav-icon: #7d8ea0; --s-nav-hover: rgba(255,255,255,.6);
+  --s-active-bg: rgba(255,255,255,.9); --s-active-ink: #0d1b2a; --s-active-icon: #0a84ff;
+  --s-active-shadow: 0 1px 2px rgba(13,27,42,.05), 0 6px 16px rgba(13,27,42,.06);
+  --s-logo-bg: linear-gradient(160deg, #64d2ff, #0a84ff); --s-logo-ink: #fff; --s-logo-r: 9px; --s-logo-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 3px 8px rgba(10,132,255,.3);
+  --s-avatar-bg: rgba(10,132,255,.12); --s-avatar-ink: #0a6ad6;
+  --s-pri-bg: #0a84ff; --s-pri-ink: #fff; --s-pri-shadow: 0 2px 8px rgba(10,132,255,.3);
+  --s-hl-bg: linear-gradient(160deg, #3aa0ff, #0a6ad6); --s-hl-line: transparent; --s-hl-ink: #fff; --s-hl-sub: rgba(255,255,255,.75); --s-bar: #fff; --s-bar-track: rgba(255,255,255,.3);
+  --s-r-ctl: 10px; --s-r-card: 16px; --s-r-chip: 999px; --s-r-composer: 18px; --s-r-send: 999px;
+  --s-card-shadow: 0 1px 2px rgba(13,27,42,.04), 0 10px 30px rgba(13,27,42,.06); --s-composer-shadow: 0 10px 30px rgba(13,27,42,.08);
+  --s-row-hover: rgba(255,255,255,.6); --s-sel: rgba(10,132,255,.07);
+  --s-risk: #e5484d; --s-warn: #c27c0e; --s-ok: #18a058; --s-hist: #6b7a8f; --s-duo: .16;
+}
+/* 6 石墨夜 */
+.p6 {
+  color-scheme: dark;
+  --s-page: #0d0f12; --s-nav: #0d0f12; --s-nav-line: #1c2026; --s-card: #14171b;
+  --s-ink: #eceef1; --s-ink2: #a4abb5; --s-ink3: #6c737d; --s-line: #23272e; --s-line-soft: #1c2026;
+  --s-nav-ink: #a4abb5; --s-nav-strong: #eceef1; --s-nav-icon: #6c737d; --s-nav-hover: #16191d;
+  --s-active-bg: #1b1f25; --s-active-ink: #fff; --s-active-icon: #7aa8ff; --s-active-shadow: inset 0 0 0 1px #2a2f37;
+  --s-logo-bg: linear-gradient(160deg, #2c323b, #15181c); --s-logo-ink: #7aa8ff; --s-logo-shadow: inset 0 0 0 1px #343a44;
+  --s-avatar-bg: #23272e; --s-avatar-ink: #eceef1;
+  --s-pri-bg: #eceef1; --s-pri-ink: #0d0f12; --s-send-bg: #7aa8ff; --s-send-ink: #0d0f12;
+  --s-btn-shadow: none; --s-hl-bg: #161c28; --s-hl-line: #263553; --s-hl-ink: #fff; --s-hl-sub: #7f93b8; --s-bar: #7aa8ff; --s-bar-track: #222b3b;
+  --s-row-hover: #171a1f; --s-sel: #151b26; --st-mix: 14%;
+  --s-risk: #ff6b6b; --s-warn: #f5a524; --s-ok: #3ccf91; --s-hist: #8b93a7; --s-duo: .2;
+  --s-file-bg: #1a1d22; --s-file-ink: #a4abb5; --s-file-line: #23272e;
+}
+/* 7 薰衣草 */
+.p7 {
+  --s-page: #f6f5fb; --s-nav: #f6f5fb; --s-nav-line: #e9e6f3; --s-card: #fff;
+  --s-ink: #1b1830; --s-ink2: #575270; --s-ink3: #8f8aa8; --s-line: #e8e5f2; --s-line-soft: #f1eff8;
+  --s-nav-ink: #575270; --s-nav-strong: #1b1830; --s-nav-icon: #8f8aa8; --s-nav-hover: #eeebf7;
+  --s-active-bg: #fff; --s-active-ink: #1b1830; --s-active-icon: #6247e8; --s-active-shadow: 0 0 0 1px #e8e5f2, 0 1px 3px rgba(27,24,48,.06);
+  --s-logo-bg: linear-gradient(160deg, #9484ff, #5b3fe0); --s-logo-ink: #fff; --s-logo-r: 9px; --s-logo-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+  --s-avatar-bg: #ebe7ff; --s-avatar-ink: #5b3fe0;
+  --s-pri-bg: #5b3fe0; --s-pri-ink: #fff; --s-pri-shadow: 0 1px 2px rgba(91,63,224,.3);
+  --s-hl-bg: #f1eeff; --s-hl-line: #e0d9ff; --s-hl-ink: #4a2fd0; --s-hl-sub: #7d70c4; --s-bar: #5b3fe0; --s-bar-track: #ddd5ff;
+  --s-r-ctl: 9px; --s-r-card: 14px; --s-r-chip: 999px; --s-r-composer: 16px; --s-r-send: 999px;
+  --s-card-shadow: 0 1px 2px rgba(27,24,48,.04); --s-row-hover: #faf9fd; --s-sel: #f6f3ff;
+  --s-risk: #d92d55; --s-warn: #b26b00; --s-ok: #12805c; --s-hist: #6b6788; --s-duo: .14;
+  --s-file-bg: #f1eeff; --s-file-ink: #5b3fe0;
+}
+/* 8 深潮青柠 */
+.p8 {
+  --s-page: #f2f6f5; --s-nav: #0c3b3b; --s-nav-line: #0c3b3b; --s-nav-line-in: rgba(255,255,255,.08); --s-card: #fff;
+  --s-ink: #0b2626; --s-ink2: #476463; --s-ink3: #84a09e; --s-line: #dfe8e6; --s-line-soft: #ecf2f1;
+  --s-nav-ink: #9cc3bf; --s-nav-strong: #f0fbf9; --s-nav-icon: #6fa19c; --s-nav-hover: rgba(255,255,255,.06);
+  --s-active-bg: #d4f55a; --s-active-ink: #0c3b3b; --s-active-icon: #0c3b3b;
+  --s-logo-bg: #d4f55a; --s-logo-ink: #0c3b3b; --s-avatar-bg: #145050; --s-avatar-ink: #d4f55a;
+  --s-pri-bg: #0c3b3b; --s-pri-ink: #d4f55a; --s-send-bg: #d4f55a; --s-send-ink: #0c3b3b;
+  --s-hl-bg: #0c3b3b; --s-hl-line: #0c3b3b; --s-hl-ink: #f0fbf9; --s-hl-sub: #8fb9b4; --s-bar: #d4f55a; --s-bar-track: #1d5555;
+  --s-r-ctl: 9px; --s-r-card: 14px; --s-r-chip: 999px; --s-r-composer: 16px; --s-r-send: 999px;
+  --s-card-shadow: 0 1px 2px rgba(11,38,38,.04); --s-row-hover: #f8fbfa; --s-sel: #f7fde6;
+  --s-risk: #d1432f; --s-warn: #a66300; --s-ok: #1a7f5a; --s-hist: #557070;
+  --s-file-bg: #eaf3f1; --s-file-ink: #0c3b3b;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="intro">
+    <span class="eyebrow">物流单证智能体 · 视觉改版 · 第二轮配色</span>
+    <h1>八套更大胆的配色</h1>
+    <p class="lead">上一轮四个方向都偏保守，这一轮把强调色用得更明确：有的让侧栏变成色块，有的换掉蓝色，有的整体做成深色。每套都配了同一块单据管理台截面，比上一轮多了一排统计卡和一行选中态，方便看强调色落在大面积上的效果。点色卡可以跳到对应样例。</p>
+  </header>
+
+  <div class="deck" id="deck"></div>
+  <div id="pals" style="display:flex;flex-direction:column;gap:64px"></div>
+
+  <section class="choose">
+    <h2>怎么选</h2>
+    <p>回复编号就行，比如「3」或者「3 的侧栏 + 5 的圆角和玻璃感」。也可以只说喜欢哪一套的哪个部分、不喜欢什么，我按这个再出一轮。定下来之后再改 <span class="mono">styles.css</span> 的 token、替换图标、重画 Logo，并同步设计文档。</p>
+  </section>
+</div>
+
+<script>
+// Lucide 路径（24×24，ISC 协议）；class="duo" 的形状带浅填充
+const NEW = {
+  chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  docs: '<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+  blocks: '<rect x="14" y="3" width="7" height="7" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/>',
+  panel: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/>',
+  search: '<circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4.2-4.2"/>',
+  plus: '<path d="M5 12h14"/><path d="M12 5v14"/>',
+  more: '<circle cx="5" cy="12" r=".9"/><circle cx="12" cy="12" r=".9"/><circle cx="19" cy="12" r=".9"/>',
+  clip: '<path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/>',
+  send: '<path d="m5 12 7-7 7 7"/><path d="M12 19V5"/>',
+  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/>',
+  pdf: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+  word: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/>',
+  risk: '<path class="duo" d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  warn: '<circle class="duo" cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+  ok: '<circle class="duo" cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+  hist: '<rect class="duo" x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/>',
+  logo: '<path d="M15 3H7a2 2 0 0 0-2 2v11" opacity=".5"/><rect x="9" y="7" width="10" height="14" rx="2"/><path d="m11.6 14.2 1.9 1.9 3.4-3.6"/>',
+};
+const svg = (name, size, sw) => `<svg class="i" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${NEW[name]}</svg>`;
+// 小图标描边略粗，避免发虚
+const ic = (name, size) => svg(name, size, size <= 14 ? 2.1 : size <= 16 ? 1.9 : 1.7);
+
+const PALETTES = [
+  { id: "p1", name: "集装箱橙", mood: "冷灰底配国际橙，像码头上的集装箱和安全标识。",
+    tags: ["浅色", "橙色主按钮", "黑色统计卡"], strip: ["#ffffff", "#f2f3f5", "#111418", "#ff5a1f"],
+    colors: [["主色", "#ff5a1f"], ["墨色", "#111418"], ["底色", "#f2f3f5"]],
+    good: "第一眼最有活力，橙色只出现在主按钮、选中图标和进度条，克制但醒目。",
+    care: "橙色和「待复核」的琥珀色同属暖色，要把警告色压暗区分开（样例已处理）。" },
+  { id: "p2", name: "账簿绿金", mood: "深墨绿侧栏配黄铜金，像银行账簿和报关印花，稳重又贵气。",
+    tags: ["深色侧栏", "金色点缀", "高端感"], strip: ["#0f2a22", "#f4f5f2", "#d4af5f", "#13201b"],
+    colors: [["侧栏", "#0f2a22"], ["金色", "#d4af5f"], ["底色", "#f4f5f2"]],
+    good: "气质最「高级」的一套，适合强调单证的严谨和合规属性。",
+    care: "金色只能少量用在图标和数字上，用多了会显得俗；和「通过」的绿色要拉开明度。" },
+  { id: "p3", name: "信号旗", mood: "海军蓝侧栏配信号黄，选中项直接是一块亮黄，来自船舶信号旗。",
+    tags: ["深色侧栏", "黄色选中态", "对比强烈"], strip: ["#0b1b33", "#ffc53d", "#f3f5f8", "#ffffff"],
+    colors: [["侧栏", "#0b1b33"], ["信号黄", "#ffc53d"], ["底色", "#f3f5f8"]],
+    good: "辨识度最高，答辩投影时隔着几排座位也看得清当前在哪个页面。",
+    care: "黄色上只能放深色字；大面积黄色只给选中项和一张重点卡，否则会刺眼。" },
+  { id: "p4", name: "朱印", mood: "纯白纸面、黑字、朱红印章 Logo，像盖了章的正式单证。",
+    tags: ["纯白", "直角偏硬", "文件感"], strip: ["#ffffff", "#111111", "#c8302a", "#f3f3f3"],
+    colors: [["朱红", "#c8302a"], ["墨黑", "#111111"], ["纸白", "#ffffff"]],
+    good: "和「单证」主题贴合度最高，中国用户一眼能联想到公章；整体干净利落。",
+    care: "朱红和风险红接近，风险要换成更深的砖红（样例已处理）；小圆角让界面更硬朗，也更严肃。" },
+  { id: "p5", name: "冰川玻璃", mood: "浅蓝、薄荷、淡紫三色柔光背景，侧栏和卡片是半透明磨砂玻璃。",
+    tags: ["浅色", "磨砂玻璃", "大圆角"], strip: ["#d6e9ff", "#dcf5ec", "#0a84ff", "#ffffff"],
+    colors: [["主色", "#0a84ff"], ["柔光", "#d6e9ff"], ["薄荷", "#dcf5ec"]],
+    good: "最有「眼前一亮」的视觉冲击，接近 macOS 和 visionOS 的质感，适合演示视频。",
+    care: "磨砂效果在低配电脑上有性能开销；表格密集的页面要保证文字对比度，背景不能太花。" },
+  { id: "p6", name: "石墨夜", mood: "全深色界面，石墨灰分层，主按钮反白，电光蓝做强调。",
+    tags: ["全深色", "专业工具感", "反白按钮"], strip: ["#0d0f12", "#14171b", "#7aa8ff", "#eceef1"],
+    colors: [["底色", "#0d0f12"], ["卡片", "#14171b"], ["电光蓝", "#7aa8ff"]],
+    good: "最酷的一套，像专业开发工具；投影和录屏时质感很好。",
+    care: "单证预览（PDF 原件）是白底的，放在深色界面里反差大；长时间审单会比浅色更累眼。" },
+  { id: "p7", name: "薰衣草", mood: "带一点紫调的浅灰底，靛紫做主色，柔和又现代。",
+    tags: ["浅色", "靛紫主色", "胶囊标签"], strip: ["#f6f5fb", "#ffffff", "#5b3fe0", "#1b1830"],
+    colors: [["主色", "#5b3fe0"], ["底色", "#f6f5fb"], ["浅紫", "#f1eeff"]],
+    good: "跳出「物流 = 蓝色」的惯性，和 AI 产品的气质更契合，亲和不幼稚。",
+    care: "紫色和物流行业的关联弱，需要靠 Logo 和文案把行业属性拉回来。" },
+  { id: "p8", name: "深潮青柠", mood: "深青侧栏配荧光青柠，选中项和发送按钮是一抹亮绿。",
+    tags: ["深色侧栏", "荧光点缀", "年轻"], strip: ["#0c3b3b", "#d4f55a", "#f2f6f5", "#ffffff"],
+    colors: [["侧栏", "#0c3b3b"], ["青柠", "#d4f55a"], ["底色", "#f2f6f5"]],
+    good: "最有新鲜感，像新一代金融科技产品；深青也呼应港口和海水。",
+    care: "青柠色只适合做底色块配深色字，不能当文字色用；整体偏年轻，评审口味不同可能有分歧。" },
+];
+
+const NAV = [{ k: "chat", l: "对话工作台" }, { k: "docs", l: "单据管理台", on: true }, { k: "blocks", l: "Skill / MCP" }];
+const FILTERS = [{ s: "risk", l: "有风险", n: 2 }, { s: "warn", l: "待复核", n: 5 }, { s: "ok", l: "可导出", n: 14 }, { s: "hist", l: "已导出", n: 107 }];
+const ROWS = [
+  { f: "pdf", no: "EGLV142400387", sub: "提单 · 商业发票 · 装箱单 · 3 份", route: "SHA → HAM", s: "risk", l: "有风险", sel: true },
+  { f: "word", no: "COSU6318842150", sub: "报关单草稿 · 原产地证 · 2 份", route: "NGB → RTM", s: "warn", l: "待复核" },
+  { f: "image", no: "MSKU7741203", sub: "集装箱照片 · 铅封照片 · 4 张", route: "SZX → LAX", s: "ok", l: "可导出" },
+  { f: "pdf", no: "OOLU2049917730", sub: "提单 · 保险单 · 2 份", route: "TAO → SIN", s: "hist", l: "已导出" },
+];
+const st = (s, label, n) => `<span class="st st-${s}">${ic(s, 14)}${label}${n != null ? ` <b>${n}</b>` : ""}</span>`;
+
+function mock(p) {
+  return `<div class="mock-wrap"><div class="mock ${p.id}${p.id === "p5" ? " typed" : ""}">
+    <aside class="m-nav">
+      <div class="m-brand"><span class="m-logo">${ic("logo", 18)}</span><span class="m-name">物流单证智能体</span><span class="m-collapse">${ic("panel", 16)}</span></div>
+      ${NAV.map(n => `<div class="m-item${n.on ? " on" : ""}" title="${n.l}"><span class="m-ico">${ic(n.k, 18)}</span><span class="l">${n.l}</span></div>`).join("")}
+      <div class="m-foot"><span class="m-avatar">林</span><span class="l">林晓 · 单证组</span></div>
+    </aside>
+    <div class="m-main">
+      <div class="m-head">
+        <div><h3>单据管理台</h3><p>共 128 票 · 本周新增 23 票</p></div>
+        <div class="m-actions"><span class="m-btn sec">${ic("download", 16)}导出</span><span class="m-btn pri">${ic("plus", 16)}新建整票</span></div>
+      </div>
+      <div class="m-kpis">
+        <div class="m-kpi hl"><span>本周校验进度</span><b>62<small>%</small></b><div class="m-bar"><i></i></div></div>
+        <div class="m-kpi"><span>平均校验耗时</span><b>38<small>秒 / 票</small></b></div>
+        <div class="m-kpi"><span>风险拦截</span><b>17<small>处</small></b></div>
+      </div>
+      <div class="m-toolbar">
+        <div class="m-search">${ic("search", 16)}<span>搜索提单号、柜号、发票号</span></div>
+        <div class="m-filters">${FILTERS.map(f => st(f.s, f.l, f.n)).join("")}</div>
+      </div>
+      <div class="m-list">
+        ${ROWS.map(r => `<div class="m-row${r.sel ? " sel" : ""}">
+          <span class="m-file ${r.f}">${ic(r.f, 16)}</span>
+          <div class="m-row-main"><b>${r.no}</b><span>${r.sub}</span></div>
+          <span class="m-route">${r.route}</span>${st(r.s, r.l)}<span class="m-more">${ic("more", 16)}</span>
+        </div>`).join("")}
+      </div>
+      <div class="m-composer">${ic("clip", 16)}<span class="hint">问智能体：EGLV142400387 的提单和发票收货人为什么不一致？</span><span class="m-send">${ic("send", 16)}</span></div>
+    </div>
+  </div></div>`;
+}
+
+document.getElementById("deck").innerHTML = PALETTES.map((p, i) => `
+  <a class="swatch-card" href="#${p.id}">
+    <span class="strip">${p.strip.map(c => `<i style="background:${c}"></i>`).join("")}</span>
+    <span class="txt"><b><span>${i + 1}</span>${p.name}</b><small>${p.tags.join(" · ")}</small></span>
+  </a>`).join("");
+
+document.getElementById("pals").innerHTML = PALETTES.map((p, i) => `
+  <section class="pal" id="${p.id}">
+    <div class="pal-head">
+      <span class="no">${i + 1}</span>
+      <div class="pal-title"><h2>${p.name}</h2><p>${p.mood}</p></div>
+      <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+    </div>
+    ${mock(p)}
+    <div class="chips">${p.colors.map(([n, c]) => `<span class="chip"><i style="background:${c}"></i>${n} <span class="mono">${c}</span></span>`).join("")}</div>
+    <div class="notes"><p><b>亮点</b>${p.good}</p><p><b>注意</b>${p.care}</p></div>
+  </section>`).join("");
+</script>
+</body>
+</html>
