@@ -1,0 +1,12 @@
+# 文档、图片与视频按二进制保存，避免文本差异和换行转换损坏原件。
+*.pdf binary
+*.docx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mp4 binary
+*.gif binary
+*.ico binary
+
+# Markdown 行末两个空格是标准硬换行语法。
+*.md whitespace=-blank-at-eol

@@ -1,0 +1,30 @@
+# 私密配置与凭据；仅允许已注释的环境模板进入仓库。
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+!*.env.example
+!**/.env.example
+!**/*.env.example
+/docs/部署情况/
+
+# Codex、本机依赖、缓存及运行数据。
+.codex/
+.runtime/
+.venv/
+node_modules/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.py[cod]
+*.tsbuildinfo
+*.log
+.DS_Store
+
+# 构建产物、重复交付包与中间素材。
+dist/
+/outputs/logistics-document-agent/
+*.zip
+*.aiff

@@ -1,0 +1,36 @@
+# 独立运维Profile；镜像/密钥沿用部署env，备份不是在线跨PG/S3原子快照。
+services:
+  ledger-mirror:
+    image: ${BACKEND_IMAGE:-logistics-agent-backend:0.1.0}
+    env_file: ${RUNTIME_ENV_FILE:?请指定运行时env文件}
+    environment: {DELETE_LEDGER_PATH: /ledger}
+    command: ["python", "/workspace/ops/disaster_recovery.py", "ledger-mirror", "--directory=/mirror", "--continuous"]
+    restart: unless-stopped
+    init: true
+    volumes:
+      - ${DELETE_LEDGER_DIRECTORY:?请指定删除账本目录}:/ledger:ro
+      - ${DELETE_LEDGER_MIRROR_DIRECTORY:?请指定独立镜像目录}:/mirror
+    healthcheck:
+      test: ["CMD", "python", "-c", "from pathlib import Path; import time; p=Path('/mirror/anchor.json'); assert p.exists() and time.time()-p.stat().st_mtime<30"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  backup:
+    image: ${BACKEND_IMAGE:-logistics-agent-backend:0.1.0}
+    profiles: ["recovery"]
+    env_file:
+      - ${BACKUP_RUNTIME_ENV_FILE:?请指定独立备份身份env}
+      - ${BACKUP_ENV_FILE:?请指定备份加密env}
+    environment: {DELETE_LEDGER_PATH: /ledger}
+    # 只有运维已停写后才手动运行此Profile，禁止自动将在线库声称一致备份。
+    command: ["python", "/workspace/ops/disaster_recovery.py", "backup", "--directory=/backups", "--offline-confirm", "--retention-days=7"]
+    volumes:
+      - ${DELETE_LEDGER_DIRECTORY:?请指定删除账本目录}:/ledger:ro
+      - ${BACKUP_DIRECTORY:?请指定加密备份目录}:/backups
+  backup-rotation:
+    image: ${BACKEND_IMAGE:-logistics-agent-backend:0.1.0}
+    command: ["python", "/workspace/ops/disaster_recovery.py", "rotate", "--directory=/backups", "--retention-days=7", "--continuous"]
+    restart: unless-stopped
+    init: true
+    volumes:
+      - ${BACKUP_DIRECTORY:?请指定加密备份目录}:/backups

@@ -1,0 +1,17 @@
+[Unit]
+Description=Logistics agent isolated Redis broker
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+ExecStart=/usr/bin/redis-server /opt/logistics-agent/app/ops/native/redis.conf
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/logistics-agent/redis
+
+[Install]
+WantedBy=multi-user.target

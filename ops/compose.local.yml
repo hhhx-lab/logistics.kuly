@@ -1,0 +1,7 @@
+# 仅与根基础设施和ops/compose.yml共同使用，等待依赖健康后迁移。
+services:
+  migrate:
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      localstack: {condition: service_healthy}

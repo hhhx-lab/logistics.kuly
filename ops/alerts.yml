@@ -1,0 +1,20 @@
+groups:
+  - name: logistics-runtime
+    rules:
+      - alert: LogisticsBackgroundCycleStale
+        expr: logistics_cycle_active == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: "后台循环未持续成功；检查API、数据库与Redis"
+      - alert: LogisticsOutboxDelay
+        expr: logistics_outbox_oldest_age_seconds > 300
+        for: 2m
+        labels: {severity: warning}
+        annotations:
+          summary: "任务投递延迟；保留未知供应商受理任务，禁止盲重投"
+      - alert: LogisticsDeletionOverdue
+        expr: logistics_deletion_overdue_24h > 0
+        labels: {severity: critical}
+        annotations:
+          summary: "删除主存清理超过24小时，立即核查且不得恢复访问"

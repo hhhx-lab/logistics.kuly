@@ -1,0 +1,82 @@
+# 与根 docker-compose.yml 合并得到本地完整栈；生产使用已配置的独立数据库/Redis/S3。
+# 参数由 --env-file 指定的部署env提供；业务凭据来自只读runtime env文件，不入镜像。
+name: logistics-agent
+x-backend: &backend
+  image: ${BACKEND_IMAGE:-logistics-agent-backend:0.1.0}
+  build:
+    context: ${PROJECT_DIRECTORY:?请指定项目根目录绝对路径}
+    dockerfile: ops/backend.Dockerfile
+  env_file: ${RUNTIME_ENV_FILE:?请指定运行时env文件绝对路径}
+  environment:
+    DELETE_LEDGER_PATH: /ledger
+  restart: unless-stopped
+  init: true
+  volumes:
+    - ${DELETE_LEDGER_DIRECTORY:?请配置独立删除账本目录}:/ledger
+  stop_grace_period: 60s
+
+services:
+  migrate:
+    <<: *backend
+    restart: "no"
+    env_file: ${MIGRATION_ENV_FILE:?请指定独立迁移身份env文件绝对路径}
+    command: ["python", "/workspace/ops/runtime.py", "migrate"]
+  api:
+    <<: *backend
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD", "python", "/workspace/ops/runtime.py", "api-health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+  documents:
+    <<: *backend
+    env_file: ${WORKER_ENV_FILE:?请指定独立Worker身份env文件绝对路径}
+    command: ["python", "-m", "celery", "-A", "app.workflows.worker:queue", "worker", "-Q", "documents,celery", "--hostname=documents@%h", "--pool=prefork", "--concurrency=2", "--loglevel=WARNING"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD", "python", "/workspace/ops/runtime.py", "worker-health", "documents"]
+      interval: 30s
+      timeout: 8s
+      retries: 3
+      start_period: 30s
+  conversation:
+    <<: *backend
+    env_file: ${WORKER_ENV_FILE:?请指定独立Worker身份env文件绝对路径}
+    command: ["python", "-m", "celery", "-A", "app.workflows.worker:queue", "worker", "-Q", "conversation", "--hostname=conversation@%h", "--pool=prefork", "--concurrency=2", "--loglevel=WARNING"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD", "python", "/workspace/ops/runtime.py", "worker-health", "conversation"]
+      interval: 30s
+      timeout: 8s
+      retries: 3
+      start_period: 30s
+  maintenance:
+    <<: *backend
+    env_file: ${WORKER_ENV_FILE:?请指定独立Worker身份env文件绝对路径}
+    command: ["python", "-m", "celery", "-A", "app.workflows.worker:queue", "worker", "-Q", "maintenance", "--hostname=maintenance@%h", "--pool=prefork", "--concurrency=1", "--loglevel=WARNING"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD", "python", "/workspace/ops/runtime.py", "worker-health", "maintenance"]
+      interval: 30s
+      timeout: 8s
+      retries: 3
+      start_period: 30s
+  web:
+    image: ${FRONTEND_IMAGE:-logistics-agent-web:0.1.0}
+    build: {context: "${PROJECT_DIRECTORY:?请指定项目根目录绝对路径}", dockerfile: ops/frontend.Dockerfile}
+    ports: ["127.0.0.1:${WEB_PORT:-8080}:8080"]
+    restart: unless-stopped
+    depends_on:
+      api: {condition: service_healthy}
+  monitor:
+    <<: *backend
+    env_file: ${WORKER_ENV_FILE:?请指定独立Worker身份env文件绝对路径}
+    command: ["python", "/workspace/ops/runtime.py", "monitor"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}

@@ -1,0 +1,24 @@
+[Unit]
+Description=Logistics document agent API
+After=network-online.target postgresql.service logistics-redis.service logistics-storage.service
+Wants=network-online.target
+Requires=logistics-redis.service logistics-storage.service
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/opt/logistics-agent/app/src/backend
+EnvironmentFile=/opt/logistics-agent/config/server.env
+EnvironmentFile=/opt/logistics-agent/config/api.env
+ExecStart=/opt/logistics-agent/app/src/backend/.venv/bin/python -m uvicorn app.api.main:app --host 127.0.0.1 --port 8010 --workers 1 --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=90
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/logistics-agent
+
+[Install]
+WantedBy=multi-user.target
