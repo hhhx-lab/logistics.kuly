@@ -1,0 +1,401 @@
+{
+  "制作日期": "2026-10-14",
+  "资料性质": "演示合成；不用于实际交易、申报、签收或产品准入认定",
+  "真值用途": "人工核对文档事实与观测实际Agent结果；不是预先伪造的Agent评测结果",
+  "计量原则": [
+    "按同票、SKU、批次和运输阶段匹配",
+    "商品数量、外包装数量、净重、毛重分开比较",
+    "附表分配与汇总描述同一批货物，不能重复相加",
+    "PDF、DOCX、扫描PDF、单页JPG是同件的格式替代"
+  ],
+  "groups": [
+    {
+      "id": "A",
+      "shipment": "SHIP-DEMO-A-2026",
+      "name": "法国设备海运",
+      "source_languages": [
+        "fr",
+        "en",
+        "zh-CN"
+      ],
+      "target_language_runs": [
+        "zh-CN",
+        "en",
+        "fr"
+      ],
+      "roles": {
+        "seller_shipper": "Atelier Horizon Démo SAS",
+        "buyer_consignee": "Shanghai Meridian Demo Equipment Co., Ltd.",
+        "notify_party": "Harbour Link Demo Logistics Co., Ltd.",
+        "carrier": "Blue Meridian Demo Ocean Line",
+        "packing_handover_forwarder": "Blue Meridian Demo Forwarding Ltd."
+      },
+      "addresses": {
+        "origin": "18 rue des Ateliers Démo, 69007 Lyon, France",
+        "destination": "88 Demo Logistics Road, Pudong, Shanghai 201306, China"
+      },
+      "emails": {
+        "shipper": "export@horizon-demo.example",
+        "consignee": "import@meridian-demo.example",
+        "notify_party": "arrival@harbour-demo.example"
+      },
+      "route": {
+        "receipt": "Lyon, France",
+        "loading_port": "Marseille, France",
+        "discharge_port": "Shanghai, China"
+      },
+      "currency": "EUR",
+      "incoterm": "CIF Shanghai / Incoterms 2020",
+      "goods": [
+        {
+          "sku": "SRV-400",
+          "lot": "FR-SRV-2610",
+          "description_zh": "工业伺服模块",
+          "quantity": 60,
+          "unit": "pcs",
+          "packages": 6,
+          "package_unit": "wooden crates",
+          "net_kg": 360,
+          "gross_kg": 420,
+          "unit_price_eur": "750.00",
+          "amount_eur": "45000.00"
+        },
+        {
+          "sku": "VLV-25",
+          "lot": "FR-VLV-2610",
+          "description_zh": "不锈钢调节阀",
+          "quantity": 40,
+          "unit": "pcs",
+          "packages": 4,
+          "package_unit": "wooden crates",
+          "net_kg": 240,
+          "gross_kg": 260,
+          "unit_price_eur": "120.00",
+          "amount_eur": "4800.00"
+        },
+        {
+          "sku": "SNS-T8",
+          "lot": "FR-SNS-2610",
+          "description_zh": "输送线温度传感器",
+          "quantity": 20,
+          "unit": "pcs",
+          "packages": 2,
+          "package_unit": "wooden crates",
+          "net_kg": 20,
+          "gross_kg": 40,
+          "unit_price_eur": "85.00",
+          "amount_eur": "1700.00"
+        }
+      ],
+      "totals": {
+        "quantity": 120,
+        "packages": 12,
+        "net_kg": 620,
+        "gross_kg": 720,
+        "volume_m3": "1.884",
+        "goods_eur": "51500.00",
+        "freight_eur": "900.00",
+        "insurance_eur": "100.00",
+        "cif_eur": "52500.00"
+      },
+      "locale_example": {
+        "raw": "52 500,00",
+        "normalized": "52500.00"
+      },
+      "documents": [
+        {
+          "file": "第一组_法国设备海运/A01_商业发票_法语_3页.pdf",
+          "document_number": "INV-DEMO-FR-261014",
+          "language": "fr",
+          "pages": 3,
+          "role": "baseline"
+        },
+        {
+          "file": "第一组_法国设备海运/A02_装箱单_英语_3页.pdf",
+          "document_number": "PL-DEMO-A-261014",
+          "language": "en",
+          "pages": 3,
+          "role": "baseline"
+        },
+        {
+          "file": "第一组_法国设备海运/A03_海运提单_英语_2页.pdf",
+          "document_number": "BL-DEMO-A-261015",
+          "language": "en",
+          "pages": 2,
+          "role": "baseline"
+        },
+        {
+          "file": "第一组_法国设备海运/A04_采购订单_中文_2页.pdf",
+          "document_number": "PO-DEMO-CN-261014-A",
+          "language": "zh-CN",
+          "pages": 2,
+          "role": "baseline"
+        }
+      ],
+      "intentional_business_discrepancies": [],
+      "expected_behavior": [
+        "保留三SKU、批次、型号与计量单位",
+        "120件与12木箱不是冲突",
+        "通知方、货代与收货人角色不同，不合并成同一主体",
+        "表格、横线、分页保留；译文可扩展单元格或适度调整字号",
+        "未确定适用法规的项目保持未知，不推断海关放行"
+      ]
+    },
+    {
+      "id": "B",
+      "shipment": "SHIP-DEMO-B-2026",
+      "name": "西班牙食品冷链",
+      "source_languages": [
+        "es",
+        "en",
+        "zh-CN"
+      ],
+      "target_language_runs": [
+        "zh-CN",
+        "en",
+        "es"
+      ],
+      "roles": {
+        "seller_shipper": "Huerta Clara Demo S.L.",
+        "buyer_consignee": "Shanghai Freshway Demo Foods Co., Ltd.",
+        "notify_party": "Harbour Link Demo Logistics Co., Ltd.",
+        "carrier": "Blue Meridian Demo Ocean Line"
+      },
+      "addresses": {
+        "origin": "14 Camino de la Huerta Demo, 46024 Valencia, Spain",
+        "destination": "56 Demo Cold-chain Road, Pudong, Shanghai 201306, China"
+      },
+      "emails": {
+        "shipper": "export@huerta-demo.example",
+        "consignee_expected_from_other_documents": "receiving@freshway-demo.example",
+        "initial_packing_raw": "receving@freshway-demo.example"
+      },
+      "route": {
+        "receipt": "Valencia, Spain",
+        "loading_port": "Valencia, Spain",
+        "discharge_port": "Shanghai, China"
+      },
+      "currency": "EUR",
+      "incoterm": "CIF Shanghai / Incoterms 2020",
+      "goods": [
+        {
+          "sku": "FRA-8",
+          "lot": "ES-FRA-2610",
+          "description_zh": "新鲜草莓",
+          "quantity": 400,
+          "unit": "cartons",
+          "packages": 8,
+          "package_unit": "pallets",
+          "net_kg": 3200,
+          "gross_kg": 3440,
+          "unit_price_eur": "18.00",
+          "amount_eur": "7200.00"
+        },
+        {
+          "sku": "ARA-5",
+          "lot": "ES-ARA-2610",
+          "description_zh": "新鲜蓝莓",
+          "quantity": 200,
+          "unit": "cartons",
+          "packages": 4,
+          "package_unit": "pallets",
+          "net_kg": 1000,
+          "gross_kg": 1080,
+          "unit_price_eur": "22.00",
+          "amount_eur": "4400.00"
+        }
+      ],
+      "totals": {
+        "quantity": 600,
+        "packages": 12,
+        "net_kg": 4200,
+        "gross_kg": 4520,
+        "goods_eur": "11600.00",
+        "freight_eur": "1250.00",
+        "insurance_eur": "150.00",
+        "cif_eur": "13000.00"
+      },
+      "initial_packing": {
+        "document_number": "PL-DEMO-B-261014",
+        "FRA-8_quantity": 390,
+        "FRA-8_net_kg": 3120,
+        "FRA-8_gross_kg": 3354,
+        "total_cartons": 590,
+        "total_net_kg": 4120,
+        "total_gross_kg": 4434,
+        "pallets": 12,
+        "pallet_08_cartons": 40
+      },
+      "temperature": {
+        "setpoint_c": "2",
+        "allowed_min_c": "0",
+        "allowed_max_c": "4",
+        "recorded_c": "2.1",
+        "intentional_conflict": false
+      },
+      "locale_example": {
+        "raw": "13.000,00",
+        "normalized": "13000.00"
+      },
+      "documents": [
+        {
+          "file": "第二组_西班牙食品冷链/B01_商业发票_西班牙语_3页.pdf",
+          "document_number": "INV-DEMO-ES-261014",
+          "language": "es",
+          "pages": 3,
+          "role": "baseline"
+        },
+        {
+          "file": "第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.pdf",
+          "document_number": "PL-DEMO-B-261014",
+          "language": "en",
+          "pages": 3,
+          "role": "baseline"
+        },
+        {
+          "file": "第二组_西班牙食品冷链/补件_不要与初版同时当新货物上传/B02_装箱单_英语_修正版_3页.pdf",
+          "document_number": "PL-DEMO-B-261014-R1",
+          "language": "en",
+          "pages": 3,
+          "role": "replacement"
+        },
+        {
+          "file": "第二组_西班牙食品冷链/B03_冷链海运提单_英语_2页.pdf",
+          "document_number": "BL-DEMO-B-261015",
+          "language": "en",
+          "pages": 2,
+          "role": "baseline"
+        },
+        {
+          "file": "第二组_西班牙食品冷链/B04_采购订单_中文_2页.pdf",
+          "document_number": "PO-DEMO-CN-261014-B",
+          "language": "zh-CN",
+          "pages": 2,
+          "role": "baseline"
+        }
+      ],
+      "intentional_business_discrepancies": [
+        {
+          "id": "B-QTY-FRA",
+          "description": "同一草莓批次数量差异",
+          "invoice_bol_po": 400,
+          "initial_packing": 390,
+          "unit": "cartons",
+          "difference": 10,
+          "locations": [
+            {
+              "document": "B01",
+              "page": 2,
+              "section": "Productos, lotes y precios / FRA-8"
+            },
+            {
+              "document": "B02初版",
+              "page": 2,
+              "section": "Goods lines / FRA-8"
+            },
+            {
+              "document": "B02初版",
+              "page": 3,
+              "section": "Allocation appendix / Pallet 08"
+            },
+            {
+              "document": "B03",
+              "page": 2,
+              "section": "Description of goods / FRA-8"
+            }
+          ]
+        },
+        {
+          "id": "B-TOTAL",
+          "description": "总箱数差异；与草莓差异属于同一个数量链，不是另少10箱",
+          "invoice_bol_po": 600,
+          "initial_packing": 590,
+          "unit": "cartons",
+          "difference": 10,
+          "locations": [
+            {
+              "document": "B02初版",
+              "page": 2,
+              "section": "Shipment totals"
+            }
+          ]
+        },
+        {
+          "id": "B-WEIGHT",
+          "description": "数量导致净毛重联动差异；净重与毛重不可交叉比较",
+          "strawberry_net_difference_kg": 80,
+          "strawberry_gross_difference_kg": 86,
+          "total_net_difference_kg": 80,
+          "total_gross_difference_kg": 86,
+          "locations": [
+            {
+              "document": "B01",
+              "page": 2,
+              "section": "Resumen de cantidades y pesos"
+            },
+            {
+              "document": "B02初版",
+              "page": 2,
+              "section": "Goods lines / Shipment totals"
+            },
+            {
+              "document": "B03",
+              "page": 2,
+              "section": "Transport declaration"
+            }
+          ]
+        },
+        {
+          "id": "B-EMAIL",
+          "description": "收货人邮箱拼写不一致；初版少字母i，需要原件对照或人工确认",
+          "other_documents": "receiving@freshway-demo.example",
+          "initial_packing": "receving@freshway-demo.example",
+          "locations": [
+            {
+              "document": "B01",
+              "page": 1,
+              "section": "Comprador / destinatario"
+            },
+            {
+              "document": "B02初版",
+              "page": 1,
+              "section": "Consignee / Email"
+            },
+            {
+              "document": "B03",
+              "page": 1,
+              "section": "Consignee / Email"
+            }
+          ]
+        }
+      ],
+      "replacement": {
+        "document_number": "PL-DEMO-B-261014-R1",
+        "replaces": "PL-DEMO-B-261014",
+        "same_cargo": true,
+        "corrections": [
+          "草莓400箱",
+          "总箱数600箱",
+          "净重4200kg",
+          "毛重4520kg",
+          "第08托盘50箱",
+          "邮箱receiving@freshway-demo.example"
+        ],
+        "action": "作为补件绑定同票并确认替换关系，然后重新核对；不能与初版累计为额外货物"
+      },
+      "expected_behavior": [
+        "保留初版原件390箱，不允许翻译时静默改成400",
+        "12托盘与600箱是不同计量层级",
+        "+2.1°C在0–4°C内，不报预置温度冲突",
+        "问题严重程度按实际规则与完整性边界判断，不预设固定红项数量",
+        "修订译文不能替代纠正原始单证事实；补件后重新核对保留历史"
+      ]
+    }
+  ],
+  "execution_status": {
+    "agent_end_to_end_executed": false,
+    "mineru_called": false,
+    "model_called": false
+  },
+  "source_content": "源稿/单证内容与版式.json"
+}

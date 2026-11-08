@@ -1,0 +1,165 @@
+{
+  "snapshot_id": "1362b9ee-483b-440d-bc17-6558c1cb374f",
+  "results": [
+    {
+      "filename": "B03_冷链海运提单_英语_2页_zh-CN_译本.docx",
+      "kind": "docx",
+      "http_status": 200,
+      "size_bytes": 38985,
+      "sha256": "fcef22a675952b2e79d523d0f731c2239d9a6384dd5e1810791c94266d229dc4",
+      "expected_size_match": true,
+      "paragraphs": 25,
+      "tables": 9,
+      "table_text_length": 892
+    },
+    {
+      "filename": "B03_冷链海运提单_英语_2页_zh-CN_译本.pdf",
+      "kind": "pdf",
+      "http_status": 200,
+      "size_bytes": 137997,
+      "sha256": "1287612168c10f3fe035446eca8fc3dc9b515c4a145bb4da694b3ea0d11fb837",
+      "expected_size_match": true,
+      "pages": 2,
+      "page_text_lengths": [
+        583,
+        592
+      ],
+      "table_count": 9
+    },
+    {
+      "filename": "B03_冷链海运提单_英语_2页_识别稿.pdf",
+      "kind": "source_pdf",
+      "http_status": 200,
+      "size_bytes": 85968,
+      "sha256": "b4098a8fb50286c7fedf06330566d8a07433f67b2f141bebeeb0eacf857a58c5",
+      "expected_size_match": true,
+      "pages": 2,
+      "page_text_lengths": [
+        975,
+        1320
+      ],
+      "table_count": 9
+    },
+    {
+      "filename": "B01_商业发票_西班牙语_3页_zh-CN_译本.docx",
+      "kind": "docx",
+      "http_status": 200,
+      "size_bytes": 39541,
+      "sha256": "931725744b20423e0b8754474093757fa8e89580e9b621fcfa2dddeb1ca20069",
+      "expected_size_match": true,
+      "paragraphs": 41,
+      "tables": 9,
+      "table_text_length": 924
+    },
+    {
+      "filename": "B01_商业发票_西班牙语_3页_zh-CN_译本.pdf",
+      "kind": "pdf",
+      "http_status": 200,
+      "size_bytes": 188558,
+      "sha256": "de7b6691c74dae20fcf9de9d842a9cf1d2aa225474de652a0f64697b04a53aca",
+      "expected_size_match": true,
+      "pages": 3,
+      "page_text_lengths": [
+        587,
+        464,
+        460
+      ],
+      "table_count": 9
+    },
+    {
+      "filename": "B01_商业发票_西班牙语_3页_识别稿.pdf",
+      "kind": "source_pdf",
+      "http_status": 200,
+      "size_bytes": 107786,
+      "sha256": "98b11aa99bb104ded9c3b87db18730aa410d43f54def04d29b67d795a921223f",
+      "expected_size_match": true,
+      "pages": 3,
+      "page_text_lengths": [
+        1191,
+        928,
+        1118
+      ],
+      "table_count": 9
+    },
+    {
+      "filename": "B04_采购订单_中文_2页_zh-CN_译本.docx",
+      "kind": "docx",
+      "http_status": 200,
+      "size_bytes": 39025,
+      "sha256": "21b94f14a42b9acb9913bb4f7ff310fd328d5a3a0e4ce1d96028002da9b80cbc",
+      "expected_size_match": true,
+      "paragraphs": 27,
+      "tables": 6,
+      "table_text_length": 671
+    },
+    {
+      "filename": "B04_采购订单_中文_2页_zh-CN_译本.pdf",
+      "kind": "pdf",
+      "http_status": 200,
+      "size_bytes": 155667,
+      "sha256": "f944720b636cf2dc672de4fb39fd10ce963e0c6d0f4cf3105348d4c9f8fd1c93",
+      "expected_size_match": true,
+      "pages": 2,
+      "page_text_lengths": [
+        582,
+        545
+      ],
+      "table_count": 6
+    },
+    {
+      "filename": "B04_采购订单_中文_2页_识别稿.pdf",
+      "kind": "source_pdf",
+      "http_status": 200,
+      "size_bytes": 152987,
+      "sha256": "a46e548089d14c400e73c445d5c9782581f3557a855b005c0b64d549665325db",
+      "expected_size_match": true,
+      "pages": 2,
+      "page_text_lengths": [
+        628,
+        591
+      ],
+      "table_count": 6
+    },
+    {
+      "filename": "B02_装箱单_英语_修正版_3页_zh-CN_译本.docx",
+      "kind": "docx",
+      "http_status": 200,
+      "size_bytes": 39434,
+      "sha256": "260aeabef1a909b09a3ace5019af11642e2a9f8988b3b13ac96e536e12fa5c91",
+      "expected_size_match": true,
+      "paragraphs": 41,
+      "tables": 8,
+      "table_text_length": 739
+    },
+    {
+      "filename": "B02_装箱单_英语_修正版_3页_zh-CN_译本.pdf",
+      "kind": "pdf",
+      "http_status": 200,
+      "size_bytes": 178891,
+      "sha256": "f3c94d548904c0c48511ff51e5997b339a55bb1676e8e130ca99156918769cef",
+      "expected_size_match": true,
+      "pages": 3,
+      "page_text_lengths": [
+        639,
+        380,
+        411
+      ],
+      "table_count": 8
+    },
+    {
+      "filename": "B02_装箱单_英语_修正版_3页_识别稿.pdf",
+      "kind": "source_pdf",
+      "http_status": 200,
+      "size_bytes": 95019,
+      "sha256": "2c01c980182e2bf29ae7cfb5053513c329ec26f8cb2af30c2e27e24bc31fb263",
+      "expected_size_match": true,
+      "pages": 3,
+      "page_text_lengths": [
+        1111,
+        784,
+        967
+      ],
+      "table_count": 8
+    }
+  ]
+}

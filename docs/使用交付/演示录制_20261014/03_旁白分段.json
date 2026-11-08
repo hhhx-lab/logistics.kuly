@@ -1,0 +1,357 @@
+[
+  {
+    "id": "S01",
+    "title": "首页建立印象",
+    "target_duration": 5,
+    "text": "一票货物，多份单证，让每一步流转有据可查。",
+    "subtitles": [
+      "一票货物，多份单证，让每一步流转有据可查。"
+    ],
+    "audio_file": "旁白分段/S01.aiff",
+    "audio_duration": 4.376961,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S02",
+    "title": "登录工作台",
+    "target_duration": 7,
+    "text": "用演示账号登录，进入工作台。这里把对话、单据和处理结果连在一起。",
+    "subtitles": [
+      "用演示账号登录，进入工作台。",
+      "这里把对话、单据和处理结果连在一起。"
+    ],
+    "audio_file": "旁白分段/S02.aiff",
+    "audio_duration": 6.455147,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S03",
+    "title": "新对话与物流问答",
+    "target_duration": 13,
+    "text": "先从一个实际问题开始：商业发票、装箱单和提单，各有什么作用？智能体可以自然回答，并接着解释。",
+    "subtitles": [
+      "先从一个实际问题开始：商业发票、",
+      "装箱单和提单，各有什么作用？",
+      "智能体可以自然回答，并接着解释。"
+    ],
+    "audio_file": "旁白分段/S03.aiff",
+    "audio_duration": 9.287982,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S04",
+    "title": "自然语言教学",
+    "target_duration": 9,
+    "text": "不知道怎么用？直接问它。先识别了解材料，再按需要翻译、核对和交付。一句话说清需求即可。",
+    "subtitles": [
+      "不知道怎么用？",
+      "直接问它。",
+      "先识别了解材料，再按需要翻译、核对和交付。",
+      "一句话说清需求即可。"
+    ],
+    "audio_file": "旁白分段/S04.aiff",
+    "audio_duration": 8.602993,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S05",
+    "title": "同票四文件上传",
+    "target_duration": 11,
+    "text": "这次，我们处理一票西班牙冷链食品。四份单证，包含西班牙语、英语和中文，归在同一个货批。",
+    "subtitles": [
+      "这次，我们处理一票西班牙冷链食品。",
+      "四份单证，包含西班牙语、英语和中文，归在同一个货批。"
+    ],
+    "audio_file": "旁白分段/S05.aiff",
+    "audio_duration": 8.521723,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S06",
+    "title": "先识别与进度",
+    "target_duration": 10,
+    "text": "选择先识别。系统解析文档、提取信息，并显示当前进度；处理完成后，就能围绕这票货物提问。",
+    "subtitles": [
+      "选择先识别。",
+      "系统解析文档、提取信息，并显示当前进度；",
+      "处理完成后，就能围绕这票货物提问。"
+    ],
+    "audio_file": "旁白分段/S06.aiff",
+    "audio_duration": 9.079002,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S07",
+    "title": "围绕单票提问",
+    "target_duration": 11,
+    "text": "谁发给谁，从哪里运往哪里？草莓和蓝莓各有多少？回答结合本票资料，来源收起成清单，点击就能回看。",
+    "subtitles": [
+      "谁发给谁，从哪里运往哪里？",
+      "草莓和蓝莓各有多少？",
+      "回答结合本票资料，来源收起成清单，点击就能回看。"
+    ],
+    "audio_file": "旁白分段/S07.aiff",
+    "audio_duration": 9.891701,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S08",
+    "title": "类型与翻译要求",
+    "target_duration": 11,
+    "text": "再发起翻译。逐份确认商业发票、装箱单、海运提单和采购订单，选择中文，明确这次的翻译范围。",
+    "subtitles": [
+      "再发起翻译。",
+      "逐份确认商业发票、装箱单、海运提单和采购订单，",
+      "选择中文，明确这次的翻译范围。"
+    ],
+    "audio_file": "旁白分段/S08.aiff",
+    "audio_duration": 9.334422,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S09",
+    "title": "真实工作流",
+    "target_duration": 9,
+    "text": "识别、抽取、校验、翻译，进度持续更新。需要补充条件时，先确认，再继续。",
+    "subtitles": [
+      "识别、抽取、校验、翻译，进度持续更新。",
+      "需要补充条件时，先确认，再继续。"
+    ],
+    "audio_file": "旁白分段/S09.aiff",
+    "audio_duration": 7.929615,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S10",
+    "title": "总览与文件结构",
+    "target_duration": 11,
+    "text": "进入复核工作台，总览汇集文件、语言与待处理问题。每份材料都能单独查看。当前状态和风险入口集中展示。",
+    "subtitles": [
+      "进入复核工作台，总览汇集文件、语言与待处理问题。",
+      "每份材料都能单独查看。",
+      "当前状态和风险入口集中展示。"
+    ],
+    "audio_file": "旁白分段/S10.aiff",
+    "audio_duration": 10.18195,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S11",
+    "title": "原译对照及预览",
+    "target_duration": 13,
+    "text": "左侧看识别原文，右侧看纯译文。表格、横线和分页保留下来；也可以切换对照，并预览交付效果。",
+    "subtitles": [
+      "左侧看识别原文，右侧看纯译文。",
+      "表格、横线和分页保留下来；",
+      "也可以切换对照，并预览交付效果。"
+    ],
+    "audio_file": "旁白分段/S11.aiff",
+    "audio_duration": 9.462132,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S12",
+    "title": "字段及精确定位",
+    "target_duration": 12,
+    "text": "字段按主体、路线、货物和金额组织。收货人与发货人分清楚，点击定位，蓝色高亮直达对应原文或译文。",
+    "subtitles": [
+      "字段按主体、路线、货物和金额组织。",
+      "收货人与发货人分清楚，点击定位，",
+      "蓝色高亮直达对应原文或译文。"
+    ],
+    "audio_file": "旁白分段/S12.aiff",
+    "audio_duration": 9.624671,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S13",
+    "title": "同票核对与差异",
+    "target_duration": 13,
+    "text": "同票对比，把不同单证放在一起看。这里，草莓一处写四百箱，另一处写三百九十箱，差异有各自的依据。",
+    "subtitles": [
+      "同票对比，把不同单证放在一起看。",
+      "这里，草莓一处写四百箱，另一处写三百九十箱，",
+      "差异有各自的依据。"
+    ],
+    "audio_file": "旁白分段/S13.aiff",
+    "audio_duration": 9.369252,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S14",
+    "title": "手改与推荐修订",
+    "target_duration": 12,
+    "text": "疑点与字段分开管理。措辞需要调整，可以手动修订译文；有明确建议时，先看影响，再应用推荐修改。",
+    "subtitles": [
+      "疑点与字段分开管理。",
+      "措辞需要调整，可以手动修订译文；",
+      "有明确建议时，先看影响，再应用推荐修改。"
+    ],
+    "audio_file": "旁白分段/S14.aiff",
+    "audio_duration": 9.671111,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S15",
+    "title": "Agent与人工忽略",
+    "target_duration": 11,
+    "text": "也可以告诉智能体具体怎么改。对人工确认不影响交付的提示，选择忽略并记录，处理历史会保留。",
+    "subtitles": [
+      "也可以告诉智能体具体怎么改。",
+      "对人工确认不影响交付的提示，",
+      "选择忽略并记录，处理历史会保留。"
+    ],
+    "audio_file": "旁白分段/S15.aiff",
+    "audio_duration": 8.637823,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S16",
+    "title": "补件替换与重新核对",
+    "target_duration": 16,
+    "text": "真正的数量矛盾，要用补件解决。上传修正版，替换同一份装箱单，再核对；不是新增一批货，也不直接改写原件。",
+    "subtitles": [
+      "真正的数量矛盾，要用补件解决。",
+      "上传修正版，替换同一份装箱单，再核对；",
+      "不是新增一批货，也不直接改写原件。"
+    ],
+    "audio_file": "旁白分段/S16.aiff",
+    "audio_duration": 10.530249,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S17",
+    "title": "复核完成与真实导出",
+    "target_duration": 16,
+    "text": "问题处置后，确认复核，导出纯译本和识别稿。打开生成的PDF，检查表格、页数与内容，完成这次交付。黄项和无法判断保留提示，未解决红项才阻断。",
+    "subtitles": [
+      "问题处置后，确认复核，导出纯译本和识别稿。",
+      "打开生成的PDF，检查表格、",
+      "页数与内容，完成这次交付。",
+      "黄项和无法判断保留提示，未解决红项才阻断。"
+    ],
+    "audio_file": "旁白分段/S17.aiff",
+    "audio_duration": 15.11619,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S18",
+    "title": "管理台与筛选",
+    "target_duration": 13,
+    "text": "在单据管理台，原件、任务和已导出的译本一起保留。按日期、来源地或收货人筛选，随时回看这票材料。不同处理批次也能追溯。",
+    "subtitles": [
+      "在单据管理台，原件、任务和已导出的译本一起保留。",
+      "按日期、来源地或收货人筛选，随时回看这票材料。",
+      "不同处理批次也能追溯。"
+    ],
+    "audio_file": "旁白分段/S18.aiff",
+    "audio_duration": 11.853787,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S19",
+    "title": "历史@唤起",
+    "target_duration": 10,
+    "text": "新建对话，输入艾特和空格，就能关联历史单票。上下文明确，继续追问，不用重新上传。",
+    "subtitles": [
+      "新建对话，输入艾特和空格，就能关联历史单票。",
+      "上下文明确，继续追问，不用重新上传。"
+    ],
+    "audio_file": "旁白分段/S19.aiff",
+    "audio_duration": 8.626213,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S20",
+    "title": "创建与调用Skill",
+    "target_duration": 14,
+    "text": "常用操作还可以保存成Skill。填写用途和步骤，验证并启用；回到对话，斜杠加空格，就能选中调用。",
+    "subtitles": [
+      "常用操作还可以保存成Skill。",
+      "填写用途和步骤，验证并启用；",
+      "回到对话，斜杠加空格，就能选中调用。"
+    ],
+    "audio_file": "旁白分段/S20.aiff",
+    "audio_duration": 9.659501,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S21",
+    "title": "MCP与开放平台",
+    "target_duration": 13,
+    "text": "MCP连接经过测试和工具授权后，也能从这里调用。更多Skill和配置，可以到DataClawHub获取，再导入使用。",
+    "subtitles": [
+      "MCP连接经过测试和工具授权后，也能从这里调用。",
+      "更多Skill和配置，",
+      "可以到DataClawHub获取，再导入使用。"
+    ],
+    "audio_file": "旁白分段/S21.aiff",
+    "audio_duration": 10.599909,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S22",
+    "title": "我的记忆与个人提示",
+    "target_duration": 12,
+    "text": "我的记忆由自己管理。把常用的表达偏好保存下来，先预览影响，再确认；它只用于自己的后续回答。编辑和删除都在本人账户内生效。",
+    "subtitles": [
+      "我的记忆由自己管理。",
+      "把常用的表达偏好保存下来，先预览影响，再确认；",
+      "它只用于自己的后续回答。",
+      "编辑和删除都在本人账户内生效。"
+    ],
+    "audio_file": "旁白分段/S22.aiff",
+    "audio_duration": 11.749297,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S23",
+    "title": "五语界面与布局偏好",
+    "target_duration": 9,
+    "text": "界面支持中文、英语、法语、西班牙语和俄语，也能调整侧栏宽度和动效，让日常工作更顺手。",
+    "subtitles": [
+      "界面支持中文、英语、法语、西班牙语和俄语，",
+      "也能调整侧栏宽度和动效，让日常工作更顺手。"
+    ],
+    "audio_file": "旁白分段/S23.aiff",
+    "audio_duration": 8.649433,
+    "voice": "Tingting",
+    "speech_rate": 215
+  },
+  {
+    "id": "S24",
+    "title": "归档与结束",
+    "target_duration": 9,
+    "text": "结束服务后可以归档、恢复会话。从理解单据，到核对交付，过程清楚，结果可查。",
+    "subtitles": [
+      "结束服务后可以归档、恢复会话。",
+      "从理解单据，到核对交付，过程清楚，结果可查。"
+    ],
+    "audio_file": "旁白分段/S24.aiff",
+    "audio_duration": 7.755465,
+    "voice": "Tingting",
+    "speech_rate": 215
+  }
+]

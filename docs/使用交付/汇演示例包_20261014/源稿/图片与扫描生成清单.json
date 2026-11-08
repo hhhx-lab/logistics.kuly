@@ -1,0 +1,96 @@
+[
+  {
+    "file": "第一组_法国设备海运/扫描备选_同件勿重复上传/A01_商业发票_法语_3页_第1页_300dpi.jpg",
+    "source": "第一组_法国设备海运/A01_商业发票_法语_3页.pdf",
+    "source_page": 1,
+    "dpi": 300,
+    "kind": "synthetic_raster_page",
+    "sha256": "81f97c25406a86d7dc1f5aaf5107f70e58428b440f061579f7df4515b7dd951a"
+  },
+  {
+    "file": "第一组_法国设备海运/扫描备选_同件勿重复上传/A01_商业发票_法语_3页_第2页_300dpi.jpg",
+    "source": "第一组_法国设备海运/A01_商业发票_法语_3页.pdf",
+    "source_page": 2,
+    "dpi": 300,
+    "kind": "synthetic_raster_page",
+    "sha256": "c22fe43a91b9e7d92ea8b930151e7ab926c18158e93926ddb2278a72a55484ae"
+  },
+  {
+    "file": "第一组_法国设备海运/扫描备选_同件勿重复上传/A01_商业发票_法语_3页_第3页_300dpi.jpg",
+    "source": "第一组_法国设备海运/A01_商业发票_法语_3页.pdf",
+    "source_page": 3,
+    "dpi": 300,
+    "kind": "synthetic_raster_page",
+    "sha256": "f984cae5eb2d3dde8cf33ba3c6f0cb7b29617398f45f74d9bcf1c2373c17cce6"
+  },
+  {
+    "file": "第一组_法国设备海运/扫描备选_同件勿重复上传/A01_商业发票_法语_3页_图片型扫描.pdf",
+    "source": "第一组_法国设备海运/A01_商业发票_法语_3页.pdf",
+    "pages": 3,
+    "kind": "synthetic_image_only_pdf",
+    "sha256": "1c8951a4ea484dd7875d54c62c5cb121e420bee8a23f887cca846be468a76963"
+  },
+  {
+    "file": "第二组_西班牙食品冷链/扫描备选_同件勿重复上传/B02_装箱单_英语_初版_3页_第1页_300dpi.jpg",
+    "source": "第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.pdf",
+    "source_page": 1,
+    "dpi": 300,
+    "kind": "synthetic_raster_page",
+    "sha256": "b5746535bb32cc8da5c6a5cebd572f335e2058b8b7378a0b366494460afc29ab"
+  },
+  {
+    "file": "第二组_西班牙食品冷链/扫描备选_同件勿重复上传/B02_装箱单_英语_初版_3页_第2页_300dpi.jpg",
+    "source": "第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.pdf",
+    "source_page": 2,
+    "dpi": 300,
+    "kind": "synthetic_raster_page",
+    "sha256": "491b6c33c62e883e8e40f3f4800fc35d876690fbd2c0f80c1df491863c23134f"
+  },
+  {
+    "file": "第二组_西班牙食品冷链/扫描备选_同件勿重复上传/B02_装箱单_英语_初版_3页_第3页_300dpi.jpg",
+    "source": "第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.pdf",
+    "source_page": 3,
+    "dpi": 300,
+    "kind": "synthetic_raster_page",
+    "sha256": "f69dab3fcaefb8f12cc6072b8306165111ee5401189ae16ff5066ce58a741c23"
+  },
+  {
+    "file": "第二组_西班牙食品冷链/扫描备选_同件勿重复上传/B02_装箱单_英语_初版_3页_图片型扫描.pdf",
+    "source": "第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.pdf",
+    "pages": 3,
+    "kind": "synthetic_image_only_pdf",
+    "sha256": "8f69d718d94bf5d12356edb471f907274d3c25d692d914aac13f1e293bc8256e"
+  },
+  {
+    "file": "公开样例/高清图片/HMRC_C88_英国过境单_公开空白模板_第1页_300dpi.png",
+    "source": "公开样例/HMRC_C88_英国过境单_公开空白模板.pdf",
+    "source_page": 1,
+    "dpi": 300,
+    "kind": "public_template_page",
+    "sha256": "3c04a1ad59244d15a7aaddc61f56fa212730b5b24b61fbdc14b711973f4ec959"
+  },
+  {
+    "file": "公开样例/高清图片/HMRC_C88_英国过境单_公开空白模板_第2页_300dpi.png",
+    "source": "公开样例/HMRC_C88_英国过境单_公开空白模板.pdf",
+    "source_page": 2,
+    "dpi": 300,
+    "kind": "public_template_page",
+    "sha256": "4fc92f3cfd7d6b201725a7c56ffbccb4487c63a547f4e3c4cf5e24f216849bb2"
+  },
+  {
+    "file": "公开样例/高清图片/UPS_供应链商业发票_公开空白模板_第1页_300dpi.png",
+    "source": "公开样例/UPS_供应链商业发票_公开空白模板.pdf",
+    "source_page": 1,
+    "dpi": 300,
+    "kind": "public_template_page",
+    "sha256": "c4e47ab3ed216d2e724bfe8d938bbca8d7e2ca451f9535a296ba66b2f7a01727"
+  },
+  {
+    "file": "公开样例/高清图片/UPS_供应链商业发票_公开空白模板_第2页_300dpi.png",
+    "source": "公开样例/UPS_供应链商业发票_公开空白模板.pdf",
+    "source_page": 2,
+    "dpi": 300,
+    "kind": "public_template_page",
+    "sha256": "dbea73703c4f8cd8e73944d559d89de825375b4dcf4d5ab24ca2c347a6d872a7"
+  }
+]

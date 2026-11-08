@@ -1,0 +1,2296 @@
+[
+  {
+    "group": "第一组_法国设备海运",
+    "name": "A01_商业发票_法语_3页",
+    "language": "fr",
+    "number": "INV-DEMO-FR-261014",
+    "title": "FACTURE COMMERCIALE",
+    "pages": [
+      {
+        "title": "Parties et conditions de vente",
+        "blocks": [
+          {
+            "kind": "fields",
+            "title": "Références commerciales",
+            "values": [
+              [
+                "N° de facture",
+                "INV-DEMO-FR-261014"
+              ],
+              [
+                "Date",
+                "14 octobre 2026"
+              ],
+              [
+                "Commande client",
+                "PO-DEMO-CN-261014-A"
+              ],
+              [
+                "Référence de l'expédition",
+                "SHIP-DEMO-A-2026"
+              ],
+              [
+                "Devise",
+                "EUR"
+              ],
+              [
+                "Conditions de livraison",
+                "CIF Shanghai — Incoterms® 2020"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Vendeur / exportateur",
+            "values": [
+              [
+                "Raison sociale",
+                "Atelier Horizon Démo SAS"
+              ],
+              [
+                "Adresse",
+                "18 rue des Ateliers Démo, 69007 Lyon, France"
+              ],
+              [
+                "Contact",
+                "Claire Martin — contact de démonstration"
+              ],
+              [
+                "Téléphone",
+                "+33 1 00 00 10 14"
+              ],
+              [
+                "Courriel",
+                "export@horizon-demo.example"
+              ],
+              [
+                "Référence fiscale de démonstration",
+                "FR-DEMO-TAX-A01"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Acheteur / destinataire",
+            "values": [
+              [
+                "Raison sociale",
+                "Shanghai Meridian Demo Equipment Co., Ltd."
+              ],
+              [
+                "Adresse",
+                "88 Demo Logistics Road, Pudong, Shanghai 201306, China"
+              ],
+              [
+                "Contact",
+                "Lin Wei — contact de démonstration"
+              ],
+              [
+                "Téléphone",
+                "+86 21 0000 1014"
+              ],
+              [
+                "Courriel",
+                "import@meridian-demo.example"
+              ],
+              [
+                "Référence fiscale de démonstration",
+                "CN-DEMO-TAX-A01"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Objet de la vente",
+            "paragraphs": [
+              "Fourniture de composants industriels pour une ligne de conditionnement. Les trois références et les lots sont détaillés sur la page suivante.",
+              "La quantité commerciale est exprimée en pièces. Le nombre de caisses représente l'emballage extérieur et ne doit pas être additionné aux pièces."
+            ]
+          }
+        ],
+        "landscape": false
+      },
+      {
+        "title": "Détail des marchandises",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Lignes de facture — une seule fois par référence",
+            "columns": [
+              "N°",
+              "Référence",
+              "Désignation",
+              "Modèle",
+              "Lot",
+              "Quantité",
+              "Unité",
+              "Prix EUR",
+              "Montant EUR"
+            ],
+            "rows": [
+              [
+                "1",
+                "SRV-400",
+                "Modules servomoteurs industriels",
+                "400 W / 220 V",
+                "FR-SRV-2610",
+                "60",
+                "pièces",
+                "750,00",
+                "45 000,00"
+              ],
+              [
+                "2",
+                "VLV-25",
+                "Vannes de régulation en acier inoxydable",
+                "DN25",
+                "FR-VLV-2610",
+                "40",
+                "pièces",
+                "120,00",
+                "4 800,00"
+              ],
+              [
+                "3",
+                "SNS-T8",
+                "Capteurs de température pour convoyeur",
+                "-20 °C à +120 °C",
+                "FR-SNS-2610",
+                "20",
+                "pièces",
+                "85,00",
+                "1 700,00"
+              ]
+            ],
+            "widths": [
+              1.2,
+              2.3,
+              6.6,
+              3.5,
+              3.3,
+              2.2,
+              2.1,
+              2.7,
+              2.7
+            ]
+          },
+          {
+            "kind": "table",
+            "title": "Récapitulatif de la cargaison",
+            "columns": [
+              "Quantité totale",
+              "Emballage extérieur",
+              "Origine",
+              "Poids net",
+              "Poids brut",
+              "Volume"
+            ],
+            "rows": [
+              [
+                "120 pièces",
+                "12 caisses en bois",
+                "France / FR",
+                "620 kg",
+                "720 kg",
+                "1,884 m³"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "text",
+            "title": "Instructions relatives aux références",
+            "paragraphs": [
+              "Les références SRV-400, VLV-25 et SNS-T8 restent inchangées dans toute traduction. Les lots identifient les mêmes marchandises sur la facture, la liste de colisage et le connaissement.",
+              "Ce tableau contient la quantité de marchandises. Les dimensions et la répartition par caisse sont des informations d'emballage, pas des lignes de vente supplémentaires."
+            ]
+          }
+        ],
+        "landscape": true
+      },
+      {
+        "title": "Totaux, transport et instructions",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Calcul du montant payable",
+            "columns": [
+              "Libellé",
+              "Montant",
+              "Devise"
+            ],
+            "rows": [
+              [
+                "Sous-total marchandises",
+                "51 500,00",
+                "EUR"
+              ],
+              [
+                "Fret maritime",
+                "900,00",
+                "EUR"
+              ],
+              [
+                "Assurance transport",
+                "100,00",
+                "EUR"
+              ],
+              [
+                "TOTAL FACTURE CIF",
+                "52 500,00",
+                "EUR"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "fields",
+            "title": "Transport prévu",
+            "values": [
+              [
+                "Lieu de prise en charge",
+                "Lyon, France"
+              ],
+              [
+                "Port de chargement",
+                "Marseille, France"
+              ],
+              [
+                "Port de déchargement",
+                "Shanghai, China"
+              ],
+              [
+                "Lieu de livraison",
+                "88 Demo Logistics Road, Pudong, Shanghai"
+              ],
+              [
+                "Réservation",
+                "BK-DEMO-A-261014"
+              ],
+              [
+                "Référence du connaissement",
+                "BL-DEMO-A-261015"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Paiement et contrôle documentaire",
+            "paragraphs": [
+              "Paiement à 30 jours à compter de la date de facture. Aucun compte bancaire réel n'est fourni dans cet exemple.",
+              "Vérifier séparément les montants, les unités, les références de lot et les rôles des parties. La présente facture ne constitue ni une déclaration en douane ni une décision de mainlevée.",
+              "Document de démonstration : sociétés, coordonnées et références fictives. Aucune signature officielle ou certification n'est reproduite."
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Validation commerciale",
+            "values": [
+              [
+                "Nom du préparateur",
+                "Claire Martin — démonstration"
+              ],
+              [
+                "Signature",
+                "________________________________"
+              ],
+              [
+                "Date de contrôle",
+                "________________________________"
+              ]
+            ]
+          }
+        ],
+        "landscape": false
+      }
+    ]
+  },
+  {
+    "group": "第一组_法国设备海运",
+    "name": "A02_装箱单_英语_3页",
+    "language": "en",
+    "number": "PL-DEMO-A-261014",
+    "title": "PACKING LIST",
+    "pages": [
+      {
+        "title": "Shipment and handling particulars",
+        "blocks": [
+          {
+            "kind": "fields",
+            "title": "Document references",
+            "values": [
+              [
+                "Packing list number",
+                "PL-DEMO-A-261014"
+              ],
+              [
+                "Packing date",
+                "14 October 2026"
+              ],
+              [
+                "Shipment reference",
+                "SHIP-DEMO-A-2026"
+              ],
+              [
+                "Invoice reference",
+                "INV-DEMO-FR-261014"
+              ],
+              [
+                "Purchase order",
+                "PO-DEMO-CN-261014-A"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Shipper",
+            "values": [
+              [
+                "Legal name",
+                "Atelier Horizon Démo SAS"
+              ],
+              [
+                "Address",
+                "18 rue des Ateliers Démo, 69007 Lyon, France"
+              ],
+              [
+                "Email",
+                "export@horizon-demo.example"
+              ],
+              [
+                "Telephone",
+                "+33 1 00 00 10 14"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Consignee",
+            "values": [
+              [
+                "Legal name",
+                "Shanghai Meridian Demo Equipment Co., Ltd."
+              ],
+              [
+                "Delivery address",
+                "88 Demo Logistics Road, Pudong, Shanghai 201306, China"
+              ],
+              [
+                "Email",
+                "import@meridian-demo.example"
+              ],
+              [
+                "Telephone",
+                "+86 21 0000 1014"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Shipping marks and routing",
+            "values": [
+              [
+                "Marks",
+                "MERIDIAN / SHIP-DEMO-A-2026 / CRATE 01–12"
+              ],
+              [
+                "Receipt location",
+                "Lyon, France"
+              ],
+              [
+                "Port of loading",
+                "Marseille, France"
+              ],
+              [
+                "Port of discharge",
+                "Shanghai, China"
+              ],
+              [
+                "Goods origin",
+                "France / FR"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Handling instructions",
+            "paragraphs": [
+              "Keep dry. Lift from the marked base. Protect the sensor cases from impact. No dangerous-goods classification is asserted in this demonstration.",
+              "The goods quantity is 120 pieces; the external package count is 12 wooden crates. These are different measurement bases."
+            ]
+          }
+        ],
+        "landscape": false
+      },
+      {
+        "title": "Goods and package summary",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Goods lines — net and gross weights in kg",
+            "columns": [
+              "Line",
+              "SKU",
+              "Lot",
+              "Quantity",
+              "Unit",
+              "Packages",
+              "Package type",
+              "Net kg",
+              "Gross kg"
+            ],
+            "rows": [
+              [
+                "1",
+                "SRV-400",
+                "FR-SRV-2610",
+                "60",
+                "pcs",
+                "6",
+                "wooden crates",
+                "360",
+                "420"
+              ],
+              [
+                "2",
+                "VLV-25",
+                "FR-VLV-2610",
+                "40",
+                "pcs",
+                "4",
+                "wooden crates",
+                "240",
+                "260"
+              ],
+              [
+                "3",
+                "SNS-T8",
+                "FR-SNS-2610",
+                "20",
+                "pcs",
+                "2",
+                "wooden crates",
+                "20",
+                "40"
+              ]
+            ],
+            "widths": [
+              1,
+              2.4,
+              3.9,
+              2.1,
+              1.5,
+              2.3,
+              5.9,
+              2.7,
+              2.7
+            ]
+          },
+          {
+            "kind": "table",
+            "title": "Declared totals",
+            "columns": [
+              "Goods",
+              "Packages",
+              "Net weight",
+              "Gross weight",
+              "Measurement"
+            ],
+            "rows": [
+              [
+                "120 pcs",
+                "12 wooden crates",
+                "620 kg",
+                "720 kg",
+                "1.884 m³"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "text",
+            "title": "Packing-level interpretation",
+            "paragraphs": [
+              "Gross weight includes packaging. Net weight covers goods only. A difference between gross and net weight is expected and is not a cross-document discrepancy.",
+              "The next page allocates these same packages. It is an appendix to this packing list, not a second shipment or a second set of goods."
+            ]
+          }
+        ],
+        "landscape": true
+      },
+      {
+        "title": "Packing allocation and handover",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Allocation appendix — do not add again to the goods summary",
+            "columns": [
+              "Crate range",
+              "Contents",
+              "Size per crate",
+              "Net / crate",
+              "Gross / crate"
+            ],
+            "rows": [
+              [
+                "01–06",
+                "10 servo modules per crate",
+                "80 × 60 × 50 cm",
+                "60 kg",
+                "70 kg"
+              ],
+              [
+                "07–10",
+                "10 regulation valves per crate",
+                "60 × 40 × 40 cm",
+                "60 kg",
+                "65 kg"
+              ],
+              [
+                "11–12",
+                "10 temperature sensors per crate",
+                "40 × 30 × 25 cm",
+                "10 kg",
+                "20 kg"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "fields",
+            "title": "Handover record",
+            "values": [
+              [
+                "Packed by",
+                "Warehouse Team A — demonstration"
+              ],
+              [
+                "Handed to",
+                "Blue Meridian Demo Forwarding Ltd."
+              ],
+              [
+                "Handover date",
+                "14 October 2026"
+              ],
+              [
+                "Outer packages",
+                "12 wooden crates"
+              ],
+              [
+                "Visible damage",
+                "None recorded in this synthetic example"
+              ],
+              [
+                "Receiver signature",
+                "________________________________"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Reconciliation notes",
+            "paragraphs": [
+              "The commercial invoice prices the components by piece. The bill of lading declares the external crates. Match the shipment reference, SKU and lot before comparing quantities.",
+              "All names, routes, references and contacts are synthetic demonstration data; this document is not valid for shipment."
+            ]
+          }
+        ],
+        "landscape": false
+      }
+    ]
+  },
+  {
+    "group": "第一组_法国设备海运",
+    "name": "A03_海运提单_英语_2页",
+    "language": "en",
+    "number": "BL-DEMO-A-261015",
+    "title": "BILL OF LADING",
+    "pages": [
+      {
+        "title": "Transport and parties",
+        "blocks": [
+          {
+            "kind": "fields",
+            "title": "Transport references",
+            "values": [
+              [
+                "Bill of lading number",
+                "BL-DEMO-A-261015"
+              ],
+              [
+                "Shipment reference",
+                "SHIP-DEMO-A-2026"
+              ],
+              [
+                "Booking reference",
+                "BK-DEMO-A-261014"
+              ],
+              [
+                "Issue date",
+                "15 October 2026"
+              ],
+              [
+                "Service",
+                "Ocean transport — non-negotiable demonstration copy"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Shipper",
+            "values": [
+              [
+                "Legal name",
+                "Atelier Horizon Démo SAS"
+              ],
+              [
+                "Address",
+                "18 rue des Ateliers Démo, 69007 Lyon, France"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Consignee",
+            "values": [
+              [
+                "Legal name",
+                "Shanghai Meridian Demo Equipment Co., Ltd."
+              ],
+              [
+                "Address",
+                "88 Demo Logistics Road, Pudong, Shanghai 201306, China"
+              ],
+              [
+                "Email",
+                "import@meridian-demo.example"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Notify party / carrier",
+            "values": [
+              [
+                "Notify party",
+                "Harbour Link Demo Logistics Co., Ltd."
+              ],
+              [
+                "Notify email",
+                "arrival@harbour-demo.example"
+              ],
+              [
+                "Carrier",
+                "Blue Meridian Demo Ocean Line"
+              ],
+              [
+                "Vessel / voyage",
+                "MV DEMO HORIZON / 026E"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Route",
+            "values": [
+              [
+                "Place of receipt",
+                "Lyon, France"
+              ],
+              [
+                "Port of loading",
+                "Marseille, France"
+              ],
+              [
+                "Port of discharge",
+                "Shanghai, China"
+              ],
+              [
+                "Place of delivery",
+                "88 Demo Logistics Road, Pudong, Shanghai"
+              ]
+            ]
+          }
+        ],
+        "landscape": false
+      },
+      {
+        "title": "Cargo declaration and instructions",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Description of goods — goods quantity and package count are distinct",
+            "columns": [
+              "SKU",
+              "Description",
+              "Lot",
+              "Goods quantity",
+              "Goods unit",
+              "Packages"
+            ],
+            "rows": [
+              [
+                "SRV-400",
+                "Industrial servo modules",
+                "FR-SRV-2610",
+                "60",
+                "pcs",
+                "6 wooden crates"
+              ],
+              [
+                "VLV-25",
+                "Stainless steel regulation valves",
+                "FR-VLV-2610",
+                "40",
+                "pcs",
+                "4 wooden crates"
+              ],
+              [
+                "SNS-T8",
+                "Conveyor temperature sensors",
+                "FR-SNS-2610",
+                "20",
+                "pcs",
+                "2 wooden crates"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "fields",
+            "title": "Transport declaration",
+            "values": [
+              [
+                "Total packages",
+                "12 wooden crates"
+              ],
+              [
+                "Total goods quantity",
+                "120 pcs"
+              ],
+              [
+                "Net weight",
+                "620 kg"
+              ],
+              [
+                "Gross weight",
+                "720 kg"
+              ],
+              [
+                "Volume",
+                "1.884 m³"
+              ],
+              [
+                "Container reference",
+                "CONTAINER-DEMO-A-01"
+              ],
+              [
+                "Seal reference",
+                "SEAL-DEMO-A-1014"
+              ],
+              [
+                "Freight",
+                "Prepaid"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Document interpretation",
+            "paragraphs": [
+              "This is a synthetic, non-negotiable demonstration copy. It is not issued by a real carrier and is not a document of title.",
+              "Descriptions and package counts are shipping particulars for the same cargo. They do not establish customs clearance, legal compliance or product certification."
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Carrier acknowledgement",
+            "values": [
+              [
+                "Prepared by",
+                "Demo Documentation Desk"
+              ],
+              [
+                "Signature",
+                "________________________________"
+              ],
+              [
+                "Acknowledgement date",
+                "________________________________"
+              ]
+            ]
+          }
+        ],
+        "landscape": false
+      }
+    ]
+  },
+  {
+    "group": "第一组_法国设备海运",
+    "name": "A04_采购订单_中文_2页",
+    "language": "zh-CN",
+    "number": "PO-DEMO-CN-261014-A",
+    "title": "采购订单",
+    "pages": [
+      {
+        "title": "采购主体与交付要求",
+        "blocks": [
+          {
+            "kind": "fields",
+            "title": "订单信息",
+            "values": [
+              [
+                "订单编号",
+                "PO-DEMO-CN-261014-A"
+              ],
+              [
+                "订单日期",
+                "2026年10月14日"
+              ],
+              [
+                "同票货批",
+                "SHIP-DEMO-A-2026"
+              ],
+              [
+                "币种",
+                "EUR"
+              ],
+              [
+                "交货条款",
+                "CIF上海，Incoterms® 2020"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "买方／收货人",
+            "values": [
+              [
+                "英文法定名称",
+                "Shanghai Meridian Demo Equipment Co., Ltd."
+              ],
+              [
+                "演示中文名称",
+                "上海子午线演示设备有限公司"
+              ],
+              [
+                "收货地址",
+                "中国上海市浦东新区演示物流路88号，201306"
+              ],
+              [
+                "联系人",
+                "林伟（演示）"
+              ],
+              [
+                "电子邮箱",
+                "import@meridian-demo.example"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "卖方／发货人",
+            "values": [
+              [
+                "法定名称",
+                "Atelier Horizon Démo SAS"
+              ],
+              [
+                "所在地",
+                "法国里昂，18 rue des Ateliers Démo，69007"
+              ],
+              [
+                "电子邮箱",
+                "export@horizon-demo.example"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "交付要求",
+            "paragraphs": [
+              "本订单对应同一批工业组件。商品按件计价，外包装为12个木箱；不得将木箱数当作商品件数。",
+              "法文商业发票、英文装箱单与英文海运提单为关联材料。翻译时保留订单号、SKU、批次号、金额和计量单位。",
+              "文件内的企业、地址及联系信息为演示合成，不能用于实际交易或运输。"
+            ]
+          }
+        ],
+        "landscape": false
+      },
+      {
+        "title": "采购明细与确认",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "采购商品",
+            "columns": [
+              "SKU",
+              "中文品名",
+              "型号",
+              "批次",
+              "数量",
+              "单价EUR",
+              "金额EUR"
+            ],
+            "rows": [
+              [
+                "SRV-400",
+                "工业伺服模块",
+                "400 W / 220 V",
+                "FR-SRV-2610",
+                "60件",
+                "750.00",
+                "45000.00"
+              ],
+              [
+                "VLV-25",
+                "不锈钢调节阀",
+                "DN25",
+                "FR-VLV-2610",
+                "40件",
+                "120.00",
+                "4800.00"
+              ],
+              [
+                "SNS-T8",
+                "输送线温度传感器",
+                "-20 °C至+120 °C",
+                "FR-SNS-2610",
+                "20件",
+                "85.00",
+                "1700.00"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "fields",
+            "title": "金额与包装",
+            "values": [
+              [
+                "商品合计",
+                "51500.00 EUR"
+              ],
+              [
+                "海运费",
+                "900.00 EUR"
+              ],
+              [
+                "保险费",
+                "100.00 EUR"
+              ],
+              [
+                "应付总额",
+                "52500.00 EUR"
+              ],
+              [
+                "商品总数量",
+                "120件"
+              ],
+              [
+                "外包装数量",
+                "12个木箱"
+              ],
+              [
+                "净重／毛重",
+                "620 kg／720 kg"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "确认栏",
+            "values": [
+              [
+                "采购经办",
+                "林伟（演示）"
+              ],
+              [
+                "审核签字",
+                "________________________________"
+              ],
+              [
+                "确认日期",
+                "________________________________"
+              ]
+            ]
+          }
+        ],
+        "landscape": false
+      }
+    ]
+  },
+  {
+    "group": "第二组_西班牙食品冷链",
+    "name": "B01_商业发票_西班牙语_3页",
+    "language": "es",
+    "number": "INV-DEMO-ES-261014",
+    "title": "FACTURA COMERCIAL",
+    "pages": [
+      {
+        "title": "Partes y condiciones de la operación",
+        "blocks": [
+          {
+            "kind": "fields",
+            "title": "Referencias",
+            "values": [
+              [
+                "Número de factura",
+                "INV-DEMO-ES-261014"
+              ],
+              [
+                "Fecha",
+                "14 de octubre de 2026"
+              ],
+              [
+                "Pedido del comprador",
+                "PO-DEMO-CN-261014-B"
+              ],
+              [
+                "Referencia del envío",
+                "SHIP-DEMO-B-2026"
+              ],
+              [
+                "Moneda",
+                "EUR"
+              ],
+              [
+                "Condición de entrega",
+                "CIF Shanghai — Incoterms® 2020"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Vendedor / expedidor",
+            "values": [
+              [
+                "Razón social",
+                "Huerta Clara Demo S.L."
+              ],
+              [
+                "Dirección",
+                "14 Camino de la Huerta Demo, 46024 Valencia, España"
+              ],
+              [
+                "Persona de contacto",
+                "Lucía Torres — demostración"
+              ],
+              [
+                "Correo electrónico",
+                "export@huerta-demo.example"
+              ],
+              [
+                "Teléfono",
+                "+34 96 000 10 14"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Comprador / destinatario",
+            "values": [
+              [
+                "Razón social",
+                "Shanghai Freshway Demo Foods Co., Ltd."
+              ],
+              [
+                "Dirección",
+                "56 Demo Cold-chain Road, Pudong, Shanghai 201306, China"
+              ],
+              [
+                "Contacto",
+                "Zhao Min — demostración"
+              ],
+              [
+                "Correo electrónico",
+                "receiving@freshway-demo.example"
+              ],
+              [
+                "Teléfono",
+                "+86 21 0000 2014"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Descripción del envío",
+            "paragraphs": [
+              "Fruta fresca destinada a una demostración de control documental. Las cantidades comerciales se expresan en cajas; los palés son unidades de agrupación, no cantidades adicionales de mercancía.",
+              "Este ejemplo no declara autorización fitosanitaria ni admisibilidad de estos productos en el país de destino."
+            ]
+          }
+        ],
+        "landscape": false
+      },
+      {
+        "title": "Detalle de la mercancía",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Productos, lotes y precios",
+            "columns": [
+              "N°",
+              "SKU",
+              "Producto",
+              "Lote",
+              "Cantidad",
+              "Unidad",
+              "Precio EUR",
+              "Importe EUR"
+            ],
+            "rows": [
+              [
+                "1",
+                "FRA-8",
+                "Fresas frescas, variedad de demostración",
+                "ES-FRA-2610",
+                "400",
+                "cajas",
+                "18,00",
+                "7.200,00"
+              ],
+              [
+                "2",
+                "ARA-5",
+                "Arándanos frescos, variedad de demostración",
+                "ES-ARA-2610",
+                "200",
+                "cajas",
+                "22,00",
+                "4.400,00"
+              ]
+            ],
+            "widths": [
+              1,
+              2.3,
+              7.8,
+              4,
+              2.4,
+              2,
+              3.5,
+              3.5
+            ]
+          },
+          {
+            "kind": "table",
+            "title": "Resumen de cantidades y pesos",
+            "columns": [
+              "Producto",
+              "Cajas",
+              "Neto por caja",
+              "Peso neto",
+              "Peso bruto"
+            ],
+            "rows": [
+              [
+                "FRA-8",
+                "400",
+                "8 kg",
+                "3.200 kg",
+                "3.440 kg"
+              ],
+              [
+                "ARA-5",
+                "200",
+                "5 kg",
+                "1.000 kg",
+                "1.080 kg"
+              ],
+              [
+                "TOTAL",
+                "600",
+                "Bases diferentes",
+                "4.200 kg",
+                "4.520 kg"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "text",
+            "title": "Origen y embalaje",
+            "paragraphs": [
+              "Origen declarado para ambas referencias: España / ES. Embalaje exterior: 12 palés, con un total de 600 cajas.",
+              "Los puntos separan millares y las comas separan decimales en esta factura: 7.200,00 EUR significa siete mil doscientos euros."
+            ]
+          }
+        ],
+        "landscape": true
+      },
+      {
+        "title": "Total, ruta y condiciones de conservación",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Importe total",
+            "columns": [
+              "Concepto",
+              "Importe",
+              "Moneda"
+            ],
+            "rows": [
+              [
+                "Mercancía",
+                "11.600,00",
+                "EUR"
+              ],
+              [
+                "Transporte refrigerado",
+                "1.250,00",
+                "EUR"
+              ],
+              [
+                "Seguro",
+                "150,00",
+                "EUR"
+              ],
+              [
+                "TOTAL CIF",
+                "13.000,00",
+                "EUR"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "fields",
+            "title": "Ruta marítima",
+            "values": [
+              [
+                "Lugar de recepción",
+                "Valencia, España"
+              ],
+              [
+                "Puerto de carga",
+                "Valencia, España"
+              ],
+              [
+                "Puerto de descarga",
+                "Shanghai, China"
+              ],
+              [
+                "Entrega",
+                "56 Demo Cold-chain Road, Pudong, Shanghai"
+              ],
+              [
+                "Conocimiento de embarque",
+                "BL-DEMO-B-261015"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Instrucciones del producto",
+            "values": [
+              [
+                "Temperatura de consigna",
+                "+2 °C"
+              ],
+              [
+                "Intervalo indicado",
+                "0 °C a +4 °C"
+              ],
+              [
+                "Fecha de envasado",
+                "14 de octubre de 2026"
+              ],
+              [
+                "Fecha de consumo preferente de demostración",
+                "4 de noviembre de 2026"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Observaciones",
+            "paragraphs": [
+              "Comparar los lotes y la cantidad de cada producto antes de traducir. El control de temperatura es una instrucción logística; no equivale a un certificado sanitario.",
+              "Todos los datos y entidades son ficticios. Documento de demostración, no válido para transporte ni despacho aduanero."
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Preparación",
+            "values": [
+              [
+                "Preparado por",
+                "Lucía Torres — demostración"
+              ],
+              [
+                "Firma",
+                "________________________________"
+              ]
+            ]
+          }
+        ],
+        "landscape": false
+      }
+    ]
+  },
+  {
+    "group": "第二组_西班牙食品冷链",
+    "name": "B02_装箱单_英语_初版_3页",
+    "language": "en",
+    "number": "PL-DEMO-B-261014",
+    "title": "PACKING LIST",
+    "pages": [
+      {
+        "title": "Shipment particulars",
+        "blocks": [
+          {
+            "kind": "fields",
+            "title": "References",
+            "values": [
+              [
+                "Packing list number",
+                "PL-DEMO-B-261014"
+              ],
+              [
+                "Shipment reference",
+                "SHIP-DEMO-B-2026"
+              ],
+              [
+                "Invoice reference",
+                "INV-DEMO-ES-261014"
+              ],
+              [
+                "Purchase order",
+                "PO-DEMO-CN-261014-B"
+              ],
+              [
+                "Packed on",
+                "14 October 2026"
+              ],
+              [
+                "Revision",
+                "Initial issue"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Shipper",
+            "values": [
+              [
+                "Legal name",
+                "Huerta Clara Demo S.L."
+              ],
+              [
+                "Address",
+                "14 Camino de la Huerta Demo, 46024 Valencia, Spain"
+              ],
+              [
+                "Email",
+                "export@huerta-demo.example"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Consignee",
+            "values": [
+              [
+                "Legal name",
+                "Shanghai Freshway Demo Foods Co., Ltd."
+              ],
+              [
+                "Address",
+                "56 Demo Cold-chain Road, Pudong, Shanghai 201306, China"
+              ],
+              [
+                "Email",
+                "receving@freshway-demo.example"
+              ],
+              [
+                "Telephone",
+                "+86 21 0000 2014"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Routing",
+            "values": [
+              [
+                "Port of loading",
+                "Valencia, Spain"
+              ],
+              [
+                "Port of discharge",
+                "Shanghai, China"
+              ],
+              [
+                "Goods origin",
+                "Spain / ES"
+              ],
+              [
+                "Shipping marks",
+                "FRESHWAY / SHIP-DEMO-B-2026 / PALLET 01–12"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Handling",
+            "paragraphs": [
+              "Keep refrigerated. The set point is +2 °C, with product handling instructions of 0 °C to +4 °C.",
+              "One carton is one sales package. Pallets are outer grouping units. Do not compare pallet count directly with carton quantity."
+            ]
+          }
+        ],
+        "landscape": false
+      },
+      {
+        "title": "Goods quantities and weights",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Goods lines",
+            "columns": [
+              "SKU",
+              "Product",
+              "Lot",
+              "Quantity",
+              "Unit",
+              "Net kg",
+              "Gross kg"
+            ],
+            "rows": [
+              [
+                "FRA-8",
+                "Fresh strawberries",
+                "ES-FRA-2610",
+                "390",
+                "cartons",
+                "3120",
+                "3354"
+              ],
+              [
+                "ARA-5",
+                "Fresh blueberries",
+                "ES-ARA-2610",
+                "200",
+                "cartons",
+                "1000",
+                "1080"
+              ]
+            ],
+            "widths": [
+              2.6,
+              8.2,
+              4.3,
+              3,
+              3,
+              2.9,
+              2.5
+            ]
+          },
+          {
+            "kind": "table",
+            "title": "Shipment totals",
+            "columns": [
+              "Cartons",
+              "Outer grouping",
+              "Net weight",
+              "Gross weight"
+            ],
+            "rows": [
+              [
+                "590",
+                "12 pallets",
+                "4120 kg",
+                "4434 kg"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "text",
+            "title": "Quantity basis",
+            "paragraphs": [
+              "This is a full packing list for both lots. The listed quantities cover the complete cargo under SHIP-DEMO-B-2026; this document does not describe a partial delivery.",
+              "The weight lines use product-specific packing bases. Strawberries: net 8 kg and gross 8.6 kg per carton. Blueberries: net 5 kg and gross 5.4 kg per carton."
+            ]
+          }
+        ],
+        "landscape": true
+      },
+      {
+        "title": "Pallet allocation and cold-chain handover",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Allocation appendix — grouping only, not extra goods lines",
+            "columns": [
+              "Pallet range",
+              "Product",
+              "Cartons per pallet",
+              "Grouping count"
+            ],
+            "rows": [
+              [
+                "01–07",
+                "Strawberries",
+                "50",
+                "7 pallets"
+              ],
+              [
+                "08",
+                "Strawberries",
+                "40",
+                "1 pallet"
+              ],
+              [
+                "09–12",
+                "Blueberries",
+                "50",
+                "4 pallets"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "fields",
+            "title": "Handover",
+            "values": [
+              [
+                "Handover date",
+                "15 October 2026"
+              ],
+              [
+                "Pallets handed over",
+                "12 pallets"
+              ],
+              [
+                "Measured temperature",
+                "+2.1 °C"
+              ],
+              [
+                "Temperature logger",
+                "LOGGER-DEMO-B-01"
+              ],
+              [
+                "Prepared by",
+                "Demo Cold-chain Warehouse Team"
+              ],
+              [
+                "Receiver signature",
+                "________________________________"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Record notes",
+            "paragraphs": [
+              "Pallet allocation corresponds to the goods summary on page 2. It must not be counted as a second set of goods.",
+              "This synthetic record does not provide a real health certificate, import permit or customs release.",
+              "All companies, contacts, shipment numbers and logistics records in this document are fictitious demonstration data."
+            ]
+          }
+        ],
+        "landscape": false
+      }
+    ]
+  },
+  {
+    "group": "第二组_西班牙食品冷链/补件_不要与初版同时当新货物上传",
+    "name": "B02_装箱单_英语_修正版_3页",
+    "language": "en",
+    "number": "PL-DEMO-B-261014-R1",
+    "title": "PACKING LIST",
+    "pages": [
+      {
+        "title": "Shipment particulars",
+        "blocks": [
+          {
+            "kind": "fields",
+            "title": "References",
+            "values": [
+              [
+                "Packing list number",
+                "PL-DEMO-B-261014-R1"
+              ],
+              [
+                "Shipment reference",
+                "SHIP-DEMO-B-2026"
+              ],
+              [
+                "Invoice reference",
+                "INV-DEMO-ES-261014"
+              ],
+              [
+                "Purchase order",
+                "PO-DEMO-CN-261014-B"
+              ],
+              [
+                "Packed on",
+                "14 October 2026"
+              ],
+              [
+                "Revision",
+                "R1 — replaces PL-DEMO-B-261014; same cargo, not an additional shipment"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Shipper",
+            "values": [
+              [
+                "Legal name",
+                "Huerta Clara Demo S.L."
+              ],
+              [
+                "Address",
+                "14 Camino de la Huerta Demo, 46024 Valencia, Spain"
+              ],
+              [
+                "Email",
+                "export@huerta-demo.example"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Consignee",
+            "values": [
+              [
+                "Legal name",
+                "Shanghai Freshway Demo Foods Co., Ltd."
+              ],
+              [
+                "Address",
+                "56 Demo Cold-chain Road, Pudong, Shanghai 201306, China"
+              ],
+              [
+                "Email",
+                "receiving@freshway-demo.example"
+              ],
+              [
+                "Telephone",
+                "+86 21 0000 2014"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Routing",
+            "values": [
+              [
+                "Port of loading",
+                "Valencia, Spain"
+              ],
+              [
+                "Port of discharge",
+                "Shanghai, China"
+              ],
+              [
+                "Goods origin",
+                "Spain / ES"
+              ],
+              [
+                "Shipping marks",
+                "FRESHWAY / SHIP-DEMO-B-2026 / PALLET 01–12"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Handling",
+            "paragraphs": [
+              "Keep refrigerated. The set point is +2 °C, with product handling instructions of 0 °C to +4 °C.",
+              "One carton is one sales package. Pallets are outer grouping units. Do not compare pallet count directly with carton quantity."
+            ]
+          }
+        ],
+        "landscape": false
+      },
+      {
+        "title": "Goods quantities and weights",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Goods lines",
+            "columns": [
+              "SKU",
+              "Product",
+              "Lot",
+              "Quantity",
+              "Unit",
+              "Net kg",
+              "Gross kg"
+            ],
+            "rows": [
+              [
+                "FRA-8",
+                "Fresh strawberries",
+                "ES-FRA-2610",
+                "400",
+                "cartons",
+                "3200",
+                "3440"
+              ],
+              [
+                "ARA-5",
+                "Fresh blueberries",
+                "ES-ARA-2610",
+                "200",
+                "cartons",
+                "1000",
+                "1080"
+              ]
+            ],
+            "widths": [
+              2.6,
+              8.2,
+              4.3,
+              3,
+              3,
+              2.9,
+              2.5
+            ]
+          },
+          {
+            "kind": "table",
+            "title": "Shipment totals",
+            "columns": [
+              "Cartons",
+              "Outer grouping",
+              "Net weight",
+              "Gross weight"
+            ],
+            "rows": [
+              [
+                "600",
+                "12 pallets",
+                "4200 kg",
+                "4520 kg"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "text",
+            "title": "Quantity basis",
+            "paragraphs": [
+              "This is a full packing list for both lots. The listed quantities cover the complete cargo under SHIP-DEMO-B-2026; this document does not describe a partial delivery.",
+              "The weight lines use product-specific packing bases. Strawberries: net 8 kg and gross 8.6 kg per carton. Blueberries: net 5 kg and gross 5.4 kg per carton."
+            ]
+          }
+        ],
+        "landscape": true
+      },
+      {
+        "title": "Pallet allocation and cold-chain handover",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Allocation appendix — grouping only, not extra goods lines",
+            "columns": [
+              "Pallet range",
+              "Product",
+              "Cartons per pallet",
+              "Grouping count"
+            ],
+            "rows": [
+              [
+                "01–07",
+                "Strawberries",
+                "50",
+                "7 pallets"
+              ],
+              [
+                "08",
+                "Strawberries",
+                "50",
+                "1 pallet"
+              ],
+              [
+                "09–12",
+                "Blueberries",
+                "50",
+                "4 pallets"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "fields",
+            "title": "Handover",
+            "values": [
+              [
+                "Handover date",
+                "15 October 2026"
+              ],
+              [
+                "Pallets handed over",
+                "12 pallets"
+              ],
+              [
+                "Measured temperature",
+                "+2.1 °C"
+              ],
+              [
+                "Temperature logger",
+                "LOGGER-DEMO-B-01"
+              ],
+              [
+                "Prepared by",
+                "Demo Cold-chain Warehouse Team"
+              ],
+              [
+                "Receiver signature",
+                "________________________________"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Record notes",
+            "paragraphs": [
+              "Pallet allocation corresponds to the goods summary on page 2. It must not be counted as a second set of goods.",
+              "This synthetic record does not provide a real health certificate, import permit or customs release.",
+              "Revision R1 corrects the strawberry quantity, the dependent weights and the consignee email; it does not create a new cargo lot."
+            ]
+          }
+        ],
+        "landscape": false
+      }
+    ]
+  },
+  {
+    "group": "第二组_西班牙食品冷链",
+    "name": "B03_冷链海运提单_英语_2页",
+    "language": "en",
+    "number": "BL-DEMO-B-261015",
+    "title": "BILL OF LADING",
+    "pages": [
+      {
+        "title": "Transport and parties",
+        "blocks": [
+          {
+            "kind": "fields",
+            "title": "Transport references",
+            "values": [
+              [
+                "Bill of lading number",
+                "BL-DEMO-B-261015"
+              ],
+              [
+                "Shipment reference",
+                "SHIP-DEMO-B-2026"
+              ],
+              [
+                "Booking reference",
+                "BK-DEMO-B-261014"
+              ],
+              [
+                "Issue date",
+                "15 October 2026"
+              ],
+              [
+                "Service",
+                "Ocean transport — non-negotiable demonstration copy"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Shipper",
+            "values": [
+              [
+                "Legal name",
+                "Huerta Clara Demo S.L."
+              ],
+              [
+                "Address",
+                "14 Camino de la Huerta Demo, 46024 Valencia, Spain"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Consignee",
+            "values": [
+              [
+                "Legal name",
+                "Shanghai Freshway Demo Foods Co., Ltd."
+              ],
+              [
+                "Address",
+                "56 Demo Cold-chain Road, Pudong, Shanghai 201306, China"
+              ],
+              [
+                "Email",
+                "receiving@freshway-demo.example"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Notify party / carrier",
+            "values": [
+              [
+                "Notify party",
+                "Harbour Link Demo Logistics Co., Ltd."
+              ],
+              [
+                "Notify email",
+                "arrival@harbour-demo.example"
+              ],
+              [
+                "Carrier",
+                "Blue Meridian Demo Ocean Line"
+              ],
+              [
+                "Vessel / voyage",
+                "MV DEMO HORIZON / 026E"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Route",
+            "values": [
+              [
+                "Place of receipt",
+                "Valencia, Spain"
+              ],
+              [
+                "Port of loading",
+                "Valencia, Spain"
+              ],
+              [
+                "Port of discharge",
+                "Shanghai, China"
+              ],
+              [
+                "Place of delivery",
+                "56 Demo Cold-chain Road, Pudong, Shanghai"
+              ]
+            ]
+          }
+        ],
+        "landscape": false
+      },
+      {
+        "title": "Cargo declaration and instructions",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "Description of goods — goods quantity and package count are distinct",
+            "columns": [
+              "SKU",
+              "Description",
+              "Lot",
+              "Goods quantity",
+              "Goods unit",
+              "Packages"
+            ],
+            "rows": [
+              [
+                "FRA-8",
+                "Fresh strawberries",
+                "ES-FRA-2610",
+                "400",
+                "cartons",
+                "8 pallets"
+              ],
+              [
+                "ARA-5",
+                "Fresh blueberries",
+                "ES-ARA-2610",
+                "200",
+                "cartons",
+                "4 pallets"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "fields",
+            "title": "Transport declaration",
+            "values": [
+              [
+                "Total outer packages",
+                "12 pallets"
+              ],
+              [
+                "Total cartons",
+                "600 cartons"
+              ],
+              [
+                "Net weight",
+                "4200 kg"
+              ],
+              [
+                "Gross weight",
+                "4520 kg"
+              ],
+              [
+                "Reefer reference",
+                "REEFER-DEMO-B-01"
+              ],
+              [
+                "Seal reference",
+                "SEAL-DEMO-B-1015"
+              ],
+              [
+                "Freight",
+                "Prepaid"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Refrigerated transport instructions",
+            "values": [
+              [
+                "Set point",
+                "+2 °C"
+              ],
+              [
+                "Product instruction range",
+                "0 °C to +4 °C"
+              ],
+              [
+                "Ventilation",
+                "As agreed in the booking instruction"
+              ],
+              [
+                "Logger reference",
+                "LOGGER-DEMO-B-01"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "Document interpretation",
+            "paragraphs": [
+              "This is a synthetic, non-negotiable demonstration copy. It is not issued by a real carrier and is not a document of title.",
+              "Descriptions and package counts are shipping particulars for the same cargo. They do not establish customs clearance, legal compliance or product certification."
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "Carrier acknowledgement",
+            "values": [
+              [
+                "Prepared by",
+                "Demo Documentation Desk"
+              ],
+              [
+                "Signature",
+                "________________________________"
+              ],
+              [
+                "Acknowledgement date",
+                "________________________________"
+              ]
+            ]
+          }
+        ],
+        "landscape": false
+      }
+    ]
+  },
+  {
+    "group": "第二组_西班牙食品冷链",
+    "name": "B04_采购订单_中文_2页",
+    "language": "zh-CN",
+    "number": "PO-DEMO-CN-261014-B",
+    "title": "采购订单",
+    "pages": [
+      {
+        "title": "冷链食品采购与交付要求",
+        "blocks": [
+          {
+            "kind": "fields",
+            "title": "订单信息",
+            "values": [
+              [
+                "订单编号",
+                "PO-DEMO-CN-261014-B"
+              ],
+              [
+                "订单日期",
+                "2026年10月14日"
+              ],
+              [
+                "货批编号",
+                "SHIP-DEMO-B-2026"
+              ],
+              [
+                "交货条款",
+                "CIF上海，Incoterms® 2020"
+              ],
+              [
+                "币种",
+                "EUR"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "买方／收货人",
+            "values": [
+              [
+                "英文法定名称",
+                "Shanghai Freshway Demo Foods Co., Ltd."
+              ],
+              [
+                "演示中文名称",
+                "上海鲜行演示食品有限公司"
+              ],
+              [
+                "地址",
+                "中国上海市浦东新区演示冷链路56号，201306"
+              ],
+              [
+                "联系人",
+                "赵敏（演示）"
+              ],
+              [
+                "电子邮箱",
+                "receiving@freshway-demo.example"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "卖方／发货人",
+            "values": [
+              [
+                "法定名称",
+                "Huerta Clara Demo S.L."
+              ],
+              [
+                "地址",
+                "西班牙瓦伦西亚，14 Camino de la Huerta Demo，46024"
+              ],
+              [
+                "电子邮箱",
+                "export@huerta-demo.example"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "交付条件",
+            "paragraphs": [
+              "本订单要求完整交付同一货批的两种演示水果。数量按箱计，托盘仅用于集合搬运；同一SKU、批次和运输阶段才可作数量比较。",
+              "温度设定+2 °C，产品运输要求0 °C至+4 °C。记录温度不等同植物检疫或食品安全证明。",
+              "这是文件处理演示情景，不表示所列水果贸易线路已获得实际准入许可。"
+            ]
+          }
+        ],
+        "landscape": false
+      },
+      {
+        "title": "采购明细与接收确认",
+        "blocks": [
+          {
+            "kind": "table",
+            "title": "采购明细",
+            "columns": [
+              "SKU",
+              "品名",
+              "批次",
+              "数量",
+              "净重",
+              "单价EUR",
+              "金额EUR"
+            ],
+            "rows": [
+              [
+                "FRA-8",
+                "新鲜草莓",
+                "ES-FRA-2610",
+                "400箱",
+                "3200 kg",
+                "18.00",
+                "7200.00"
+              ],
+              [
+                "ARA-5",
+                "新鲜蓝莓",
+                "ES-ARA-2610",
+                "200箱",
+                "1000 kg",
+                "22.00",
+                "4400.00"
+              ]
+            ],
+            "widths": null
+          },
+          {
+            "kind": "fields",
+            "title": "总计",
+            "values": [
+              [
+                "箱数",
+                "600箱"
+              ],
+              [
+                "托盘数",
+                "12托盘"
+              ],
+              [
+                "净重",
+                "4200 kg"
+              ],
+              [
+                "毛重",
+                "4520 kg"
+              ],
+              [
+                "商品金额",
+                "11600.00 EUR"
+              ],
+              [
+                "冷链运输费／保险费",
+                "1250.00 EUR／150.00 EUR"
+              ],
+              [
+                "CIF应付总额",
+                "13000.00 EUR"
+              ]
+            ]
+          },
+          {
+            "kind": "fields",
+            "title": "接收确认",
+            "values": [
+              [
+                "收货经办",
+                "赵敏（演示）"
+              ],
+              [
+                "箱数核对",
+                "________________________________"
+              ],
+              [
+                "温度记录核对",
+                "________________________________"
+              ],
+              [
+                "签字日期",
+                "________________________________"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "title": "使用边界",
+            "paragraphs": [
+              "本采购订单未签收，仅表示演示采购要求；不得推断货物已经到港、海关已放行或收货人已签收。企业、地址和联系方式均为合成资料。"
+            ]
+          }
+        ],
+        "landscape": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,1268 @@
+{
+  "checked_at": "2026-10-14T07:33:39.629289+00:00",
+  "scope": "文档结构、字体配置、逐页文本、页边界、图像完整性、来源哈希和人工排版复核；不包含真实Agent调用",
+  "checks_passed": true,
+  "counts": {
+    "editable_docx": 9,
+    "public_template_pdf": 2,
+    "native_pdf": 9,
+    "synthetic_image_only_pdf": 2,
+    "public_template_image": 4,
+    "synthetic_document_image": 6
+  },
+  "native_document_pages": 23,
+  "public_template_pages": 10,
+  "scan_alternative_pages": 6,
+  "business_arithmetic_checked": true,
+  "native_visual_review": "全部23页；表格缩进修正后重新查看9份文档联系表",
+  "public_visual_review": "两份原始公开模板共10页",
+  "scan_visual_review": "300dpi页图抽样放大；每页图像和尺寸结构检查",
+  "agent_end_to_end_executed": false,
+  "model_called": false,
+  "mineru_called": false,
+  "files": [
+    {
+      "file": "第一组_法国设备海运/A01_商业发票_法语_3页.docx",
+      "kind": "editable_docx",
+      "size_bytes": 43400,
+      "sha256": "716879006edf7eaa154a8fa75211f898f2ba9707a36f12f6afcda6e3772f2b42",
+      "body_text_chars_including_tables": 3277,
+      "tables": 8,
+      "sections": 3,
+      "horizontal_rules": 3,
+      "merged_cells": 2,
+      "required_content_missing": [],
+      "style_fonts": {
+        "Normal": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Songti SC"
+        },
+        "Heading1": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        },
+        "Heading2": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        }
+      },
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第一组_法国设备海运/A01_商业发票_法语_3页.docx\nparagraphs=37 nonempty=24 tables=8 chars=1546 size=43400\nsample=FACTURE COMMERCIALE Parties et conditions de vente Références commerciales Vendeur / exportateur Acheteur / destinataire Objet de la vente",
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/A02_装箱单_英语_3页.docx",
+      "kind": "editable_docx",
+      "size_bytes": 43114,
+      "sha256": "3a754e017bae3e292219df37e64c1d71c435427262f06f166f6f2f63af2e2697",
+      "body_text_chars_including_tables": 2782,
+      "tables": 8,
+      "sections": 3,
+      "horizontal_rules": 3,
+      "merged_cells": 3,
+      "required_content_missing": [],
+      "style_fonts": {
+        "Normal": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Songti SC"
+        },
+        "Heading1": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        },
+        "Heading2": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        }
+      },
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第一组_法国设备海运/A02_装箱单_英语_3页.docx\nparagraphs=36 nonempty=23 tables=8 chars=1266 size=43114\nsample=PACKING LIST Shipment and handling particulars Document references Shipper Consignee Shipping marks and routing",
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/A03_海运提单_英语_2页.docx",
+      "kind": "editable_docx",
+      "size_bytes": 41122,
+      "sha256": "3ed79b79ae397d111d11f2321369906061c2df3d9ce772ae4e696c1500f2095d",
+      "body_text_chars_including_tables": 1939,
+      "tables": 8,
+      "sections": 2,
+      "horizontal_rules": 1,
+      "merged_cells": 1,
+      "required_content_missing": [],
+      "style_fonts": {
+        "Normal": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Songti SC"
+        },
+        "Heading1": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        },
+        "Heading2": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        }
+      },
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第一组_法国设备海运/A03_海运提单_英语_2页.docx\nparagraphs=25 nonempty=15 tables=8 chars=582 size=41122\nsample=BILL OF LADING Transport and parties Transport references Shipper Consignee Notify party / carrier",
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/A04_采购订单_中文_2页.docx",
+      "kind": "editable_docx",
+      "size_bytes": 41267,
+      "sha256": "1797cbf02c6751286f378b8c39673d547ab3ceed23b17e4dd698c8e8bc342b90",
+      "body_text_chars_including_tables": 879,
+      "tables": 6,
+      "sections": 2,
+      "horizontal_rules": 1,
+      "merged_cells": 1,
+      "required_content_missing": [],
+      "style_fonts": {
+        "Normal": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Songti SC"
+        },
+        "Heading1": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        },
+        "Heading2": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        }
+      },
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第一组_法国设备海运/A04_采购订单_中文_2页.docx\nparagraphs=22 nonempty=14 tables=6 chars=203 size=41267\nsample=采购订单 采购主体与交付要求 订单信息 买方／收货人 卖方／发货人 交付要求",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/B01_商业发票_西班牙语_3页.docx",
+      "kind": "editable_docx",
+      "size_bytes": 43149,
+      "sha256": "1dd36daa43e19ca1dd5cf0894b523eda5af8363a980fe4b63ad99305471b5480",
+      "body_text_chars_including_tables": 2795,
+      "tables": 9,
+      "sections": 3,
+      "horizontal_rules": 3,
+      "merged_cells": 2,
+      "required_content_missing": [],
+      "style_fonts": {
+        "Normal": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Songti SC"
+        },
+        "Heading1": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        },
+        "Heading2": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        }
+      },
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/B01_商业发票_西班牙语_3页.docx\nparagraphs=38 nonempty=24 tables=9 chars=1232 size=43149\nsample=FACTURA COMERCIAL Partes y condiciones de la operación Referencias Vendedor / expedidor Comprador / destinatario Descripción del envío",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.docx",
+      "kind": "editable_docx",
+      "size_bytes": 42818,
+      "sha256": "925254a02fa6550742dfe3de84be237f5fc0146a7abd7005551d2d81e29fb79d",
+      "body_text_chars_including_tables": 2360,
+      "tables": 8,
+      "sections": 3,
+      "horizontal_rules": 3,
+      "merged_cells": 1,
+      "required_content_missing": [],
+      "style_fonts": {
+        "Normal": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Songti SC"
+        },
+        "Heading1": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        },
+        "Heading2": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        }
+      },
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.docx\nparagraphs=37 nonempty=24 tables=8 chars=1186 size=42818\nsample=PACKING LIST Shipment particulars References Shipper Consignee Routing",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/B03_冷链海运提单_英语_2页.docx",
+      "kind": "editable_docx",
+      "size_bytes": 41147,
+      "sha256": "1b70e70a003ba2a7fa4e804dc0de7961de2cb9ffd52f4a84f966676db67fd8cc",
+      "body_text_chars_including_tables": 1998,
+      "tables": 9,
+      "sections": 2,
+      "horizontal_rules": 1,
+      "merged_cells": 1,
+      "required_content_missing": [],
+      "style_fonts": {
+        "Normal": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Songti SC"
+        },
+        "Heading1": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        },
+        "Heading2": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        }
+      },
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/B03_冷链海运提单_英语_2页.docx\nparagraphs=27 nonempty=16 tables=9 chars=617 size=41147\nsample=BILL OF LADING Transport and parties Transport references Shipper Consignee Notify party / carrier",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/B04_采购订单_中文_2页.docx",
+      "kind": "editable_docx",
+      "size_bytes": 41329,
+      "sha256": "541824a5d8702f81036b70ff9c08e2d7ae8ba7e70b19f395ae37fa17e5c61ceb",
+      "body_text_chars_including_tables": 927,
+      "tables": 6,
+      "sections": 2,
+      "horizontal_rules": 2,
+      "merged_cells": 1,
+      "required_content_missing": [],
+      "style_fonts": {
+        "Normal": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Songti SC"
+        },
+        "Heading1": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        },
+        "Heading2": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        }
+      },
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/B04_采购订单_中文_2页.docx\nparagraphs=25 nonempty=16 tables=6 chars=280 size=41329\nsample=采购订单 冷链食品采购与交付要求 订单信息 买方／收货人 卖方／发货人 交付条件",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/补件_不要与初版同时当新货物上传/B02_装箱单_英语_修正版_3页.docx",
+      "kind": "editable_docx",
+      "size_bytes": 42863,
+      "sha256": "dc3a7fb7899eae1b236da2e6e938efd51e5fabbc065623a2199737b7928f2dd2",
+      "body_text_chars_including_tables": 2440,
+      "tables": 8,
+      "sections": 3,
+      "horizontal_rules": 3,
+      "merged_cells": 1,
+      "required_content_missing": [],
+      "style_fonts": {
+        "Normal": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Songti SC"
+        },
+        "Heading1": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        },
+        "Heading2": {
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}asciiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsiaTheme": "majorEastAsia",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsiTheme": "majorHAnsi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cstheme": "majorBidi",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}ascii": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}hAnsi": "Arial",
+          "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}eastAsia": "Heiti SC"
+        }
+      },
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/补件_不要与初版同时当新货物上传/B02_装箱单_英语_修正版_3页.docx\nparagraphs=37 nonempty=24 tables=8 chars=1205 size=42863\nsample=PACKING LIST Shipment particulars References Shipper Consignee Routing",
+      "checks_passed": true
+    },
+    {
+      "file": "公开样例/HMRC_C88_英国过境单_公开空白模板.pdf",
+      "kind": "public_template_pdf",
+      "size_bytes": 32602,
+      "sha256": "12d26f26e5d677e29ed738aad61e5de6930c6c0ce8fd9f5599f69478f8d5d443",
+      "pages": 6,
+      "text_chars": 8947,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595,
+          "height_pt": 842,
+          "text_chars": 2046,
+          "images": 0,
+          "rule_segments": 183,
+          "fonts": [
+            "Helvetica",
+            "Helvetica-Bold",
+            "Helvetica-BoldOblique",
+            "Helvetica-Oblique"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 595,
+          "height_pt": 842,
+          "text_chars": 1951,
+          "images": 0,
+          "rule_segments": 132,
+          "fonts": [
+            "Helvetica",
+            "Helvetica-Bold",
+            "Helvetica-Oblique"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 3,
+          "width_pt": 595,
+          "height_pt": 842,
+          "text_chars": 1725,
+          "images": 0,
+          "rule_segments": 179,
+          "fonts": [
+            "Helvetica",
+            "Helvetica-Bold",
+            "Helvetica-Oblique",
+            "Symbol"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 4,
+          "width_pt": 595,
+          "height_pt": 842,
+          "text_chars": 1291,
+          "images": 0,
+          "rule_segments": 65,
+          "fonts": [
+            "Helvetica",
+            "Helvetica-Bold"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 5,
+          "width_pt": 595,
+          "height_pt": 842,
+          "text_chars": 910,
+          "images": 0,
+          "rule_segments": 23,
+          "fonts": [
+            "Helvetica",
+            "Helvetica-Bold"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 6,
+          "width_pt": 595,
+          "height_pt": 842,
+          "text_chars": 1024,
+          "images": 0,
+          "rule_segments": 60,
+          "fonts": [
+            "Helvetica",
+            "Helvetica-Bold"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/公开样例/HMRC_C88_英国过境单_公开空白模板.pdf\npages=6 text_chars=9969 size=32602\nsample=SPECIMEN 1 1  25 Mode of transport             at the border  26 Inland mode              of transport  29 Office of exit  30 Location of goods  27 Place of loading  Marks and numbers — Container No(s) — Number and kind    Type    Tax base    Rate    Amount MP  50 Principal                                             No                                                                                     Signature: represented by Place and date: Copy for the country of dispatch/export  10 Country",
+      "checks_passed": true
+    },
+    {
+      "file": "公开样例/UPS_供应链商业发票_公开空白模板.pdf",
+      "kind": "public_template_pdf",
+      "size_bytes": 167540,
+      "sha256": "93ed8138538c58e50dd0e9cca254793fa7fd2da6def77be7f456428fd04f15a3",
+      "pages": 4,
+      "text_chars": 2592,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 612.0,
+          "height_pt": 792.0,
+          "text_chars": 1039,
+          "images": 0,
+          "rule_segments": 160,
+          "fonts": [
+            "QWURQQ+UPSBerlingskeSans-Bold",
+            "QWURQQ+UPSBerlingskeSans-Regular",
+            "QWURQQ+UPSBerlingskeSansCn-Bold",
+            "QWURQQ+UPSBerlingskeSansCn-BoldItalic",
+            "QWURQQ+UPSBerlingskeSansCn-Regular"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 612.0,
+          "height_pt": 792.0,
+          "text_chars": 257,
+          "images": 0,
+          "rule_segments": 117,
+          "fonts": [
+            "QWURQQ+UPSBerlingskeSans-Bold",
+            "QWURQQ+UPSBerlingskeSans-Regular",
+            "QWURQQ+UPSBerlingskeSansCn-Bold",
+            "QWURQQ+UPSBerlingskeSansCn-Regular"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 3,
+          "width_pt": 612.0,
+          "height_pt": 792.0,
+          "text_chars": 1039,
+          "images": 0,
+          "rule_segments": 211,
+          "fonts": [
+            "QWURQQ+UPSBerlingskeSans-Bold",
+            "QWURQQ+UPSBerlingskeSans-Regular",
+            "QWURQQ+UPSBerlingskeSansCn-Bold",
+            "QWURQQ+UPSBerlingskeSansCn-BoldItalic",
+            "QWURQQ+UPSBerlingskeSansCn-Regular"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 4,
+          "width_pt": 612.0,
+          "height_pt": 792.0,
+          "text_chars": 257,
+          "images": 0,
+          "rule_segments": 168,
+          "fonts": [
+            "QWURQQ+UPSBerlingskeSans-Bold",
+            "QWURQQ+UPSBerlingskeSans-Regular",
+            "QWURQQ+UPSBerlingskeSansCn-Bold",
+            "QWURQQ+UPSBerlingskeSansCn-Regular"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/公开样例/UPS_供应链商业发票_公开空白模板.pdf\npages=4 text_chars=2661 size=167540\nsample=COMMERCIAL INVOICE 00035-06 (6/97) Litho U.S.A. Fields highlighted in red are required. DATE REFERENCE NUMBER SHIPPER Name (Required)  Phone Number (Required)   Address City State/Province  Zip/Postal Code CONSIGNEE Name  (Required)  Phone Number (Required)   Address City State/Province  Zip/Postal Code IMPORTER (IF OTHER THAN CONSIGNEE) COUNTRY OR TERRITORY OF UL TIMATE DESTINATION CONSIGNEE COMPANY CONSIGNEE TELEPHONE NO. THESE COMMODITIES, TECHNOLOGY, OR SOFTWARE WERE EXPORTED FROM THE U.S. I",
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/A01_商业发票_法语_3页.pdf",
+      "kind": "native_pdf",
+      "size_bytes": 140832,
+      "sha256": "2ed10f9de7b19cac2505e87cd45a94de487fe44cd569543be74a6d0f32f5f1ce",
+      "pages": 3,
+      "text_chars": 3723,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1264,
+          "images": 0,
+          "rule_segments": 176,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 841.89,
+          "height_pt": 595.3,
+          "text_chars": 1216,
+          "images": 0,
+          "rule_segments": 165,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 3,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1243,
+          "images": 0,
+          "rule_segments": 125,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第一组_法国设备海运/A01_商业发票_法语_3页.pdf\npages=3 text_chars=3771 size=140832\nsample=INV-DEMO-FR-261014    |    DOCUMENT SET / DEMONSTRATION DEMONSTRATION ONLY — NOT VALID FOR SHIPMENT    |    1 / 3 FACTURE COMMERCIALE Parties et conditions de vente Références commerciales N° de facture INV-DEMO-FR-261014 Date 14 octobre 2026 Commande client PO-DEMO-CN-261014-A Référence de l'expédition SHIP-DEMO-A-2026 Devise EUR Conditions de livraison CIF Shanghai — Incoterms® 2020 Vendeur / exportateur Raison sociale Atelier Horizon Démo SAS Adresse 18 rue des Ateliers Démo, 69007 Lyon, Fran",
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/A02_装箱单_英语_3页.pdf",
+      "kind": "native_pdf",
+      "size_bytes": 140301,
+      "sha256": "04602e076918513f274f8f4aa0db7c715c1abf211ba1efb509442d8f38b63ee0",
+      "pages": 3,
+      "text_chars": 3219,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1182,
+          "images": 0,
+          "rule_segments": 180,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 841.89,
+          "height_pt": 595.3,
+          "text_chars": 912,
+          "images": 0,
+          "rule_segments": 156,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 3,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1125,
+          "images": 0,
+          "rule_segments": 120,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第一组_法国设备海运/A02_装箱单_英语_3页.pdf\npages=3 text_chars=3264 size=140301\nsample=PL-DEMO-A-261014    |    DOCUMENT SET / DEMONSTRATION DEMONSTRATION ONLY — NOT VALID FOR SHIPMENT    |    1 / 3 PACKING LIST Shipment and handling particulars Document references Packing list number PL-DEMO-A-261014 Packing date 14 October 2026 Shipment reference SHIP-DEMO-A-2026 Invoice reference INV-DEMO-FR-261014 Purchase order PO-DEMO-CN-261014-A Shipper Legal name Atelier Horizon Démo SAS Address 18 rue des Ateliers Démo, 69007 Lyon, France Email export@horizon-demo.example Telephone +33 1",
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/A03_海运提单_英语_2页.pdf",
+      "kind": "native_pdf",
+      "size_bytes": 118181,
+      "sha256": "1d5f28c7b871968fdf338dbc40948954e8fffe0c18e92383e7f8811aaff691d4",
+      "pages": 2,
+      "text_chars": 2235,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 969,
+          "images": 0,
+          "rule_segments": 182,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1266,
+          "images": 0,
+          "rule_segments": 178,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第一组_法国设备海运/A03_海运提单_英语_2页.pdf\npages=2 text_chars=2266 size=118181\nsample=BL-DEMO-A-261015    |    DOCUMENT SET / DEMONSTRATION DEMONSTRATION ONLY — NOT VALID FOR SHIPMENT    |    1 / 2 BILL OF LADING Transport and parties Transport references Bill of lading number BL-DEMO-A-261015 Shipment reference SHIP-DEMO-A-2026 Booking reference BK-DEMO-A-261014 Issue date 15 October 2026 Service Ocean transport — non-negotiable demonstration copy Shipper Legal name Atelier Horizon Démo SAS Address 18 rue des Ateliers Démo, 69007 Lyon, France Consignee Legal name Shanghai Meridi",
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/A04_采购订单_中文_2页.pdf",
+      "kind": "native_pdf",
+      "size_bytes": 173308,
+      "sha256": "30a9ec30d2a665d13411df481328252106d911425eff8c44f79c5b2a659d8803",
+      "pages": 2,
+      "text_chars": 1174,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 617,
+          "images": 0,
+          "rule_segments": 131,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+ArialUnicodeMS",
+            "DAAAAA+PingFangSC-Regular",
+            "EAAAAA+PingFangSC-Semibold"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 557,
+          "images": 0,
+          "rule_segments": 176,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+ArialUnicodeMS",
+            "DAAAAA+PingFangSC-Regular",
+            "EAAAAA+PingFangSC-Semibold",
+            "FAAAAA+Carlito-Bold",
+            "GAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第一组_法国设备海运/A04_采购订单_中文_2页.pdf\npages=2 text_chars=1218 size=173308\nsample=PO-DEMO-CN-261014-A    |    DOCUMENT SET / DEMONSTRATION DEMONSTRATION ONLY — NOT VALID FOR SHIPMENT    |    1 / 2 采购订单 采购主体与交付要求 订单信息 订单编号 PO-DEMO-CN-261014-A 订单日期 2026 年 10 月 14 日 同票货批 SHIP-DEMO-A-2026 币种 EUR 交货条款 CIF 上海，Incoterms® 2020 买方／收货人 英文法定名称 Shanghai Meridian Demo Equipment Co., Ltd. 演示中文名称 上海子午线演示设备有限公司 收货地址 中国上海市浦东新区演示物流路 88 号，201306 联系人 林伟（演示） 电子邮箱 import@meridian-demo.example 卖方／发货人 法定名称 Atelier Horizon Démo SAS 所在地 法国里昂，18 rue des Ateliers Démo，69007 电子邮箱 export@horizon-demo.exam",
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/扫描备选_同件勿重复上传/A01_商业发票_法语_3页_图片型扫描.pdf",
+      "kind": "synthetic_image_only_pdf",
+      "size_bytes": 2414520,
+      "sha256": "1c8951a4ea484dd7875d54c62c5cb121e420bee8a23f887cca846be468a76963",
+      "pages": 3,
+      "text_chars": 0,
+      "images": 3,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 0,
+          "images": 1,
+          "rule_segments": 0,
+          "fonts": [],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 841.89,
+          "height_pt": 595.3,
+          "text_chars": 0,
+          "images": 1,
+          "rule_segments": 0,
+          "fonts": [],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 3,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 0,
+          "images": 1,
+          "rule_segments": 0,
+          "fonts": [],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第一组_法国设备海运/扫描备选_同件勿重复上传/A01_商业发票_法语_3页_图片型扫描.pdf\npages=3 text_chars=2 size=2414520\nsample=",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/B01_商业发票_西班牙语_3页.pdf",
+      "kind": "native_pdf",
+      "size_bytes": 138434,
+      "sha256": "788960048de875c8c1d21429dd65c604f3860dda9e27d93a5801b6922f4b7998",
+      "pages": 3,
+      "text_chars": 3237,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1191,
+          "images": 0,
+          "rule_segments": 158,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 841.89,
+          "height_pt": 595.3,
+          "text_chars": 928,
+          "images": 0,
+          "rule_segments": 148,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 3,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1118,
+          "images": 0,
+          "rule_segments": 147,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/B01_商业发票_西班牙语_3页.pdf\npages=3 text_chars=3279 size=138434\nsample=INV-DEMO-ES-261014    |    DOCUMENT SET / DEMONSTRATION DEMONSTRATION ONLY — NOT VALID FOR SHIPMENT    |    1 / 3 FACTURA COMERCIAL Partes y condiciones de la operación Referencias Número de factura INV-DEMO-ES-261014 Fecha 14 de octubre de 2026 Pedido del comprador PO-DEMO-CN-261014-B Referencia del envío SHIP-DEMO-B-2026 Moneda EUR Condición de entrega CIF Shanghai — Incoterms® 2020 Vendedor / expedidor Razón social Huerta Clara Demo S.L. Dirección 14 Camino de la Huerta Demo, 46024 Valencia,",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.pdf",
+      "kind": "native_pdf",
+      "size_bytes": 128024,
+      "sha256": "12ade19f46b36a117cb23db96c19938db1b8cf7915dda5ac246c2b91237447f0",
+      "pages": 3,
+      "text_chars": 2773,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1047,
+          "images": 0,
+          "rule_segments": 171,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 841.89,
+          "height_pt": 595.3,
+          "text_chars": 778,
+          "images": 0,
+          "rule_segments": 119,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 3,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 948,
+          "images": 0,
+          "rule_segments": 102,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.pdf\npages=3 text_chars=2814 size=128024\nsample=PL-DEMO-B-261014    |    DOCUMENT SET / DEMONSTRATION DEMONSTRATION ONLY — NOT VALID FOR SHIPMENT    |    1 / 3 PACKING LIST Shipment particulars References Packing list number PL-DEMO-B-261014 Shipment reference SHIP-DEMO-B-2026 Invoice reference INV-DEMO-ES-261014 Purchase order PO-DEMO-CN-261014-B Packed on 14 October 2026 Revision Initial issue Shipper Legal name Huerta Clara Demo S.L. Address 14 Camino de la Huerta Demo, 46024 Valencia, Spain Email export@huerta-demo.example Consignee Legal",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/B03_冷链海运提单_英语_2页.pdf",
+      "kind": "native_pdf",
+      "size_bytes": 118571,
+      "sha256": "96c738e064f5afaf844be24b5e9708c44a7ff8b5d19606bb6a78e3fb4e3c31a2",
+      "pages": 2,
+      "text_chars": 2295,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 975,
+          "images": 0,
+          "rule_segments": 182,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1320,
+          "images": 0,
+          "rule_segments": 208,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/B03_冷链海运提单_英语_2页.pdf\npages=2 text_chars=2323 size=118571\nsample=BL-DEMO-B-261015    |    DOCUMENT SET / DEMONSTRATION DEMONSTRATION ONLY — NOT VALID FOR SHIPMENT    |    1 / 2 BILL OF LADING Transport and parties Transport references Bill of lading number BL-DEMO-B-261015 Shipment reference SHIP-DEMO-B-2026 Booking reference BK-DEMO-B-261014 Issue date 15 October 2026 Service Ocean transport — non-negotiable demonstration copy Shipper Legal name Huerta Clara Demo S.L. Address 14 Camino de la Huerta Demo, 46024 Valencia, Spain Consignee Legal name Shanghai Fr",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/B04_采购订单_中文_2页.pdf",
+      "kind": "native_pdf",
+      "size_bytes": 183718,
+      "sha256": "fdbaa4f749bc0b94bfcfe040513c44c089bc95e98689697bac7bfaa483ef2cd8",
+      "pages": 2,
+      "text_chars": 1219,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 628,
+          "images": 0,
+          "rule_segments": 131,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+ArialUnicodeMS",
+            "DAAAAA+STSongti-SC-Regular",
+            "EAAAAA+PingFangSC-Semibold"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 591,
+          "images": 0,
+          "rule_segments": 186,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+ArialUnicodeMS",
+            "DAAAAA+STSongti-SC-Regular",
+            "EAAAAA+PingFangSC-Semibold",
+            "FAAAAA+Carlito-Bold",
+            "GAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/B04_采购订单_中文_2页.pdf\npages=2 text_chars=1262 size=183718\nsample=PO-DEMO-CN-261014-B    |    DOCUMENT SET / DEMONSTRATION DEMONSTRATION ONLY — NOT VALID FOR SHIPMENT    |    1 / 2 采购订单 冷链食品采购与交付要求 订单信息 订单编号 PO-DEMO-CN-261014-B 订单日期 2026 年 10 月 14 日 货批编号 SHIP-DEMO-B-2026 交货条款 CIF 上海，Incoterms® 2020 币种 EUR 买方／收货人 英文法定名称 Shanghai Freshway Demo Foods Co., Ltd. 演示中文名称 上海鲜行演示食品有限公司 地址 中国上海市浦东新区演示冷链路 56 号，201306 联系人 赵敏（演示） 电子邮箱 receiving@freshway-demo.example 卖方／发货人 法定名称 Huerta Clara Demo S.L. 地址 西班牙瓦伦西亚，14 Camino de la Huerta Demo，46024 电子邮箱 export@huerta-demo.exam",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/扫描备选_同件勿重复上传/B02_装箱单_英语_初版_3页_图片型扫描.pdf",
+      "kind": "synthetic_image_only_pdf",
+      "size_bytes": 1947225,
+      "sha256": "8f69d718d94bf5d12356edb471f907274d3c25d692d914aac13f1e293bc8256e",
+      "pages": 3,
+      "text_chars": 0,
+      "images": 3,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 0,
+          "images": 1,
+          "rule_segments": 0,
+          "fonts": [],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 841.89,
+          "height_pt": 595.3,
+          "text_chars": 0,
+          "images": 1,
+          "rule_segments": 0,
+          "fonts": [],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 3,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 0,
+          "images": 1,
+          "rule_segments": 0,
+          "fonts": [],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/扫描备选_同件勿重复上传/B02_装箱单_英语_初版_3页_图片型扫描.pdf\npages=3 text_chars=2 size=1947225\nsample=",
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/补件_不要与初版同时当新货物上传/B02_装箱单_英语_修正版_3页.pdf",
+      "kind": "native_pdf",
+      "size_bytes": 128143,
+      "sha256": "7bd49d63d9860ff1a2584e002ed79a82c0e003e3d71487ec44b2ff14b49e7196",
+      "pages": 3,
+      "text_chars": 2862,
+      "images": 0,
+      "page_details": [
+        {
+          "page": 1,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 1111,
+          "images": 0,
+          "rule_segments": 171,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 2,
+          "width_pt": 841.89,
+          "height_pt": 595.3,
+          "text_chars": 784,
+          "images": 0,
+          "rule_segments": 119,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        },
+        {
+          "page": 3,
+          "width_pt": 595.3,
+          "height_pt": 841.89,
+          "text_chars": 967,
+          "images": 0,
+          "rule_segments": 102,
+          "fonts": [
+            "BAAAAA+ArialMT",
+            "CAAAAA+Carlito-Bold",
+            "DAAAAA+Arial-ItalicMT",
+            "EAAAAA+Arial-BoldMT"
+          ],
+          "out_of_page_characters": 0,
+          "replacement_or_square_glyphs": []
+        }
+      ],
+      "local_inspector": "/Users/hwaigc/比赛+课题/数联比赛/DataClawHub/赛题二-行业智能体/docs/使用交付/汇演示例包_20261014/第二组_西班牙食品冷链/补件_不要与初版同时当新货物上传/B02_装箱单_英语_修正版_3页.pdf\npages=3 text_chars=2903 size=128143\nsample=PL-DEMO-B-261014-R1    |    DOCUMENT SET / DEMONSTRATION DEMONSTRATION ONLY — NOT VALID FOR SHIPMENT    |    1 / 3 PACKING LIST Shipment particulars References Packing list number PL-DEMO-B-261014-R1 Shipment reference SHIP-DEMO-B-2026 Invoice reference INV-DEMO-ES-261014 Purchase order PO-DEMO-CN-261014-B Packed on 14 October 2026 Revision R1 — replaces PL-DEMO-B-261014; same cargo, not an additional shipment Shipper Legal name Huerta Clara Demo S.L. Address 14 Camino de la Huerta Demo, 46024 V",
+      "checks_passed": true
+    },
+    {
+      "file": "公开样例/高清图片/HMRC_C88_英国过境单_公开空白模板_第1页_300dpi.png",
+      "kind": "public_template_image",
+      "width_px": 2480,
+      "height_px": 3509,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "3c04a1ad59244d15a7aaddc61f56fa212730b5b24b61fbdc14b711973f4ec959",
+      "size_bytes": 571750,
+      "checks_passed": true
+    },
+    {
+      "file": "公开样例/高清图片/HMRC_C88_英国过境单_公开空白模板_第2页_300dpi.png",
+      "kind": "public_template_image",
+      "width_px": 2480,
+      "height_px": 3509,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "4fc92f3cfd7d6b201725a7c56ffbccb4487c63a547f4e3c4cf5e24f216849bb2",
+      "size_bytes": 566443,
+      "checks_passed": true
+    },
+    {
+      "file": "公开样例/高清图片/UPS_供应链商业发票_公开空白模板_第1页_300dpi.png",
+      "kind": "public_template_image",
+      "width_px": 2550,
+      "height_px": 3301,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "c4e47ab3ed216d2e724bfe8d938bbca8d7e2ca451f9535a296ba66b2f7a01727",
+      "size_bytes": 277323,
+      "checks_passed": true
+    },
+    {
+      "file": "公开样例/高清图片/UPS_供应链商业发票_公开空白模板_第2页_300dpi.png",
+      "kind": "public_template_image",
+      "width_px": 2550,
+      "height_px": 3301,
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "sha256": "dbea73703c4f8cd8e73944d559d89de825375b4dcf4d5ab24ca2c347a6d872a7",
+      "size_bytes": 111167,
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/扫描备选_同件勿重复上传/A01_商业发票_法语_3页_第1页_300dpi.jpg",
+      "kind": "synthetic_document_image",
+      "width_px": 2481,
+      "height_px": 3508,
+      "dpi": [
+        300,
+        300
+      ],
+      "sha256": "81f97c25406a86d7dc1f5aaf5107f70e58428b440f061579f7df4515b7dd951a",
+      "size_bytes": 664303,
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/扫描备选_同件勿重复上传/A01_商业发票_法语_3页_第2页_300dpi.jpg",
+      "kind": "synthetic_document_image",
+      "width_px": 3508,
+      "height_px": 2481,
+      "dpi": [
+        300,
+        300
+      ],
+      "sha256": "c22fe43a91b9e7d92ea8b930151e7ab926c18158e93926ddb2278a72a55484ae",
+      "size_bytes": 638400,
+      "checks_passed": true
+    },
+    {
+      "file": "第一组_法国设备海运/扫描备选_同件勿重复上传/A01_商业发票_法语_3页_第3页_300dpi.jpg",
+      "kind": "synthetic_document_image",
+      "width_px": 2481,
+      "height_px": 3508,
+      "dpi": [
+        300,
+        300
+      ],
+      "sha256": "f984cae5eb2d3dde8cf33ba3c6f0cb7b29617398f45f74d9bcf1c2373c17cce6",
+      "size_bytes": 626199,
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/扫描备选_同件勿重复上传/B02_装箱单_英语_初版_3页_第1页_300dpi.jpg",
+      "kind": "synthetic_document_image",
+      "width_px": 2481,
+      "height_px": 3508,
+      "dpi": [
+        300,
+        300
+      ],
+      "sha256": "b5746535bb32cc8da5c6a5cebd572f335e2058b8b7378a0b366494460afc29ab",
+      "size_bytes": 587022,
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/扫描备选_同件勿重复上传/B02_装箱单_英语_初版_3页_第2页_300dpi.jpg",
+      "kind": "synthetic_document_image",
+      "width_px": 3508,
+      "height_px": 2481,
+      "dpi": [
+        300,
+        300
+      ],
+      "sha256": "491b6c33c62e883e8e40f3f4800fc35d876690fbd2c0f80c1df491863c23134f",
+      "size_bytes": 463472,
+      "checks_passed": true
+    },
+    {
+      "file": "第二组_西班牙食品冷链/扫描备选_同件勿重复上传/B02_装箱单_英语_初版_3页_第3页_300dpi.jpg",
+      "kind": "synthetic_document_image",
+      "width_px": 2481,
+      "height_px": 3508,
+      "dpi": [
+        300,
+        300
+      ],
+      "sha256": "f69dab3fcaefb8f12cc6072b8306165111ee5401189ae16ff5066ce58a741c23",
+      "size_bytes": 504548,
+      "checks_passed": true
+    }
+  ]
+}

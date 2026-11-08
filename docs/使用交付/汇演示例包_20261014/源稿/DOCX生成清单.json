@@ -1,0 +1,65 @@
+[
+  {
+    "file": "第一组_法国设备海运/A01_商业发票_法语_3页.docx",
+    "language": "fr",
+    "document_number": "INV-DEMO-FR-261014",
+    "expected_pages": 3,
+    "sha256": "716879006edf7eaa154a8fa75211f898f2ba9707a36f12f6afcda6e3772f2b42"
+  },
+  {
+    "file": "第一组_法国设备海运/A02_装箱单_英语_3页.docx",
+    "language": "en",
+    "document_number": "PL-DEMO-A-261014",
+    "expected_pages": 3,
+    "sha256": "3a754e017bae3e292219df37e64c1d71c435427262f06f166f6f2f63af2e2697"
+  },
+  {
+    "file": "第一组_法国设备海运/A03_海运提单_英语_2页.docx",
+    "language": "en",
+    "document_number": "BL-DEMO-A-261015",
+    "expected_pages": 2,
+    "sha256": "3ed79b79ae397d111d11f2321369906061c2df3d9ce772ae4e696c1500f2095d"
+  },
+  {
+    "file": "第一组_法国设备海运/A04_采购订单_中文_2页.docx",
+    "language": "zh-CN",
+    "document_number": "PO-DEMO-CN-261014-A",
+    "expected_pages": 2,
+    "sha256": "1797cbf02c6751286f378b8c39673d547ab3ceed23b17e4dd698c8e8bc342b90"
+  },
+  {
+    "file": "第二组_西班牙食品冷链/B01_商业发票_西班牙语_3页.docx",
+    "language": "es",
+    "document_number": "INV-DEMO-ES-261014",
+    "expected_pages": 3,
+    "sha256": "1dd36daa43e19ca1dd5cf0894b523eda5af8363a980fe4b63ad99305471b5480"
+  },
+  {
+    "file": "第二组_西班牙食品冷链/B02_装箱单_英语_初版_3页.docx",
+    "language": "en",
+    "document_number": "PL-DEMO-B-261014",
+    "expected_pages": 3,
+    "sha256": "925254a02fa6550742dfe3de84be237f5fc0146a7abd7005551d2d81e29fb79d"
+  },
+  {
+    "file": "第二组_西班牙食品冷链/补件_不要与初版同时当新货物上传/B02_装箱单_英语_修正版_3页.docx",
+    "language": "en",
+    "document_number": "PL-DEMO-B-261014-R1",
+    "expected_pages": 3,
+    "sha256": "dc3a7fb7899eae1b236da2e6e938efd51e5fabbc065623a2199737b7928f2dd2"
+  },
+  {
+    "file": "第二组_西班牙食品冷链/B03_冷链海运提单_英语_2页.docx",
+    "language": "en",
+    "document_number": "BL-DEMO-B-261015",
+    "expected_pages": 2,
+    "sha256": "1b70e70a003ba2a7fa4e804dc0de7961de2cb9ffd52f4a84f966676db67fd8cc"
+  },
+  {
+    "file": "第二组_西班牙食品冷链/B04_采购订单_中文_2页.docx",
+    "language": "zh-CN",
+    "document_number": "PO-DEMO-CN-261014-B",
+    "expected_pages": 2,
+    "sha256": "541824a5d8702f81036b70ff9c08e2d7ae8ba7e70b19f395ae37fa17e5c61ceb"
+  }
+]
