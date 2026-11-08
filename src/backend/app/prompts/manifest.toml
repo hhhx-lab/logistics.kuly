@@ -1,0 +1,781 @@
+# 项目统一 Prompt 发布清单（Agent 方案第 6 节）。
+#
+# 发布纪律：
+# - 已发布的 templates/<key>/<version>.md 不得原位改字。哪怕只改一个标点，也要新增版本文件、
+#   在这里追加一条 [[prompt]] 并切换 [defaults]；旧版本保留供活动回合/Run使用。
+# - sha256 是模板文件原始字节的摘要；与文件不符时该版本不可用，对应能力拒绝接单。
+# - status：active 可接单；unverified 已登记但未通过样本验证，禁止接单；
+#   retired 不再作默认，但仍供已冻结该版本的 Run 继续使用。
+# - 变量 trust 取值（高到低）：system_policy > user_task > verified_fact > user_preference
+#   > session_summary > reference_material。message_role=system 的条目只允许 system_policy，
+#   用户材料不得拼进 system 段。
+
+format_version = 1
+
+[defaults]
+"ui.localize" = 1
+"chat.system" = 2
+"chat.intent" = 5
+"chat.answer" = 7
+"chat.session_summary" = 1
+"chat.general" = 8
+"document.extract" = 2
+"document.translate" = 4
+"document.vision_region" = 1
+"document.semantic_qa" = 5
+"document.revise" = 2
+"document.issue_assess" = 1
+
+[[prompt]]
+key = "chat.system"
+version = 1
+sha256 = "3be16a2acaca7af598264824cf967a80f5d9a470e53f10c12b42c1d0dc9cb457"
+role = "chat"
+message_role = "system"
+output_schema = "none@1"
+allowed_input_trust = ["system_policy"]
+max_input_tokens = 3000
+max_output_tokens = 0
+status = "active"
+change_note = "首版：服务范围、信任层级、证据表达、工具限制与正式命令引导。"
+variables = [
+  { name = "tool_catalog", type = "json", trust = "system_policy" },
+]
+
+[[prompt]]
+key = "chat.intent"
+version = 1
+sha256 = "8f28ebbc44c5d06b607487217abd98fe835dd5360f068b2cb2adffff44521612"
+role = "chat"
+message_role = "user"
+output_schema = "IntentCandidate@1"
+allowed_input_trust = ["system_policy", "user_task", "verified_fact"]
+max_input_tokens = 6000
+max_output_tokens = 8000
+status = "active"
+change_note = "首版：仅含糊意图时调用，输出注册动作候选；缺目标语言置空并追问。"
+variables = [
+  { name = "action_catalog", type = "json", trust = "system_policy" },
+  { name = "authorized_labels", type = "json", trust = "verified_fact" },
+  { name = "question", type = "text", trust = "user_task" },
+]
+
+[[prompt]]
+key = "chat.answer"
+version = 1
+sha256 = "c65d390c6e0ca8985be1013e4970631948feed40e628b21a558721ece31ad42f"
+role = "chat"
+message_role = "user"
+output_schema = "AnswerDraft@1"
+allowed_input_trust = ["user_task", "verified_fact", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "首版：按段输出 claim_kind 与 evidence_ids，冲突列各方，缺证据标无法确认。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "fact_cards", type = "json", trust = "verified_fact" },
+  { name = "reference_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.session_summary"
+version = 1
+sha256 = "15609778c7ef9b1ccf6323b424daa797a889c8335cd2fbb762df7111fdd91900"
+role = "chat"
+message_role = "user"
+output_schema = "SessionSummary@1"
+allowed_input_trust = ["system_policy", "session_summary"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "首版：限长会话摘要，只存约束与对象 ID，不含业务真值断言。"
+variables = [
+  { name = "previous_summary", type = "text", trust = "session_summary" },
+  { name = "turns", type = "json", trust = "session_summary" },
+  { name = "max_chars", type = "integer", trust = "system_policy" },
+]
+
+[[prompt]]
+key = "document.extract"
+version = 1
+sha256 = "8fc82e6ae26f296db3d87deaf2e28a8715ce1a69bb254d91337a3352e8165e74"
+role = "extract"
+message_role = "user"
+output_schema = "ExtractionResult@1"
+allowed_input_trust = ["system_policy", "reference_material"]
+max_input_tokens = 24000
+max_output_tokens = 8000
+status = "active"
+change_note = "首版：字段与明细行候选，原样摘值并给来源片段 ID，主体角色分开。"
+variables = [
+  { name = "document_type", type = "text", trust = "reference_material" },
+  { name = "field_schema", type = "json", trust = "system_policy" },
+  { name = "segments", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.translate"
+version = 1
+sha256 = "9f550e1ff512ced88dcb8f9cf92cd52958f2676b2e282d54fb600f03b753c966"
+role = "translate"
+message_role = "user"
+output_schema = "TranslationResult@1"
+allowed_input_trust = ["user_task", "verified_fact", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "首版：按片段 ID 翻译，保留占位符与数字编号，遵守术语表。"
+variables = [
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "glossary", type = "json", trust = "verified_fact" },
+  { name = "segments", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.translate"
+version = 2
+sha256 = "2021454f8fff1968ad4cefe75b537df0195294b03996e64f51c26f5b3fd7285d"
+role = "translate"
+message_role = "user"
+output_schema = "TranslationResult@1"
+allowed_input_trust = ["user_task", "verified_fact", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "修复目标语种自报却复制原文；明确翻译标题与角色标签，独立确定性语种门禁。"
+variables = [
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "glossary", type = "json", trust = "verified_fact" },
+  { name = "segments", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.vision_region"
+version = 1
+sha256 = "3655b0bf0a355157ff539c8be41cf02ecb3e450b8ca5fa728515d72992194046"
+role = "vision"
+message_role = "user"
+output_schema = "VisionTranscription@1"
+allowed_input_trust = ["verified_fact", "reference_material"]
+max_input_tokens = 4000
+max_output_tokens = 8000
+status = "active"
+change_note = "首版：局部裁图第二转写候选，看不清不补全。"
+variables = [
+  { name = "region_context", type = "json", trust = "verified_fact" },
+  { name = "ocr_text", type = "text", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.semantic_qa"
+version = 1
+sha256 = "b393a6fc3b44f73c7a942f6b89104d24e5dc66146cdcba642b37dc816e38ffd6"
+role = "extract"
+message_role = "user"
+output_schema = "SemanticQaResult@1"
+allowed_input_trust = ["user_task", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+# 方案要求先通过双语样本验证；未验证前登记但不接单，不以假可用充数
+status = "unverified"
+change_note = "首版：源译片段对的语义疑点候选；待双语样本验证后改为 active。"
+variables = [
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "pairs", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.semantic_qa"
+version = 2
+sha256 = "18a99e45342530d9c09e0379f23e2d9dc91843557f20bdb22cd87b61311708ed"
+role = "extract"
+message_role = "user"
+output_schema = "SemanticQaResult@1"
+allowed_input_trust = ["user_task", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+# 方案要求先通过双语样本验证；未验证前登记但不接单，不以假可用充数
+status = "active"
+change_note = "通过2026-10-02真实模型合成双语样本定向核验；只生成疑点候选，确定性QA独立。"
+variables = [
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "pairs", type = "json", trust = "reference_material" },
+]
+
+
+[[prompt]]
+key = "chat.general"
+version = 1
+sha256 = "4be00322a2bc19087c18791387dfe4e70a927951b98035b391bd57974aea4381"
+role = "chat"
+message_role = "user"
+output_schema = "GeneralKnowledgeAnswer@1"
+allowed_input_trust = ["user_task", "session_summary", "user_preference"]
+max_input_tokens = 12000
+max_output_tokens = 4000
+status = "active"
+change_note = "通用物流知识回答；仅一般语境与本人表达偏好，独立领域分类，无本票证据材料。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+]
+
+[[prompt]]
+key = "chat.general"
+version = 2
+sha256 = "94d26483990ec28283b6576b290f1c57aafa96a8874e357b00845adf2516914f"
+role = "chat"
+message_role = "user"
+output_schema = "GeneralKnowledgeAnswer@1"
+allowed_input_trust = ["user_task", "session_summary", "user_preference", "reference_material"]
+max_input_tokens = 12000
+max_output_tokens = 4000
+status = "active"
+change_note = "新增冻结 Skill 低信任说明；既有版本保持可回放。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.intent"
+version = 2
+sha256 = "42d9101116aa069c72f6242fa1d49c09875e119962a395e51b37a88efb7090a7"
+role = "chat"
+message_role = "user"
+output_schema = "IntentCandidate@1"
+allowed_input_trust = ["system_policy", "user_task", "verified_fact", "reference_material"]
+max_input_tokens = 6000
+max_output_tokens = 8000
+status = "active"
+change_note = "新增冻结 Skill 低信任说明；既有版本保持可回放。"
+variables = [
+  { name = "action_catalog", type = "json", trust = "system_policy" },
+  { name = "authorized_labels", type = "json", trust = "verified_fact" },
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.general"
+version = 3
+sha256 = "b1f794e73f392c24c24f6231679e895d6059f25b54d7679cf09093b0cedb2ffc"
+role = "chat"
+message_role = "user"
+output_schema = "GeneralKnowledgeAnswer@1"
+allowed_input_trust = ["user_task", "session_summary", "user_preference", "reference_material"]
+max_input_tokens = 12000
+max_output_tokens = 4000
+status = "active"
+change_note = "新回合冻结默认解释语言；本轮明确要求优先，旧版本不修改。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.intent"
+version = 3
+sha256 = "6f3726adc8920c75807b998089cb0a94acadf5e35491c4febb3dcf371a754b88"
+role = "chat"
+message_role = "user"
+output_schema = "IntentCandidate@2"
+allowed_input_trust = ["system_policy", "user_task", "verified_fact", "reference_material"]
+max_input_tokens = 6000
+max_output_tokens = 8000
+status = "active"
+change_note = "新增独立一般知识动作；关联单票不改变一般知识路由，旧schema及冻结版本保持回放。"
+variables = [
+  { name = "action_catalog", type = "json", trust = "system_policy" },
+  { name = "authorized_labels", type = "json", trust = "verified_fact" },
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.answer"
+version = 2
+sha256 = "3d1011cd0eda816231f071d44bd1b0ea3488ecc5d99ddf475125181d697c4cf1"
+role = "chat"
+message_role = "user"
+output_schema = "AnswerDraft@2"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "完整同会话上下文、偏好与Skill；服务端核验事实及注册知识来源。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "fact_cards", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.general"
+version = 4
+sha256 = "3bec44a30174d0b385289bc43136e5e2c90ee211c052cddc9830f2fd20894d03"
+role = "chat"
+message_role = "user"
+output_schema = "GeneralKnowledgeAnswer@2"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "完整同会话上下文、偏好与Skill；服务端核验事实及注册知识来源。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "knowledge_sources", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.general"
+version = 5
+sha256 = "9e1b321237e3048fc595d1f5310ee53da749481061cb30a093f0e27537393e48"
+role = "chat"
+message_role = "user"
+output_schema = "GeneralKnowledgeAnswer@2"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "真实知识联调纠正贸易术语风险与费用混淆，要求有注册概述时绑定相关来源。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "knowledge_sources", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+
+[[prompt]]
+key = "chat.system"
+version = 2
+sha256 = "2b5a444d7f3fa4c44aab580543baae4f497cf850c06cab404314dac60336e5f0"
+role = "chat"
+message_role = "system"
+output_schema = "none@1"
+allowed_input_trust = ["system_policy"]
+max_input_tokens = 3000
+max_output_tokens = 0
+status = "active"
+change_note = "自然业务答复放宽机械限制，保留授权来源与项目内部信息保护。"
+variables = [
+  { name = "tool_catalog", type = "json", trust = "system_policy" },
+]
+
+
+[[prompt]]
+key = "chat.general"
+version = 6
+sha256 = "1d33ffb71666749109f29baeb46470c836b10f7ac43c14ac2035c3d23e029c43"
+role = "chat"
+message_role = "user"
+output_schema = "GeneralKnowledgeAnswer@2"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "自然业务答复放宽机械限制，保留授权来源与项目内部信息保护。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "knowledge_sources", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+
+[[prompt]]
+key = "chat.answer"
+version = 3
+sha256 = "9ae4c25eee926391ec7db16a19e262121042dedfdfea4d5176f5365f9e5298af"
+role = "chat"
+message_role = "user"
+output_schema = "AnswerDraft@2"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "自然业务答复放宽机械限制，保留授权来源与项目内部信息保护。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "fact_cards", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.semantic_qa"
+version = 3
+sha256 = "79647c144f2382ae2abc1e972a8f1d04e244725f84c3a2c51db6cbd8ab9558ba"
+role = "extract"
+message_role = "user"
+output_schema = "SemanticQaResult@2"
+allowed_input_trust = ["user_task", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "疑点判断Skill输出中文分类解释、影响、建议与局部替换候选。"
+variables = [
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "pairs", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.revise"
+version = 1
+sha256 = "54317d9092ccebc9a68e9822b595aa41cf55eda51117116602c3b907411e973d"
+role = "translate"
+message_role = "user"
+output_schema = "SegmentRevisionResult@1"
+allowed_input_trust = ["user_task", "reference_material", "verified_fact"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "单一译段用户意见修订；保留保护值与授权原文。"
+variables = [
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "source_text", type = "text", trust = "reference_material" },
+  { name = "translated_text", type = "text", trust = "reference_material" },
+  { name = "issue", type = "json", trust = "reference_material" },
+  { name = "instruction", type = "text", trust = "user_task" },
+  { name = "protected_values", type = "json", trust = "verified_fact" },
+]
+
+[[prompt]]
+key = "document.translate"
+version = 3
+sha256 = "72c570b848a18352b5468fc42f7d79474aa965d60bd89dfb44b2ffba2dcd8d42"
+role = "translate"
+message_role = "user"
+output_schema = "TranslationResult@1"
+allowed_input_trust = ["user_task", "verified_fact", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "纯译文输出与源片段/单元格边界保留，不跨格合译。"
+variables = [
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "glossary", type = "json", trust = "verified_fact" },
+  { name = "segments", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.general"
+version = 7
+sha256 = "8911784e67a84ecc17147c2aa0be779c3f510e7d08b0a7c206451f8a86e53e65"
+role = "chat"
+message_role = "user"
+output_schema = "GeneralKnowledgeAnswer@3"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "宽松领域判断及元数据先于正文的真实增量协议，旧模板保留。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "knowledge_sources", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.answer"
+version = 4
+sha256 = "06af9a0a40ba90e5cd3200015c5c4465d40b1495afb72dc1920b1c82fc35ffb5"
+role = "chat"
+message_role = "user"
+output_schema = "NaturalAnswerDraft@2"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "宽松领域判断及元数据先于正文的真实增量协议，旧模板保留。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "fact_cards", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.answer"
+version = 5
+sha256 = "4c6e73b3f25423f022a6106e9984eb3c11a997525751d4a58e0fad8e3461f992"
+role = "chat"
+message_role = "user"
+output_schema = "NaturalAnswerDraft@2"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "业务字段概览与授权材料自然释义，来源说明下沉列表，保留敏感保护。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "case_records", type = "json", trust = "verified_fact" },
+  { name = "fact_cards", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.answer"
+version = 6
+sha256 = "438cfb08065606092c04b35356c5eb25ff97e540c6c518bd4f005d4e0fce1ab5"
+role = "chat"
+message_role = "user"
+output_schema = "NaturalAnswerDraft@2"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "完整句子概述参与方、货物与路线，保留业务字段和授权来源。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "case_records", type = "json", trust = "verified_fact" },
+  { name = "fact_cards", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.semantic_qa"
+version = 4
+sha256 = "cb325fdcbf9894c3eaea13dd53d3eb254bd9db627498eac92e804b7e7a2960b4"
+role = "extract"
+message_role = "user"
+output_schema = "SemanticQaResult@3"
+allowed_input_trust = ["system_policy", "user_task", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "识别与翻译疑点分开，五动作建议、术语与结构分类，模型候选不提升红色门禁。"
+variables = [
+  { name = "issue_rules", type = "text", trust = "system_policy" },
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "pairs", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.issue_assess"
+version = 1
+sha256 = "0372f18db2e4b429af6fb3abfbb748a3066603922e7f04e6abb1a2a7417cc782"
+role = "extract"
+message_role = "user"
+output_schema = "IssueAssessmentResult@1"
+allowed_input_trust = ["system_policy", "user_task", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "任意疑点依据授权材料给出具体建议，不伪造原文或完成状态。"
+variables = [
+  { name = "issue_rules", type = "text", trust = "system_policy" },
+  { name = "issue", type = "json", trust = "reference_material" },
+  { name = "materials", type = "json", trust = "reference_material" },
+  { name = "instruction", type = "text", trust = "user_task" },
+]
+
+[[prompt]]
+key = "document.semantic_qa"
+version = 5
+sha256 = "18baae2855405f5a6b206fa48fa28077839ec5a813b092fdcd84249cdfd5b36d"
+role = "extract"
+message_role = "user"
+output_schema = "SemanticQaResult@3"
+allowed_input_trust = ["system_policy", "user_task", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "统一模型翻译候选黄、扫描和缺字段无法判断的风险口径，旧版本冻结保留。"
+variables = [
+  { name = "issue_rules", type = "text", trust = "system_policy" },
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "pairs", type = "json", trust = "reference_material" },
+]
+
+
+[[prompt]]
+key = "document.revise"
+version = 2
+sha256 = "b7adf871bf9de1dd4306ab961db917f3039f39f0b51ebace9185a8a47c5b0cec"
+role = "translate"
+message_role = "user"
+output_schema = "SegmentRevisionResult@1"
+allowed_input_trust = ["system_policy", "user_task", "reference_material", "verified_fact"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "局部译文Agent实际加载内置疑点Skill规则及来源矩阵；旧冻结修订保持兼容。"
+variables = [
+  { name = "issue_rules", type = "text", trust = "system_policy" },
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "source_text", type = "text", trust = "reference_material" },
+  { name = "translated_text", type = "text", trust = "reference_material" },
+  { name = "issue", type = "json", trust = "reference_material" },
+  { name = "instruction", type = "text", trust = "user_task" },
+  { name = "protected_values", type = "json", trust = "verified_fact" },
+]
+
+[[prompt]]
+key = "document.translate"
+version = 4
+sha256 = "bb1e9092ab007e121888b7ee3714d8b922b087daa9c824d021342b7ba5f12246"
+role = "translate"
+message_role = "user"
+output_schema = "TranslationResult@1"
+allowed_input_trust = ["user_task", "verified_fact", "reference_material"]
+max_input_tokens = 16000
+max_output_tokens = 8000
+status = "active"
+change_note = "五语互译与表达偏好统一；保留旧冻结版本。"
+variables = [
+  { name = "target_language", type = "text", trust = "user_task" },
+  { name = "glossary", type = "json", trust = "verified_fact" },
+  { name = "segments", type = "json", trust = "reference_material" },
+]
+
+
+[[prompt]]
+key = "chat.intent"
+version = 4
+sha256 = "34aaed6b670db0b266a3d6df8b8c64027db5180e3102e51f447617ffd9afafad"
+role = "chat"
+message_role = "user"
+output_schema = "IntentCandidate@2"
+allowed_input_trust = ["system_policy", "user_task", "verified_fact", "reference_material"]
+max_input_tokens = 6000
+max_output_tokens = 8000
+status = "active"
+change_note = "五语互译与表达偏好统一；保留旧冻结版本。"
+variables = [
+  { name = "action_catalog", type = "json", trust = "system_policy" },
+  { name = "authorized_labels", type = "json", trust = "verified_fact" },
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+
+[[prompt]]
+key = "chat.general"
+version = 8
+sha256 = "378ad805c761c37bc5156bb9f3f6a821c5cc11e94754150b6916d8812f669402"
+role = "chat"
+message_role = "user"
+output_schema = "GeneralKnowledgeAnswer@3"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "五语互译与表达偏好统一；保留旧冻结版本。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "knowledge_sources", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+
+[[prompt]]
+key = "chat.answer"
+version = 7
+sha256 = "15015a3308c84cdba6e98d5db814715bacc48e442fa9a6687e6268767ebc2c89"
+role = "chat"
+message_role = "user"
+output_schema = "NaturalAnswerDraft@2"
+allowed_input_trust = ["user_task", "verified_fact", "user_preference", "session_summary", "reference_material"]
+max_input_tokens = 20000
+max_output_tokens = 8000
+status = "active"
+change_note = "五语互译与表达偏好统一；保留旧冻结版本。"
+variables = [
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "task_spec", type = "json", trust = "user_task" },
+  { name = "preferences", type = "json", trust = "user_preference" },
+  { name = "context", type = "json", trust = "session_summary" },
+  { name = "case_records", type = "json", trust = "verified_fact" },
+  { name = "fact_cards", type = "json", trust = "verified_fact" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+
+[[prompt]]
+key = "ui.localize"
+version = 1
+sha256 = "476990bd9c2e684609c54c5062eb1fd71bfc66fbaca3222f8158e1ec14a00ed2"
+role = "chat"
+message_role = "user"
+output_schema = "UiLocalizationResult@1"
+allowed_input_trust = ["system_policy", "reference_material"]
+max_input_tokens = 12000
+max_output_tokens = 16000
+status = "active"
+change_note = "构建时翻译静态界面词典；产品运行时不调用模型翻译UI。"
+variables = [
+ { name = "target_language", type = "text", trust = "system_policy" },
+ { name = "entries", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "chat.intent"
+version = 5
+sha256 = "0256a2c27f96fcd6e58f620fd9b594ccb6405b5886a51b497c9e3fddbc49bbb2"
+role = "chat"
+message_role = "user"
+output_schema = "IntentCandidate@3"
+allowed_input_trust = ["user_task", "reference_material"]
+max_input_tokens = 10000
+max_output_tokens = 2000
+status = "active"
+change_note = "同票核对工作流受控路由，保留一般领域问答与目标语言确认。"
+variables = [
+  { name = "action_catalog", type = "json", trust = "user_task" },
+  { name = "authorized_labels", type = "json", trust = "user_task" },
+  { name = "question", type = "text", trust = "user_task" },
+  { name = "skill_material", type = "json", trust = "reference_material" },
+]
+
+[[prompt]]
+key = "document.extract"
+version = 2
+sha256 = "9ddf9aeac7b9bcf161fd4cf7f3b6de68bcd2500abe9b7f1c629bd6da811de30d"
+role = "extract"
+message_role = "user"
+output_schema = "ExtractionResult@1"
+allowed_input_trust = ["system_policy", "reference_material"]
+max_input_tokens = 24000
+max_output_tokens = 8000
+status = "active"
+change_note = "多语类型与货物身份列、独立数量重量口径、续页表头小计排除及逐格来源核验；兼容既有输出schema。"
+variables = [
+  { name = "document_type", type = "text", trust = "reference_material" },
+  { name = "field_schema", type = "json", trust = "system_policy" },
+  { name = "segments", type = "json", trust = "reference_material" },
+]

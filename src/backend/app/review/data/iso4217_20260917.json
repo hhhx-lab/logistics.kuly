@@ -1,0 +1,720 @@
+{
+  "source_url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+  "source_publish_date": "2026-09-17",
+  "retrieved_on": "2026-10-03",
+  "source_sha256": "33139b438657d1cee116ba737807ea71d19d6de4b90f799a09c56f0cc6a1b0ff",
+  "codes": {
+    "AFN": {
+      "numeric": "971",
+      "minor_units": "2"
+    },
+    "EUR": {
+      "numeric": "978",
+      "minor_units": "2"
+    },
+    "ALL": {
+      "numeric": "008",
+      "minor_units": "2"
+    },
+    "DZD": {
+      "numeric": "012",
+      "minor_units": "2"
+    },
+    "USD": {
+      "numeric": "840",
+      "minor_units": "2"
+    },
+    "AOA": {
+      "numeric": "973",
+      "minor_units": "2"
+    },
+    "XCD": {
+      "numeric": "951",
+      "minor_units": "2"
+    },
+    "XAD": {
+      "numeric": "396",
+      "minor_units": "2"
+    },
+    "ARS": {
+      "numeric": "032",
+      "minor_units": "2"
+    },
+    "AMD": {
+      "numeric": "051",
+      "minor_units": "2"
+    },
+    "AWG": {
+      "numeric": "533",
+      "minor_units": "2"
+    },
+    "AUD": {
+      "numeric": "036",
+      "minor_units": "2"
+    },
+    "AZN": {
+      "numeric": "944",
+      "minor_units": "2"
+    },
+    "BSD": {
+      "numeric": "044",
+      "minor_units": "2"
+    },
+    "BHD": {
+      "numeric": "048",
+      "minor_units": "3"
+    },
+    "BDT": {
+      "numeric": "050",
+      "minor_units": "2"
+    },
+    "BBD": {
+      "numeric": "052",
+      "minor_units": "2"
+    },
+    "BYN": {
+      "numeric": "933",
+      "minor_units": "2"
+    },
+    "BZD": {
+      "numeric": "084",
+      "minor_units": "2"
+    },
+    "XOF": {
+      "numeric": "952",
+      "minor_units": "0"
+    },
+    "BMD": {
+      "numeric": "060",
+      "minor_units": "2"
+    },
+    "INR": {
+      "numeric": "356",
+      "minor_units": "2"
+    },
+    "BTN": {
+      "numeric": "064",
+      "minor_units": "2"
+    },
+    "BOB": {
+      "numeric": "068",
+      "minor_units": "2"
+    },
+    "BOV": {
+      "numeric": "984",
+      "minor_units": "2"
+    },
+    "BAM": {
+      "numeric": "977",
+      "minor_units": "2"
+    },
+    "BWP": {
+      "numeric": "072",
+      "minor_units": "2"
+    },
+    "NOK": {
+      "numeric": "578",
+      "minor_units": "2"
+    },
+    "BRL": {
+      "numeric": "986",
+      "minor_units": "2"
+    },
+    "BND": {
+      "numeric": "096",
+      "minor_units": "2"
+    },
+    "BIF": {
+      "numeric": "108",
+      "minor_units": "0"
+    },
+    "CVE": {
+      "numeric": "132",
+      "minor_units": "2"
+    },
+    "KHR": {
+      "numeric": "116",
+      "minor_units": "2"
+    },
+    "XAF": {
+      "numeric": "950",
+      "minor_units": "0"
+    },
+    "CAD": {
+      "numeric": "124",
+      "minor_units": "2"
+    },
+    "KYD": {
+      "numeric": "136",
+      "minor_units": "2"
+    },
+    "CLP": {
+      "numeric": "152",
+      "minor_units": "0"
+    },
+    "CLF": {
+      "numeric": "990",
+      "minor_units": "4"
+    },
+    "CNY": {
+      "numeric": "156",
+      "minor_units": "2"
+    },
+    "COP": {
+      "numeric": "170",
+      "minor_units": "2"
+    },
+    "COU": {
+      "numeric": "970",
+      "minor_units": "2"
+    },
+    "KMF": {
+      "numeric": "174",
+      "minor_units": "0"
+    },
+    "CDF": {
+      "numeric": "976",
+      "minor_units": "2"
+    },
+    "NZD": {
+      "numeric": "554",
+      "minor_units": "2"
+    },
+    "CRC": {
+      "numeric": "188",
+      "minor_units": "2"
+    },
+    "CUP": {
+      "numeric": "192",
+      "minor_units": "2"
+    },
+    "XCG": {
+      "numeric": "532",
+      "minor_units": "2"
+    },
+    "CZK": {
+      "numeric": "203",
+      "minor_units": "2"
+    },
+    "DKK": {
+      "numeric": "208",
+      "minor_units": "2"
+    },
+    "DJF": {
+      "numeric": "262",
+      "minor_units": "0"
+    },
+    "DOP": {
+      "numeric": "214",
+      "minor_units": "2"
+    },
+    "EGP": {
+      "numeric": "818",
+      "minor_units": "2"
+    },
+    "SVC": {
+      "numeric": "222",
+      "minor_units": "2"
+    },
+    "ERN": {
+      "numeric": "232",
+      "minor_units": "2"
+    },
+    "SZL": {
+      "numeric": "748",
+      "minor_units": "2"
+    },
+    "ETB": {
+      "numeric": "230",
+      "minor_units": "2"
+    },
+    "FKP": {
+      "numeric": "238",
+      "minor_units": "2"
+    },
+    "FJD": {
+      "numeric": "242",
+      "minor_units": "2"
+    },
+    "XPF": {
+      "numeric": "953",
+      "minor_units": "0"
+    },
+    "GMD": {
+      "numeric": "270",
+      "minor_units": "2"
+    },
+    "GEL": {
+      "numeric": "981",
+      "minor_units": "2"
+    },
+    "GHS": {
+      "numeric": "936",
+      "minor_units": "2"
+    },
+    "GIP": {
+      "numeric": "292",
+      "minor_units": "2"
+    },
+    "GTQ": {
+      "numeric": "320",
+      "minor_units": "2"
+    },
+    "GBP": {
+      "numeric": "826",
+      "minor_units": "2"
+    },
+    "GNF": {
+      "numeric": "324",
+      "minor_units": "0"
+    },
+    "GYD": {
+      "numeric": "328",
+      "minor_units": "2"
+    },
+    "HTG": {
+      "numeric": "332",
+      "minor_units": "2"
+    },
+    "HNL": {
+      "numeric": "340",
+      "minor_units": "2"
+    },
+    "HKD": {
+      "numeric": "344",
+      "minor_units": "2"
+    },
+    "HUF": {
+      "numeric": "348",
+      "minor_units": "2"
+    },
+    "ISK": {
+      "numeric": "352",
+      "minor_units": "0"
+    },
+    "IDR": {
+      "numeric": "360",
+      "minor_units": "2"
+    },
+    "XDR": {
+      "numeric": "960",
+      "minor_units": "N.A."
+    },
+    "IRR": {
+      "numeric": "364",
+      "minor_units": "2"
+    },
+    "IQD": {
+      "numeric": "368",
+      "minor_units": "3"
+    },
+    "ILS": {
+      "numeric": "376",
+      "minor_units": "2"
+    },
+    "JMD": {
+      "numeric": "388",
+      "minor_units": "2"
+    },
+    "JPY": {
+      "numeric": "392",
+      "minor_units": "0"
+    },
+    "JOD": {
+      "numeric": "400",
+      "minor_units": "3"
+    },
+    "KZT": {
+      "numeric": "398",
+      "minor_units": "2"
+    },
+    "KES": {
+      "numeric": "404",
+      "minor_units": "2"
+    },
+    "KPW": {
+      "numeric": "408",
+      "minor_units": "2"
+    },
+    "KRW": {
+      "numeric": "410",
+      "minor_units": "0"
+    },
+    "KWD": {
+      "numeric": "414",
+      "minor_units": "3"
+    },
+    "KGS": {
+      "numeric": "417",
+      "minor_units": "2"
+    },
+    "LAK": {
+      "numeric": "418",
+      "minor_units": "2"
+    },
+    "LBP": {
+      "numeric": "422",
+      "minor_units": "2"
+    },
+    "LSL": {
+      "numeric": "426",
+      "minor_units": "2"
+    },
+    "ZAR": {
+      "numeric": "710",
+      "minor_units": "2"
+    },
+    "LRD": {
+      "numeric": "430",
+      "minor_units": "2"
+    },
+    "LYD": {
+      "numeric": "434",
+      "minor_units": "3"
+    },
+    "CHF": {
+      "numeric": "756",
+      "minor_units": "2"
+    },
+    "MOP": {
+      "numeric": "446",
+      "minor_units": "2"
+    },
+    "MKD": {
+      "numeric": "807",
+      "minor_units": "2"
+    },
+    "MGA": {
+      "numeric": "969",
+      "minor_units": "2"
+    },
+    "MWK": {
+      "numeric": "454",
+      "minor_units": "2"
+    },
+    "MYR": {
+      "numeric": "458",
+      "minor_units": "2"
+    },
+    "MVR": {
+      "numeric": "462",
+      "minor_units": "2"
+    },
+    "MRU": {
+      "numeric": "929",
+      "minor_units": "2"
+    },
+    "MUR": {
+      "numeric": "480",
+      "minor_units": "2"
+    },
+    "XUA": {
+      "numeric": "965",
+      "minor_units": "N.A."
+    },
+    "MXN": {
+      "numeric": "484",
+      "minor_units": "2"
+    },
+    "MXV": {
+      "numeric": "979",
+      "minor_units": "2"
+    },
+    "MDL": {
+      "numeric": "498",
+      "minor_units": "2"
+    },
+    "MNT": {
+      "numeric": "496",
+      "minor_units": "2"
+    },
+    "MAD": {
+      "numeric": "504",
+      "minor_units": "2"
+    },
+    "MZN": {
+      "numeric": "943",
+      "minor_units": "2"
+    },
+    "MMK": {
+      "numeric": "104",
+      "minor_units": "2"
+    },
+    "NAD": {
+      "numeric": "516",
+      "minor_units": "2"
+    },
+    "NPR": {
+      "numeric": "524",
+      "minor_units": "2"
+    },
+    "NIO": {
+      "numeric": "558",
+      "minor_units": "2"
+    },
+    "NGN": {
+      "numeric": "566",
+      "minor_units": "2"
+    },
+    "OMR": {
+      "numeric": "512",
+      "minor_units": "3"
+    },
+    "PKR": {
+      "numeric": "586",
+      "minor_units": "2"
+    },
+    "PAB": {
+      "numeric": "590",
+      "minor_units": "2"
+    },
+    "PGK": {
+      "numeric": "598",
+      "minor_units": "2"
+    },
+    "PYG": {
+      "numeric": "600",
+      "minor_units": "0"
+    },
+    "PEN": {
+      "numeric": "604",
+      "minor_units": "2"
+    },
+    "PHP": {
+      "numeric": "608",
+      "minor_units": "2"
+    },
+    "PLN": {
+      "numeric": "985",
+      "minor_units": "2"
+    },
+    "QAR": {
+      "numeric": "634",
+      "minor_units": "2"
+    },
+    "RON": {
+      "numeric": "946",
+      "minor_units": "2"
+    },
+    "RUB": {
+      "numeric": "643",
+      "minor_units": "2"
+    },
+    "RWF": {
+      "numeric": "646",
+      "minor_units": "0"
+    },
+    "SHP": {
+      "numeric": "654",
+      "minor_units": "2"
+    },
+    "WST": {
+      "numeric": "882",
+      "minor_units": "2"
+    },
+    "STN": {
+      "numeric": "930",
+      "minor_units": "2"
+    },
+    "SAR": {
+      "numeric": "682",
+      "minor_units": "2"
+    },
+    "RSD": {
+      "numeric": "941",
+      "minor_units": "2"
+    },
+    "SCR": {
+      "numeric": "690",
+      "minor_units": "2"
+    },
+    "SLE": {
+      "numeric": "925",
+      "minor_units": "2"
+    },
+    "SGD": {
+      "numeric": "702",
+      "minor_units": "2"
+    },
+    "XSU": {
+      "numeric": "994",
+      "minor_units": "N.A."
+    },
+    "SBD": {
+      "numeric": "090",
+      "minor_units": "2"
+    },
+    "SOS": {
+      "numeric": "706",
+      "minor_units": "2"
+    },
+    "SSP": {
+      "numeric": "728",
+      "minor_units": "2"
+    },
+    "LKR": {
+      "numeric": "144",
+      "minor_units": "2"
+    },
+    "SDG": {
+      "numeric": "938",
+      "minor_units": "2"
+    },
+    "SRD": {
+      "numeric": "968",
+      "minor_units": "2"
+    },
+    "SEK": {
+      "numeric": "752",
+      "minor_units": "2"
+    },
+    "CHE": {
+      "numeric": "947",
+      "minor_units": "2"
+    },
+    "CHW": {
+      "numeric": "948",
+      "minor_units": "2"
+    },
+    "SYP": {
+      "numeric": "760",
+      "minor_units": "2"
+    },
+    "TWD": {
+      "numeric": "901",
+      "minor_units": "2"
+    },
+    "TJS": {
+      "numeric": "972",
+      "minor_units": "2"
+    },
+    "TZS": {
+      "numeric": "834",
+      "minor_units": "2"
+    },
+    "THB": {
+      "numeric": "764",
+      "minor_units": "2"
+    },
+    "TOP": {
+      "numeric": "776",
+      "minor_units": "2"
+    },
+    "TTD": {
+      "numeric": "780",
+      "minor_units": "2"
+    },
+    "TND": {
+      "numeric": "788",
+      "minor_units": "3"
+    },
+    "TRY": {
+      "numeric": "949",
+      "minor_units": "2"
+    },
+    "TMT": {
+      "numeric": "934",
+      "minor_units": "2"
+    },
+    "UGX": {
+      "numeric": "800",
+      "minor_units": "0"
+    },
+    "UAH": {
+      "numeric": "980",
+      "minor_units": "2"
+    },
+    "AED": {
+      "numeric": "784",
+      "minor_units": "2"
+    },
+    "USN": {
+      "numeric": "997",
+      "minor_units": "2"
+    },
+    "UYU": {
+      "numeric": "858",
+      "minor_units": "2"
+    },
+    "UYI": {
+      "numeric": "940",
+      "minor_units": "0"
+    },
+    "UYW": {
+      "numeric": "927",
+      "minor_units": "4"
+    },
+    "UZS": {
+      "numeric": "860",
+      "minor_units": "2"
+    },
+    "VUV": {
+      "numeric": "548",
+      "minor_units": "0"
+    },
+    "VES": {
+      "numeric": "928",
+      "minor_units": "2"
+    },
+    "VED": {
+      "numeric": "926",
+      "minor_units": "2"
+    },
+    "VND": {
+      "numeric": "704",
+      "minor_units": "0"
+    },
+    "YER": {
+      "numeric": "886",
+      "minor_units": "2"
+    },
+    "ZMW": {
+      "numeric": "967",
+      "minor_units": "2"
+    },
+    "ZWG": {
+      "numeric": "924",
+      "minor_units": "2"
+    },
+    "XBA": {
+      "numeric": "955",
+      "minor_units": "N.A."
+    },
+    "XBB": {
+      "numeric": "956",
+      "minor_units": "N.A."
+    },
+    "XBC": {
+      "numeric": "957",
+      "minor_units": "N.A."
+    },
+    "XBD": {
+      "numeric": "958",
+      "minor_units": "N.A."
+    },
+    "XTS": {
+      "numeric": "963",
+      "minor_units": "N.A."
+    },
+    "XXX": {
+      "numeric": "999",
+      "minor_units": "N.A."
+    },
+    "XAU": {
+      "numeric": "959",
+      "minor_units": "N.A."
+    },
+    "XPD": {
+      "numeric": "964",
+      "minor_units": "N.A."
+    },
+    "XPT": {
+      "numeric": "962",
+      "minor_units": "N.A."
+    },
+    "XAG": {
+      "numeric": "961",
+      "minor_units": "N.A."
+    }
+  }
+}
