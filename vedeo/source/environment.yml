@@ -1,0 +1,12 @@
+# 《一张单据的旅程》逐帧动画渲染环境（独立 conda 环境，不与项目主环境混用）
+# 创建：conda env create -f environment.yml
+# 删除：conda env remove -n doc-journey-anim
+name: doc-journey-anim
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - pillow
+  - pycairo
+  - ffmpeg
